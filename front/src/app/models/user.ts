@@ -7,4 +7,6 @@ export interface User {
     mail: string;
     tel: string;
     active: boolean;
+    textSociete: string;
+    textSiret: string;
 }

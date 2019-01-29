@@ -9,19 +9,20 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class FormComponent implements OnInit {
 
+export class FormComponent implements OnInit {
   form: FormGroup;
   user: User = {} as User;
   returnUrl: string;
   error: Error;
+  checkboxSocieteSiret: boolean = true;
 
   constructor(
+    
     private formBuilder: FormBuilder,
     private activeRoutes: ActivatedRoute,
     private router: Router,
-    private usersService: UsersService,
-  ) { }
+    private usersService: UsersService ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -30,7 +31,9 @@ export class FormComponent implements OnInit {
       password: '',
       mail: '',
       tel: '',
-      active: true
+      active: true,
+      textSociete: '',
+      textSiret: '',
     });
 
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
@@ -46,7 +49,9 @@ export class FormComponent implements OnInit {
             password: this.user.password,
             mail: this.user.mail,
             tel: this.user.tel,
-            active: this.user.active
+            active: this.user.active,
+            textSociete: this.user.textSociete,
+            textSiret: this.user.textSiret
           });
       });      
     }
@@ -76,6 +81,34 @@ export class FormComponent implements OnInit {
             this.error = error;
         }
       );
+    }
+  }
+  societe() {
+    if(this.getCheckbox() === false){
+      this.setCheckbox(true);
+    }
+    else{
+      this.setCheckbox(false);
+    }
+    
+  }
+
+  getCheckbox(): boolean{
+    return this.checkboxSocieteSiret;
+  }
+
+  setCheckbox(checkboxSocieteSiret: boolean){
+    this.checkboxSocieteSiret = checkboxSocieteSiret;
+  }
+
+  getStyle(){
+    if(!this.getCheckbox()){
+      document.getElementById("labelSociete").style.display = "block";
+      document.getElementById("labelSiret").style.display = "block";
+    }
+    else{
+      document.getElementById("labelSociete").style.display = "none";
+      document.getElementById("labelSiret").style.display = "none";
     }
   }
 }
