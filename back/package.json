@@ -1,0 +1,35 @@
+{
+  "name": "aston-express",
+  "version": "0.1.0",
+  "description": "API RESTFul",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Charly",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-basic-auth": "^1.1.6",
+    "file-system": "^2.2.2",
+    "https": "^1.0.0",
+    "jsonwebtoken": "^8.4.0",
+    "local-storage": "^1.4.2",
+    "mariadb": "^2.0.2-rc",
+    "merge": "^1.2.1",
+    "morgan": "^1.9.1",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.4",
+    "nodemon": "^1.18.8",
+    "os": "^0.1.1",
+    "pem": "^1.13.2",
+    "pug": "^2.0.3",
+    "sequelize": "^4.42.0",
+    "sockjs": "^0.3.19"
+  }
+}

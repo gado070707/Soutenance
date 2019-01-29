@@ -1,0 +1,28 @@
+{
+    "app": {
+        "name": "Aston API Global",
+        "version": "0.1.0"
+    },
+    "db": {
+        "default": {
+            "url": "mysql://dev:dev@localhost/jobapi"
+        }
+    },
+    "security": {
+        "pem": {
+            "days": 5,
+            "selfSigned": true
+        },
+        "cors": {
+            "credentials": true,
+            "origin": "https://localhost:4200"
+        },
+        "jwt": {
+            "expiresIn": 7200
+        }
+    },
+    "server": {
+        "addr": "localhost",
+        "port": 8000
+    }
+}

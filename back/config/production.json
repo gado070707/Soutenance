@@ -1,0 +1,39 @@
+{
+    "app": {
+        "name": "Aston API DEV"
+    },
+    "server": {
+        "addr": "findmytruck.fr",
+        "port": 3000,
+        "jwt": {
+            "expiresIn": 3600
+        }
+    },
+    "db": {
+        "database": "findmytruck",
+        "username": "dreamteam",
+        "password": "azeAZE123123",
+        "host":     "localhost",
+        "port":     3306,
+        "dialect":  "mysql",
+        "pool": {
+	        "acquire": 30000,
+	        "idle": 30000
+        },
+        "url": "mysql://dreamteam:azeAZE123123@localhost/findmytruck"
+    },
+    "security": {
+        "pem": {
+            "days": 5,
+            "selfSigned": true
+        },
+        "cors": {
+            "credentials": true,
+            "origin": "https://www.findmytruck.fr"
+        },
+        "jwt": {
+            "expiresIn": 7200
+        }
+            
+    }
+}

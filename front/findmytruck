@@ -1,0 +1,393 @@
+-- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for debian-linux-gnu (x86_64)
+--
+-- Host: localhost    Database: findmytruck
+-- ------------------------------------------------------
+-- Server version	10.1.37-MariaDB-0+deb9u1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `adresse`
+--
+
+DROP TABLE IF EXISTS `adresse`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `adresse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `streetnumber` varchar(10) DEFAULT NULL,
+  `streetname` varchar(32) DEFAULT NULL,
+  `zipcode` varchar(10) DEFAULT NULL,
+  `city` varchar(32) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adresse`
+--
+
+LOCK TABLES `adresse` WRITE;
+/*!40000 ALTER TABLE `adresse` DISABLE KEYS */;
+/*!40000 ALTER TABLE `adresse` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lignescartes`
+--
+
+DROP TABLE IF EXISTS `lignescartes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lignescartes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `truck` int(11) DEFAULT NULL,
+  `product` int(11) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_lignescartes_truck` (`truck`),
+  KEY `fk_lignescartes_product` (`product`),
+  CONSTRAINT `fk_lignescartes_product` FOREIGN KEY (`product`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_lignescartes_truck` FOREIGN KEY (`truck`) REFERENCES `trucks` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lignescartes`
+--
+
+LOCK TABLES `lignescartes` WRITE;
+/*!40000 ALTER TABLE `lignescartes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lignescartes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lignescommandes`
+--
+
+DROP TABLE IF EXISTS `lignescommandes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lignescommandes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT NULL,
+  `lignecarte` int(11) DEFAULT NULL,
+  `quantite` int(11) DEFAULT NULL,
+  `statut` int(11) DEFAULT NULL,
+  `active` tinyint(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_lignescommandes_user` (`user`),
+  KEY `fk_lignescommandes_` (`lignecarte`),
+  KEY `fk_lignescommandes_statut` (`statut`),
+  CONSTRAINT `fk_lignescommandes_` FOREIGN KEY (`lignecarte`) REFERENCES `lignescartes` (`id`),
+  CONSTRAINT `fk_lignescommandes_statut` FOREIGN KEY (`statut`) REFERENCES `statuts` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_lignescommandes_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lignescommandes`
+--
+
+LOCK TABLES `lignescommandes` WRITE;
+/*!40000 ALTER TABLE `lignescommandes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lignescommandes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `presence`
+--
+
+DROP TABLE IF EXISTS `presence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `presence` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `day` varchar(16) DEFAULT NULL,
+  `truck` int(11) DEFAULT NULL,
+  `adresse` int(11) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_presence_truck` (`truck`),
+  KEY `fk_presence_adresse` (`adresse`),
+  CONSTRAINT `fk_presence_adresse` FOREIGN KEY (`adresse`) REFERENCES `adresse` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_presence_truck` FOREIGN KEY (`truck`) REFERENCES `trucks` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `presence`
+--
+
+LOCK TABLES `presence` WRITE;
+/*!40000 ALTER TABLE `presence` DISABLE KEYS */;
+/*!40000 ALTER TABLE `presence` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `product_type`
+--
+
+DROP TABLE IF EXISTS `product_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_type`
+--
+
+LOCK TABLES `product_type` WRITE;
+/*!40000 ALTER TABLE `product_type` DISABLE KEYS */;
+INSERT INTO `product_type` VALUES (1,'Menu',1,'2019-01-23 09:10:24','2019-01-23 09:10:24'),(2,'Produit',1,'2019-01-23 09:11:18','2019-01-23 09:11:18');
+/*!40000 ALTER TABLE `product_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) DEFAULT NULL,
+  `price` float DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `category` int(32) DEFAULT NULL,
+  `truck` int(11) NOT NULL,
+  `description` text,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_products_type` (`type`),
+  KEY `fk_products_truck` (`truck`),
+  KEY `fk_products_category` (`category`),
+  CONSTRAINT `fk_products_category` FOREIGN KEY (`category`) REFERENCES `products_category` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_products_truck` FOREIGN KEY (`truck`) REFERENCES `trucks` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `fk_products_type` FOREIGN KEY (`type`) REFERENCES `product_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products_category`
+--
+
+DROP TABLE IF EXISTS `products_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products_category`
+--
+
+LOCK TABLES `products_category` WRITE;
+/*!40000 ALTER TABLE `products_category` DISABLE KEYS */;
+INSERT INTO `products_category` VALUES (1,'Entree',1,'2019-01-23 09:10:31','2019-01-23 09:10:31'),(2,'Plat',1,'2019-01-23 09:11:53','2019-01-23 09:11:53'),(3,'Dessert',1,'2019-01-23 09:11:53','2019-01-23 09:11:53'),(4,'Boisson',1,'2019-01-23 09:11:53','2019-01-23 09:11:53');
+/*!40000 ALTER TABLE `products_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(32) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` varchar(18) DEFAULT NULL,
+  `updated_at` varchar(18) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'admin',NULL,'1547570230261','1547570230261'),(2,'user',NULL,'1547570230261','1547570230261'),(3,'truck',NULL,'1547570230261','1547570230261');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `statuts`
+--
+
+DROP TABLE IF EXISTS `statuts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `statuts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `statuts`
+--
+
+LOCK TABLES `statuts` WRITE;
+/*!40000 ALTER TABLE `statuts` DISABLE KEYS */;
+INSERT INTO `statuts` VALUES (1,'Attente',1,'2019-01-23 09:14:26','2019-01-23 09:14:26'),(2,'Validée',1,'2019-01-23 09:14:26','2019-01-23 09:14:26'),(3,'Réglée',1,'2019-01-23 09:14:26','2019-01-23 09:14:26');
+/*!40000 ALTER TABLE `statuts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `truckowner`
+--
+
+DROP TABLE IF EXISTS `truckowner`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `truckowner` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` int(11) DEFAULT NULL,
+  `siret` varchar(32) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_truckowner_user` (`user`),
+  CONSTRAINT `fk_truckowner_user` FOREIGN KEY (`user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `truckowner`
+--
+
+LOCK TABLES `truckowner` WRITE;
+/*!40000 ALTER TABLE `truckowner` DISABLE KEYS */;
+/*!40000 ALTER TABLE `truckowner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `trucks`
+--
+
+DROP TABLE IF EXISTS `trucks`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `trucks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `truckowner` int(11) DEFAULT NULL,
+  `precommande` tinyint(4) DEFAULT NULL,
+  `paiement` tinyint(4) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_truck_truckowner` (`truckowner`),
+  CONSTRAINT `fk_truck_truckowner` FOREIGN KEY (`truckowner`) REFERENCES `truckowner` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `trucks`
+--
+
+LOCK TABLES `trucks` WRITE;
+/*!40000 ALTER TABLE `trucks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `trucks` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
+  `mail` varchar(32) DEFAULT NULL,
+  `active` tinyint(4) DEFAULT NULL,
+  `telephone` varchar(15) DEFAULT NULL,
+  `role` int(11) DEFAULT NULL,
+  `created_at` varchar(20) DEFAULT NULL,
+  `updated_at` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`,`mail`,`telephone`),
+  KEY `fk_user_role` (`role`),
+  CONSTRAINT `fk_user_role` FOREIGN KEY (`role`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'easy',NULL,'easy@mail.fr',NULL,'0606060606',2,'1547570230261','1547570230261');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-01-28 14:16:09
