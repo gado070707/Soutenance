@@ -1,80 +1,47 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inscription Utilisateur</title>
-</head>
-
-<body class="container">
-  <form method="post" [formGroup]="form" (ngSubmit)="chooseFunction()">
-    <div class="row">
-      <div class="col-25">
-        <label for="name">Nom</label>
+  <div class="container">
+    <form method="post" [formGroup]="form" (ngSubmit)="chooseFunction()">
+      <div class="row">
+        <div class="col-25">
+          <label for="name">Nom</label>
+        </div>
+        <div class="col-50">
+          <input type="text" id="name" formControlName="name" placeholder="Nom" required>
+        </div>
       </div>
-      <div class="col-50">
-        <input type="text" id="name" formControlName="name" placeholder="Nom" required>
+      <div class="row">
+        <div class="col-25">
+          <label for="firstname">Prénom</label>
+        </div>
+        <div class="col-50">
+          <input type="text" id="firstname" formControlName="firstname" placeholder="Prénom" required>
+        </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="firstname">Prénom</label>
+      <div class="row">
+        <div class="col-25">
+          <label for="password">Mot de passe</label>
+        </div>
+        <div class="col-50">
+          <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
+        </div>
       </div>
-      <div class="col-50">
-        <input type="text" id="firstname" formControlName="firstname" placeholder="Prénom" required>
+      <div class="row">
+          <div class="col-25">
+            <label for="mail">Adresse Mail</label>
+          </div>
+          <div class="col-50">
+            <input type="email" id="mail" formControlName="mail" placeholder="Adresse Mail" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="tel">Téléphone</label>
+          </div>
+          <div class="col-50">
+            <input type="text" id="tel" formControlName="tel" placeholder="Numéro de téléphone">
+          </div>
+        </div>
+      <div class="row">
+        <input type="submit" value="Je m'inscris !">
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="password">Mot de passe</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="mail">Adresse Mail</label>
-      </div>
-      <div class="col-50">
-        <input type="email" id="mail" formControlName="mail" placeholder="Adresse Mail" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="tel">Téléphone</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="tel" formControlName="tel" placeholder="Numéro de téléphone">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
-        <label for="Societe">Société :</label>
-        <input type="checkbox" id="checkBoxSocieteSiret" (click)="societe()" />
-      </div>
-    </div>
-    <div class="row">
-      <label id="labelSociete" [style]="getStyle()">Nom de la société</label>
-      <input type="text" formControlName="textSociete" placeholder="Nom de la société" [hidden]="getCheckbox()"
-        required />
-    </div>
-    <div>
-      <label id="labelSiret" [style]="getStyle()">Numéro de votre siret</label>
-      <input type="text" formControlName="textSiret" placeholder="Numéro de siret" [hidden]="getCheckbox()"
-        required />
-    </div>
-    <div class="row">
-      <input type="submit" value="Je m'inscris !">
-    </div>
-  </form>
-</body>
-
-</html>
+    </form>
+  </div>

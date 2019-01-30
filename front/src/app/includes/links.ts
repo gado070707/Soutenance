@@ -16,7 +16,7 @@ export class Links{
         if(ip.indexOf('4200') != -1) {
             ip = ip.replace('http://localhost:4200', 'https://localhost:3000');
         }
-        else {  console.log("ok ok non 4200")
+        else {
             ip = ip.replace('https://www.findmytruck.fr', 'https://findmytruck.fr:3000');
         }
         return ip;

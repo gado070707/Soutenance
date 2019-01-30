@@ -34,7 +34,7 @@ export class AuthService {
             mail: mail,
             password: password
         };
-console.log(this.API_BASE_URL);
+
         return this.http.post<User>(this.API_BASE_URL + '/authentification', data)
             .pipe(tap(user => {
             }))

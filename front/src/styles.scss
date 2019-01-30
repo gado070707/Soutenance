@@ -3,9 +3,9 @@
 
 body, html 
 {
-    height:100%;
+    min-height: 600px;
     margin: 0 auto;
-    background-color: #FFF0A4;
+    background-color: #FFF0A4 !important;
 }
 
 body
@@ -16,7 +16,7 @@ body
 
 a 
 {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .container

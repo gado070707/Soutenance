@@ -11,7 +11,7 @@ exports.register = (req, res) => {
         }
     );
 };
-//  Yo
+
 exports.authentification = (req, res) => {
     UserService.authenticate(req.body).then(
         user => {

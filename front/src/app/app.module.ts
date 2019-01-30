@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
+import { MatRippleModule } from '@angular/material/core';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +23,8 @@ import { FormComponent } from './components/form/form.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
+import { PopupopComponent } from './components/popup/popupop.component';
 
 
 @NgModule({
@@ -32,6 +37,8 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     TrucklistComponent,
     TruckdetailsComponent,
     SidenavComponent,
+    ProfileUtilisateurComponent,
+    PopupopComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -52,6 +59,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     MatDatepickerModule,
     MatSelectModule,
     HttpClientModule,
+    MatRippleModule,
+    MatSlideToggleModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

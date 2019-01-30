@@ -9,13 +9,13 @@ gulp.task('gencert', done => {
         if (err) {
             throw err;
         }
-        fs.writeFile(path.join('data', 'ssl', 'cert.cert'), keys.certificate, err => {
-            if (err) {  console.log(err)
+        fs.writeFile(path.join('data', 'ssl', 'api.cert'), keys.certificate, err => {
+            if (err) {
                 throw err;
             }
         });
-        fs.writeFile(path.join('data', 'ssl', 'key.key'), keys.clientKey, err => {
-            if (err) { console.log(err)
+        fs.writeFile(path.join('data', 'ssl', 'api.key'), keys.clientKey, err => {
+            if (err) {
                 throw err;
             }
         });

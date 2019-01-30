@@ -6,7 +6,6 @@ exports.create = (data) => {
     return TruckOwner.create({
         user: data.user,
         siret: data.siret,
-        precommande: data.precommande,
         active: true
     });
 }

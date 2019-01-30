@@ -9,19 +9,19 @@ import { UsersService } from 'src/app/services/users.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-
 export class FormComponent implements OnInit {
+
   form: FormGroup;
   user: User = {} as User;
   returnUrl: string;
   error: Error;
-  private checkboxSocieteSiret: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
     private activeRoutes: ActivatedRoute,
     private router: Router,
-    private usersService: UsersService ) { }
+    private usersService: UsersService,
+  ) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -30,16 +30,13 @@ export class FormComponent implements OnInit {
       password: '',
       mail: '',
       tel: '',
-      active: true,
-      textSociete: '',
-      textSiret: '',
+      active: true
     });
 
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-    if ( id !== '') {
-      // tslint:disable-next-line:radix
-      this.usersService.find( parseInt(id)).subscribe(
+    if(id !== "") {
+      this.usersService.find(parseInt(id)).subscribe(
         data => {
           this.user = data;
 
@@ -49,21 +46,19 @@ export class FormComponent implements OnInit {
             password: this.user.password,
             mail: this.user.mail,
             tel: this.user.tel,
-            active: this.user.active,
-            textSociete: this.user.textSociete,
-            textSiret: this.user.textSiret
+            active: this.user.active
           });
-      });
+      });      
     }
 
     this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  chooseFunction() {
+  chooseFunction(){
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-    if (id === '' ) {
-      this.usersService.add(this.form.value).subscribe(
+    if(id === "") {
+      this.usersService.add(this.form.value).subscribe( 
         (user: User) => {
           this.router.navigate([this.returnUrl]);
         },
@@ -71,8 +66,8 @@ export class FormComponent implements OnInit {
             this.error = error;
         }
       );
-    } else {
-      // tslint:disable-next-line:radix
+    }
+    else {
       this.usersService.update(this.form.value, parseInt(id)).subscribe(
         (user: User) => {
           this.router.navigate([this.returnUrl]);
@@ -81,31 +76,6 @@ export class FormComponent implements OnInit {
             this.error = error;
         }
       );
-    }
-  }
-  societe() {
-    if (this.getCheckbox() === false) {
-      this.setCheckbox(true);
-    } else {
-      this.setCheckbox(false);
-    }
-  }
-
-  getCheckbox(): boolean {
-    return this.checkboxSocieteSiret;
-  }
-
-  setCheckbox(checkboxSocieteSiret: boolean) {
-    this.checkboxSocieteSiret = checkboxSocieteSiret;
-  }
-
-  getStyle() {
-    if (!this.getCheckbox()) {
-      document.getElementById('labelSociete').style.display = 'block';
-      document.getElementById('labelSiret').style.display = 'block';
-    } else {
-      document.getElementById('labelSociete').style.display = 'none';
-      document.getElementById('labelSiret').style.display = 'none';
     }
   }
 }
