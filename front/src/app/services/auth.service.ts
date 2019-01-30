@@ -45,7 +45,7 @@ console.log(this.API_BASE_URL);
                     // keep user logged in between pages refresh.
                     localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
                     this.currentUserSubject.next(user);
-                }
+                } else { }
 
                 return user;
             }));
@@ -58,10 +58,9 @@ console.log(this.API_BASE_URL);
     }
 
     isLoggedIn() {
-        if(this.currentUserSubject.value == null) {
+        if (this.currentUserSubject.value == null) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

@@ -15,7 +15,7 @@
         <label for="name">Nom</label>
       </div>
       <div class="col-50">
-        <input type="text" id="name" formControlName="name" placeholder="Nom" required>
+        <input type="text" id="name" formControlName="name" placeholder="Durand" required>
       </div>
     </div>
 
@@ -24,25 +24,25 @@
         <label for="firstname">Prénom</label>
       </div>
       <div class="col-50">
-        <input type="text" id="firstname" formControlName="firstname" placeholder="Prénom" required>
+        <input type="text" id="firstname" formControlName="firstname" placeholder="Pierre" required>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-25">
+      
         <label for="password">Mot de passe</label>
-      </div>
+      
       <div class="col-50">
-        <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
+        <input type="text" id="password" formControlName="password" placeholder="**************" required>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-25">
+      
         <label for="mail">Adresse Mail</label>
-      </div>
+      
       <div class="col-50">
-        <input type="email" id="mail" formControlName="mail" placeholder="Adresse Mail" required>
+        <input type="email" id="mail" formControlName="mail" placeholder="pierre.durand@orange.fr" required>
       </div>
     </div>
 
@@ -51,7 +51,7 @@
         <label for="tel">Téléphone</label>
       </div>
       <div class="col-50">
-        <input type="text" id="tel" formControlName="tel" placeholder="Numéro de téléphone">
+        <input type="text" id="tel" formControlName="tel" placeholder="0000000000">
       </div>
     </div>
 
@@ -63,12 +63,12 @@
     </div>
     <div class="row">
       <label id="labelSociete" [style]="getStyle()">Nom de la société</label>
-      <input type="text" formControlName="textSociete" placeholder="Nom de la société" [hidden]="getCheckbox()"
+      <input type="text" formControlName="textSociete" placeholder="Aston" [hidden]="getCheckbox()"
         required />
     </div>
     <div>
-      <label id="labelSiret" [style]="getStyle()">Numéro de votre siret</label>
-      <input type="text" formControlName="textSiret" placeholder="Numéro de siret" [hidden]="getCheckbox()"
+      <label id="labelSiret" [style]="getStyle()">Numéro de SIRET</label>
+      <input type="text" formControlName="textSiret" placeholder="123456789" [hidden]="getCheckbox()"
         required />
     </div>
     <div class="row">

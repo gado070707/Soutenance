@@ -1,6 +1,6 @@
  /* Style inputs */
  input[type=text], input[type=email] {
-    width: 100%;
+    width: 50%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -23,20 +23,34 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: left;
-    margin-top: 50px;
+    /* float: left;  */
+     margin-top: 10px;
+  }
+
+ 
+
+  #loginIncorrecte {
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    width: 50%;
+    color: rgb(247, 60, 60);
+    background-color: rgb(253, 208, 208);
+    height: 32px;
+    border-radius: 5px;
   }
 
   /* Style du bouton se connecter */
   #button_connection {
-    margin: 25px;
+    cursor: pointer;
+    margin: 5px;
     background-color: royalblue;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
-    float: right;
+    /* float: right; */
+    margin: 0px 0px 0px 377px;
   }
   
   /* Style du container */
@@ -88,4 +102,26 @@
   #a_pass, #a_user {
       margin-left: 40px;
   }
-} 
+
+  #loginIncorrecte {
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    width: 50%;
+    color: rgb(247, 60, 60);
+    background-color: rgb(253, 208, 208);
+    height: 32px;
+    border-radius: 5px;
+  }
+
+  #a_pass{
+    right: 0px;
+    
+    color: black;
+  }
+}
+
+@media screen and (min-width: 600px) {
+
+
+}
