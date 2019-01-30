@@ -15,7 +15,7 @@ export class FormComponent implements OnInit {
   user: User = {} as User;
   returnUrl: string;
   error: Error;
-  checkboxSocieteSiret: boolean = true;
+  private checkboxSocieteSiret: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
