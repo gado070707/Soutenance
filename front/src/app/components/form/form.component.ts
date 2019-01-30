@@ -38,8 +38,9 @@ export class FormComponent implements OnInit {
 
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-    if(id !== "") {
-      this.usersService.find(parseInt(id)).subscribe(
+    if ( id !== '') {
+      // tslint:disable-next-line:radix
+      this.usersService.find( parseInt(id)).subscribe(
         data => {
           this.user = data;
 
@@ -53,7 +54,7 @@ export class FormComponent implements OnInit {
             textSociete: this.user.textSociete,
             textSiret: this.user.textSiret
           });
-      });      
+      });
     }
 
     this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
@@ -62,8 +63,8 @@ export class FormComponent implements OnInit {
   chooseFunction(){
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-    if(id === "") {
-      this.usersService.add(this.form.value).subscribe( 
+    if (id === '' ) {
+      this.usersService.add(this.form.value).subscribe(
         (user: User) => {
           this.router.navigate([this.returnUrl]);
         },
@@ -71,8 +72,8 @@ export class FormComponent implements OnInit {
             this.error = error;
         }
       );
-    }
-    else {
+    } else {
+      // tslint:disable-next-line:radix
       this.usersService.update(this.form.value, parseInt(id)).subscribe(
         (user: User) => {
           this.router.navigate([this.returnUrl]);
@@ -84,31 +85,28 @@ export class FormComponent implements OnInit {
     }
   }
   societe() {
-    if(this.getCheckbox() === false){
+    if (this.getCheckbox() === false) {
       this.setCheckbox(true);
-    }
-    else{
+    } else {
       this.setCheckbox(false);
     }
-    
   }
 
-  getCheckbox(): boolean{
+  getCheckbox(): boolean {
     return this.checkboxSocieteSiret;
   }
 
-  setCheckbox(checkboxSocieteSiret: boolean){
+  setCheckbox(checkboxSocieteSiret: boolean) {
     this.checkboxSocieteSiret = checkboxSocieteSiret;
   }
 
-  getStyle(){
-    if(!this.getCheckbox()){
-      document.getElementById("labelSociete").style.display = "block";
-      document.getElementById("labelSiret").style.display = "block";
-    }
-    else{
-      document.getElementById("labelSociete").style.display = "none";
-      document.getElementById("labelSiret").style.display = "none";
+  getStyle() {
+    if (!this.getCheckbox()) {
+      document.getElementById('labelSociete').style.display = 'block';
+      document.getElementById('labelSiret').style.display = 'block';
+    } else {
+      document.getElementById('labelSociete').style.display = 'none';
+      document.getElementById('labelSiret').style.display = 'none';
     }
   }
 }
