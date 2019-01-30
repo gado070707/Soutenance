@@ -60,7 +60,7 @@ export class FormComponent implements OnInit {
     this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  chooseFunction(){
+  chooseFunction() {
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
     if (id === '' ) {
