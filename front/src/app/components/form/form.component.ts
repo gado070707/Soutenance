@@ -18,7 +18,6 @@ export class FormComponent implements OnInit {
   checkboxSocieteSiret: boolean = true;
 
   constructor(
-    
     private formBuilder: FormBuilder,
     private activeRoutes: ActivatedRoute,
     private router: Router,
