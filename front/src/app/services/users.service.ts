@@ -28,7 +28,7 @@ export class UsersService {
   }
 
   all(): Observable<User[]> {
-    return this.http.get<User[]>(this.API_BASE_URL +'/api/users/')
+    return this.http.get<User[]>(this.API_BASE_URL + '/api/users/')
       .pipe( map(res => res) );
   }
 
@@ -38,7 +38,7 @@ export class UsersService {
   }
 
   update(user: User, id: Number) {
-    const url = this.API_BASE_URL +'/api/users/' + id;
+    const url = this.API_BASE_URL + '/api/users/' + id;
     return this.http.put<User>(url, user);
   }
 }

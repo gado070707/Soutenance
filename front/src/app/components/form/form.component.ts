@@ -18,10 +18,7 @@ export class FormComponent implements OnInit {
   user: User = {} as User;
   returnUrl: string;
   error: Error;
-<<<<<<< HEAD
   private checkboxSocieteSiret = true;
-=======
->>>>>>> 1f874a3aa0ff0bbab8fce09cc1538bce6e802a15
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,7 +39,7 @@ export class FormComponent implements OnInit {
 
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-    if(id !== "") {
+    if( id !== '') {
       this.usersService.find(parseInt(id)).subscribe(
         data => {
           this.user = data;
@@ -55,17 +52,17 @@ export class FormComponent implements OnInit {
             tel: this.user.tel,
             active: this.user.active
           });
-      });      
+      });
     }
 
     this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  chooseFunction(){
+  chooseFunction() {
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-    if(id === "") {
-      this.usersService.add(this.form.value).subscribe( 
+    if ( id === '') {
+      this.usersService.add(this.form.value).subscribe(
         (user: User) => {
           this.router.navigate([this.returnUrl]);
         },
@@ -73,8 +70,7 @@ export class FormComponent implements OnInit {
             this.error = error;
         }
       );
-    }
-    else {
+    } else {
       this.usersService.update(this.form.value, parseInt(id)).subscribe(
         (user: User) => {
           this.router.navigate([this.returnUrl]);
