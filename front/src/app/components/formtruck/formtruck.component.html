@@ -1,0 +1,75 @@
+<div class="container">
+  <form method="post" [formGroup]="form" (ngSubmit)="chooseFunction()">
+    <div class="row">
+      <div>
+        <label>{{ truckowner.society }}</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>{{ truckowner.siret }}</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="command">Précommande accepté ?</label>
+        <input type="checkbox" id="checkBoxCommand" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="paiement">Paiement en ligne accepté ?</label>
+        <input type="checkbox" id="checkBoxPaiement" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="Societe">Voulez vous indiquer vos emplacements ?</label>
+        <input type="checkbox" id="checkBoxSocieteSiret" (click)="societe()" />
+      </div>
+    </div>
+    <div class="row">
+      <label id="labelLundi" [style]="getStyle()" [hidden]="getChekBox()">Lundi</label>
+      <input type="text" formControlName="textLundi" placeholder="Emplacement à indiquer.." [hidden]="getChekBox()"
+        required />
+    </div>
+    <div class="row">
+      <label id="labelMardi" [style]="getStyle()">Mardi</label>
+      <input type="text" formControlName="textMardi" placeholder="Emplacement à indiquer.." [hidden]="getCheckbox()"
+        required />
+    </div>
+    <div class="row">
+      <label id="labelMercredi" [style]="getStyle()">Mercredi</label>
+      <input type="text" formControlName="textMercredi" placeholder="Emplacement à indiquer.." [hidden]="getCheckbox()"
+        required />
+    </div>
+    <div class="row">
+      <label id="labelJeudi" [style]="getStyle()">Jeudi</label>
+      <input type="text" formControlName="textJeudi" placeholder="Emplacement à indiquer.." [hidden]="getCheckbox()"
+        required />
+    </div>
+    <div class="row">
+      <label id="labelVendredi" [style]="getStyle()">Vendredi</label>
+      <input type="text" formControlName="textVendredi" placeholder="Emplacement à indiquer.." [hidden]="getCheckbox()"
+        required />
+    </div>
+    <div class="row">
+      <label id="labelSamedi" [style]="getStyle()">Samedi</label>
+      <input type="text" formControlName="textSamedi" placeholder="Emplacement à indiquer.." [hidden]="getCheckbox()"
+        required />
+    </div>
+    <div class="row">
+      <label id="labelDimanche" [style]="getStyle()">Dimanche</label>
+      <input type="text" formControlName="textDimanche" placeholder="Emplacement à indiquer.." [hidden]="getCheckbox()"
+        required />
+    </div>
+
+    <div class="row">
+      <input type="submit" value="Valider">
+    </div>
+  </form>
+</div>

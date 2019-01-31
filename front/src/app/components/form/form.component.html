@@ -1,63 +1,53 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inscription Utilisateur</title>
-</head>
-
-<body class="container">
+<div class="container">
   <form method="post" [formGroup]="form" (ngSubmit)="chooseFunction()">
     <div class="row">
-      <div class="col-25">
+      <div>
         <label for="name">Nom</label>
       </div>
-      <div class="col-50">
-        <input type="text" id="name" formControlName="name" placeholder="Nom" required>
+      <div>
+        <input type="text" id="name" formControlName="name" placeholder="ex: Arthur..." required>
       </div>
     </div>
-    <p>Yo</p>
+
     <div class="row">
-      <div class="col-25">
+      <div>
         <label for="firstname">Prénom</label>
       </div>
-      <div class="col-50">
-        <input type="text" id="firstname" formControlName="firstname" placeholder="Prénom" required>
+      <div>
+        <input type="text" id="firstname" formControlName="firstname" placeholder="ex: Accroc..." required>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-25">
-        <label for="password">Mot de passe</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-25">
+      <div>
         <label for="mail">Adresse Mail</label>
       </div>
-      <div class="col-50">
-        <input type="email" id="mail" formControlName="mail" placeholder="Adresse Mail" required>
+      <div>
+        <input type="email" id="mail" formControlName="mail" placeholder="ex: Arthur.accroc@truck.com..." required>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-25">
+      <div>
+        <label for="password">Mot de passe</label>
+      </div>
+      <div>
+        <input type="text" id="password" formControlName="password" placeholder="Mot de passe..." required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
         <label for="tel">Téléphone</label>
       </div>
-      <div class="col-50">
-        <input type="text" id="tel" formControlName="tel" placeholder="Numéro de téléphone">
+      <div>
+        <input type="text" id="tel" formControlName="tel" placeholder="ex: 0642424242...">
       </div>
     </div>
 
     <div class="row">
-      <div class="col-25">
-        <label for="Societe">Société :</label>
+      <div>
+        <label for="Societe">Si vous êtes un FoodTruck, cliquez ici -></label>
         <input type="checkbox" id="checkBoxSocieteSiret" (click)="societe()" />
       </div>
     </div>
@@ -66,15 +56,11 @@
       <input type="text" formControlName="textSociete" placeholder="Nom de la société" [hidden]="getCheckbox()"
         required />
     </div>
-    <div>
+    <div class="row">
       <label id="labelSiret" [style]="getStyle()">Numéro de votre siret</label>
-      <input type="text" formControlName="textSiret" placeholder="Numéro de siret" [hidden]="getCheckbox()"
-        required />
+      <input type="text" formControlName="textSiret" placeholder="Numéro de siret" [hidden]="getCheckbox()" required />
     </div>
     <div class="row">
       <input type="submit" value="Je m'inscris !">
     </div>
   </form>
-</body>
-
-</html>

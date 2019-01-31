@@ -1,41 +1,29 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Connexion</title>
-</head>
-
-<body>
-  <div class="container">
-    <form method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
-      <div class="row">
-        <div class="col-25">
-          <label for="mail">Adresse mail</label>
-        </div>
-        <div class="col-50">
-          <input type="email" id="mail" formControlName="mail" placeholder="Adresse mail" required>
-        </div>
+<div class="container">
+  <form method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
+    <div class="row">
+      <div>
+        <label for="mail">Adresse mail</label>
       </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="password">Mot de passe</label>
-        </div>
-        <div class="col-50">
-          <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
-        </div>
-      </div><br>
-      <a href="" id="a_pass">Mot de passe oublié ?</a><br><br>
-      <a href="" id="a_user">Nom d'utilisateur oublié ?</a><br><br>
-      <a href="" id="a_user" routerLink="/form">S'inscrire</a><br><br>
-      <div class="row">
-        <input type="submit" value="Se connecter" id="button_connection">
+      <div>
+        <input type="email" id="mail" formControlName="mail" placeholder="Adresse mail" required>
       </div>
-    </form>
-  </div>
+    </div>
 
-</body>
+    <div class="row">
+      <div>
+        <label for="password">Mot de passe</label>
+      </div>
+      <div>
+        <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
+      </div>
+    </div>
+    <br>
 
-</html>
+    <div class="row">
+      <input type="submit" value="Se connecter" id="button_connection">
+    </div>
+
+    <br>
+    <a href="" id="a_pass">Mot de passe oublié ?</a><br><br>
+  </form>
+</div>
