@@ -87,13 +87,11 @@ require(path.join(__dirname, 'config'));
 
 // https.createServer(options, app).listen(conf.server.port);
 
-pem.createCertificate({ days: 5, selfSigned: true }, (err, keys) => {
-    // Chargement des routes.
-    require(path.join(__dirname, 'routes'));
+require(path.join(__dirname, 'routes'));
 
-    https.createServer({ key: keys.serviceKey, cert: keys.certificate }, app)
-        .listen(conf.server.port);
+const options = {
+    key: fs.readFileSync(path.join(__dirname, 'data', 'ssl', 'api.key')),
+    cert: fs.readFileSync(path.join(__dirname, 'data', 'ssl', 'api.cert'))
+}
 
-    //fs.writeFileSync(path.join('data', 'ssl', 'cert.cert'), keys.certificate, 'utf8');
-    //fs.writeFileSync(path.join('data', 'ssl', 'key.key'), keys.clientKey, 'utf8');
-});
+https.createServer(options, app).listen(conf.server.port);

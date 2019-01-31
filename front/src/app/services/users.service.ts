@@ -22,23 +22,23 @@ export class UsersService {
   }
 
   find(id: Number): Observable<User> {
-    const url = this.API_BASE_URL + '/' + id;
+    const url = this.API_BASE_URL + '/api/users/' + id;
     return this.http.get<User>(url)
       .pipe( map(res => res) );
   }
 
   all(): Observable<User[]> {
-    return this.http.get<User[]>(this.API_BASE_URL)
+    return this.http.get<User[]>(this.API_BASE_URL +'/api/users/')
       .pipe( map(res => res) );
   }
 
   delete(id: Number): Observable<{}> {
-    const url = this.API_BASE_URL + '/' + id;
+    const url = this.API_BASE_URL + '/api/users/' + id;
     return this.http.delete(url);
   }
 
   update(user: User, id: Number) {
-    const url = this.API_BASE_URL + '/' + id;
+    const url = this.API_BASE_URL +'/api/users/' + id;
     return this.http.put<User>(url, user);
   }
 }

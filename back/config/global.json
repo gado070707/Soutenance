@@ -10,7 +10,7 @@
     },
     "security": {
         "pem": {
-            "days": 5,
+            "days": 50,
             "selfSigned": true
         },
         "cors": {
