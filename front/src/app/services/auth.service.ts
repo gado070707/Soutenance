@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Links } from '../includes/links';
 import { User } from '../models/user';
-//import { Serv } from '../../back/config/global';
+// import { Serv } from '../../back/config/global';
 
 const LOCAL_STORAGE_USER_KEY = 'currentItem';
 
@@ -45,7 +45,7 @@ console.log(this.API_BASE_URL);
                     // keep user logged in between pages refresh.
                     localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
                     this.currentUserSubject.next(user);
-                }
+                } else { }
 
                 return user;
             }));
@@ -58,10 +58,9 @@ console.log(this.API_BASE_URL);
     }
 
     isLoggedIn() {
-        if(this.currentUserSubject.value == null) {
+        if (this.currentUserSubject.value == null) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

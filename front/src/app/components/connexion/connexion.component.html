@@ -1,29 +1,38 @@
-<div class="container">
-  <form method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
-    <div class="row">
-      <div>
-        <label for="mail">Adresse mail</label>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Connection</title>
+</head>
+<body>
+  <div class="container">
+    <form method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
+      <div class="row">
+        <div class="col-25">
+          <label for="mail">Email address</label>
+        </div>
+        <div class="col-50">
+          <input type="email" id="mail" formControlName="mail" placeholder="pierre.durand@orange.fr" required>
+        </div>
       </div>
-      <div>
-        <input type="email" id="mail" formControlName="mail" placeholder="Adresse mail" required>
-      </div>
-    </div>
 
-    <div class="row">
-      <div>
-        <label for="password">Mot de passe</label>
-      </div>
-      <div>
-        <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
-      </div>
-    </div>
-    <br>
-
-    <div class="row">
-      <input type="submit" value="Se connecter" id="button_connection">
-    </div>
-
-    <br>
-    <a href="" id="a_pass">Mot de passe oublié ?</a><br><br>
-  </form>
-</div>
+      <div class="row">
+        <div class="col-25">
+          <label for="password">Password</label>
+        </div>
+        <div class="col-50">
+          <input type="text" id="password" formControlName="password" placeholder="********" required>
+        </div>
+      </div><br>
+      
+  
+        <a href="" id="a_pass">Forgot password ?</a><br><br>
+        <!-- <app-barre-alerte id="loginIncorrecte" [hidden]="erreurDeLogin()"></app-barre-alerte> -->
+        <div id="loginIncorrecte" [hidden]="erreurDeLogin()">Incorrect username or password.</div><br/>
+        <input type="submit" value="Sign in" id="button_connection">
+    </form>
+  </div>
+</body>
+</html>

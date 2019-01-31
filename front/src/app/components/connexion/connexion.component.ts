@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './connexion.component.html',
@@ -13,7 +14,7 @@ export class ConnexionComponent implements OnInit {
   connexionForm: FormGroup;
   returnUrl: string;
   error: Error;
-
+  badPassword = true;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -46,9 +47,22 @@ export class ConnexionComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          this.setBadPassword(false);
+          this.erreurDeLogin();
           this.error = error;
         }
     );
+  }
+
+  erreurDeLogin() {
+    return this.getBadPassword();
+  }
+
+  getBadPassword() {
+    return this.badPassword;
+  }
+  setBadPassword(badPassword: boolean) {
+    return this.badPassword = badPassword;
   }
 }
 

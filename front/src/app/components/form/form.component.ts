@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { User } from 'src/app/models/user';
 import { User } from 'src/app/models/user';
+// import { UsersService } from 'src/app/services/users.service';
 import { UsersService } from 'src/app/services/users.service';
+
 
 @Component({
   selector: 'app-register',
@@ -15,7 +18,7 @@ export class FormComponent implements OnInit {
   user: User = {} as User;
   returnUrl: string;
   error: Error;
-  private checkboxSocieteSiret: boolean = true;
+  private checkboxSocieteSiret = true;
 
   constructor(
     private formBuilder: FormBuilder,

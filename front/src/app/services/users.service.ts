@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Links } from '../includes/links';
 })
 export class UsersService {
 
-  constructor( 
+  constructor(
     private http: HttpClient,
     private link: Links,
   ) {}
@@ -42,4 +42,3 @@ export class UsersService {
     return this.http.put<User>(url, user);
   }
 }
-  

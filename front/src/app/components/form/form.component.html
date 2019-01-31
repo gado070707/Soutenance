@@ -5,7 +5,7 @@
         <label for="name">Nom</label>
       </div>
       <div>
-        <input type="text" id="name" formControlName="name" placeholder="ex: Arthur..." required>
+        <input type="text" id="name" formControlName="name" placeholder="Durand" required>
       </div>
     </div>
 
@@ -13,8 +13,8 @@
       <div>
         <label for="firstname">Prénom</label>
       </div>
-      <div>
-        <input type="text" id="firstname" formControlName="firstname" placeholder="ex: Accroc..." required>
+      <div class="col-50">
+        <input type="text" id="firstname" formControlName="firstname" placeholder="Pierre" required>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
         <label for="mail">Adresse Mail</label>
       </div>
       <div>
-        <input type="email" id="mail" formControlName="mail" placeholder="ex: Arthur.accroc@truck.com..." required>
+        <input type="email" id="mail" formControlName="mail" placeholder="pierre.durand@orange.fr" required>
       </div>
     </div>
 
@@ -53,12 +53,13 @@
     </div>
     <div class="row">
       <label id="labelSociete" [style]="getStyle()">Nom de la société</label>
-      <input type="text" formControlName="textSociete" placeholder="Nom de la société" [hidden]="getCheckbox()"
+      <input type="text" formControlName="textSociete" placeholder="Aston" [hidden]="getCheckbox()"
         required />
     </div>
-    <div class="row">
-      <label id="labelSiret" [style]="getStyle()">Numéro de votre siret</label>
-      <input type="text" formControlName="textSiret" placeholder="Numéro de siret" [hidden]="getCheckbox()" required />
+    <div>
+      <label id="labelSiret" [style]="getStyle()">Numéro de SIRET</label>
+      <input type="text" formControlName="textSiret" placeholder="123456789" [hidden]="getCheckbox()"
+        required />
     </div>
     <div class="row">
       <input type="submit" value="Je m'inscris !">

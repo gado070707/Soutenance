@@ -8,9 +8,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./formtruck.component.scss']
 })
 export class FormtruckComponent implements OnInit {
-  
+
   form: FormGroup;
-  private checkboxSocieteSiret: boolean = true;
+  private checkboxSocieteSiret = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +38,7 @@ export class FormtruckComponent implements OnInit {
 
   getStyle() {
     if (!this.getCheckbox()) {
-      document.getElementById('labelLundi').style.display ='none';
+      document.getElementById('labelLundi').style.display = 'none';
       document.getElementById('labelMardi').style.display = 'none';
       document.getElementById('labelMercredi').style.display = 'none';
       document.getElementById('labelJeudi').style.display = 'none';

@@ -20,6 +20,7 @@ import { FormComponent } from './components/form/form.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { BarreAlerteComponent } from './components/barre-alerte/barre-alerte.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     TrucklistComponent,
     TruckdetailsComponent,
     SidenavComponent,
+    BarreAlerteComponent
   ],
   imports: [
     AppRoutingModule,

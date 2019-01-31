@@ -1,20 +1,87 @@
  /* Style inputs */
  input[type=text], input[type=email] {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical; 
-  background: rgb(250, 239, 182);
-}
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+  }
+  
+  /* Style the label to display next to the inputs */
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  /* Style du bouton s'inscrire*/
+  #button_inscription {
+    margin: 25px;
+    background-color: royalblue;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    /* float: left;  */
+     margin-top: 10px;
+  }
 
-/* Style the label to display next to the inputs */
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-  color: #69AEB5;
-}
+ 
+
+  #loginIncorrecte {
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    width: 50%;
+    color: rgb(247, 60, 60);
+    background-color: rgb(253, 208, 208);
+    height: 32px;
+    border-radius: 5px;
+  }
+
+  /* Style du bouton se connecter */
+  #button_connection {
+    cursor: pointer;
+    margin: 5px;
+    background-color: royalblue;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    /* float: right; */
+    margin: 0px 0px 0px 377px;
+  }
+  
+  /* Style du container */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 2px solid black;
+    float: inherit; 
+  }
+  
+  /* Floating column pour les labels: 25% width */
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  /* Floating column pour les inputs: 75% width */
+  .col-50 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats apres les columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 
 /* Style du bouton */
 input[type=submit] {
@@ -27,29 +94,37 @@ input[type=submit] {
   margin-left: 28px;
 }
 
-/* Style du container */
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
+  #button_connection {
+    margin: 0px 0px 0px 20px;
+  }
+  #button_inscription {
+    margin-right: 0px;
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  #a_pass, #a_user {
+      margin-left: 40px;
+  }
 
-/* Liens */
-a {
-  color: rgb(84, 113, 199);
-}
+  #loginIncorrecte {
+    text-align: center;
+    vertical-align: center;
+    padding-top: 10px;
+    width: 50%;
+    color: rgb(247, 60, 60);
+    background-color: rgb(253, 208, 208);
+    height: 32px;
+    border-radius: 5px;
+  }
 
-/* Opacité des placeholder */
-::-webkit-input-placeholder {
-  opacity: .2;
-}
-::-moz-placeholder {
-  opacity: .2;
-}
-:-ms-input-placeholder {
-  opacity: .2;
-}
-::placeholder {
-  opacity: .2;
+  #a_pass{
+    right: 0px;
+    
+    color: black;
+  }
+  
+
+@media screen and (min-width: 600px) {
+
+
 }
