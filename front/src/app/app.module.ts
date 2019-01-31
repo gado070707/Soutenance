@@ -22,6 +22,7 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { FormComponent } from './components/form/form.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
 import { PopupopComponent } from './components/popup/popupop.component';
 
@@ -35,6 +36,7 @@ import { PopupopComponent } from './components/popup/popupop.component';
     FormComponent,
     TrucklistComponent,
     TruckdetailsComponent,
+    SidenavComponent,
     ProfileUtilisateurComponent,
     PopupopComponent,
   ],

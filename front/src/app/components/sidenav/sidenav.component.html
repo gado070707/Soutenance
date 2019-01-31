@@ -1,0 +1,10 @@
+<mat-drawer-container class="side-container" [hasBackdrop]="false">
+  <mat-drawer #drawer mode="side" position="end">
+    <div *ngIf="!authservice.isLoggedIn()"><a routerLink="/connexion" (click)="drawer.toggle()">Se connecter</a></div>
+    <div *ngIf="!authservice.isLoggedIn()"><a routerLink="/form" (click)="drawer.toggle()">S'enregistrer</a></div>
+    <div *ngIf="authservice.isLoggedIn()"><a routerLink="/form" (click)="authservice.logout(); drawer.toggle()">Deconnexion</a></div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <button mat-raised-button (click)="drawer.toggle()" class="sidenav-bouton">Toggle drawer</button>
+  </mat-drawer-content>
+</mat-drawer-container>
