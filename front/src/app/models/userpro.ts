@@ -2,7 +2,6 @@
 export interface UserPro {
     id?: Number;
     society: string;
-    truckname: string;
     siret: string;
     name: string;
     firstname: string;

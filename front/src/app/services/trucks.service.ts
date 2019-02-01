@@ -38,4 +38,3 @@ export class TrucksService {
     return this.http.put<Truck>(url, Truck);
   }
 }
-  

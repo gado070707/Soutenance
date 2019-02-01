@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeadComponent } from './components/head/head.component';
@@ -21,8 +20,10 @@ import { TrucklistComponent } from './components/trucks/trucklist/trucklist.comp
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BarreAlerteComponent } from './components/barre-alerte/barre-alerte.component';
-
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatTabsModule} from '@angular/material/tabs';
+import {PortalModule} from '@angular/cdk/portal';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { BarreAlerteComponent } from './components/barre-alerte/barre-alerte.com
     TrucklistComponent,
     TruckdetailsComponent,
     SidenavComponent,
-    BarreAlerteComponent
+    BarreAlerteComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -54,6 +55,11 @@ import { BarreAlerteComponent } from './components/barre-alerte/barre-alerte.com
     MatDatepickerModule,
     MatSelectModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatTabsModule,
+    PortalModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

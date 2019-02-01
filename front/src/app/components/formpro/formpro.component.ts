@@ -45,7 +45,7 @@ export class FormComponent implements OnInit {
           
           this.form = this.formBuilder.group({
             society: this.userpro.society,
-            truckname: this.userpro.truckname,
+            // truckname: this.userpro.truckname,
             siret: this.userpro.siret,
             name: this.userpro.name,
             firstname: this.userpro.firstname,
