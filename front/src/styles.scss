@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Global styles
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
@@ -39,3 +40,49 @@ section
     margin: 0 auto;
     padding: 2rem;
 }
+=======
+//Global styles
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body, html 
+{
+    height:100%;
+    margin: 0 auto;
+    background-color: #FFF0A4;
+}
+
+body
+{
+    font-family: 'Montserrat';
+    font-size: 1rem;
+}
+
+a 
+{
+    text-decoration: none;
+}
+
+.container
+{
+    width: 80%;
+    margin:0 auto;
+    padding: 1.3rem;
+    display: grid;
+    grid-template-columns: 30% auto;
+
+    a 
+    {
+        color: white;
+    }
+}
+
+section
+{
+    width: 80%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+>>>>>>> rudy
