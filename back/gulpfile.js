@@ -5,6 +5,9 @@ const pem = require('pem');
 const conf = require('./config').load();
 
 gulp.task('gencert', done => {
+    const dir = path.join(__dirname, 'data', 'ssl');
+    fs.mkdirSync(dir, {recursive: true});
+
     pem.createCertificate(conf.security.pem, (err, keys) => {
         if (err) {
             throw err;

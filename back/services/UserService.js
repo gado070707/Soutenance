@@ -3,7 +3,7 @@ const bcryptPassword = require('../modules/bcrypt-password');
 
 //  Appels de la BDD
 
-function create(data) { console.log(data)
+function create(data) {
     return User.create({
         name: data.name,
         password: data.password,
