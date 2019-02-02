@@ -2,13 +2,9 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, Inject } from '@ang
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { MatSlideToggle } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { PopupopComponent } from '../popup/popupop.component';
-import { UsersService } from '../../services/users.service'
+import { UsersService } from '../../services/users.service';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
-
-export interface DialogData {
-}
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -39,6 +35,12 @@ export class ProfileUtilisateurComponent implements OnInit {
     private router: Router,
     ) {}
 
+  @Output()
+    toggleChange: EventEmitter<void>;
+
+  @ViewChild('slide')
+    matSlideToggle: MatSlideToggle;
+
   ngOnInit() {
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
@@ -47,25 +49,19 @@ export class ProfileUtilisateurComponent implements OnInit {
         this.user = data;
 
         this.form = this.formBuilder.group({
-          pseudoUser: "",
+          pseudoUser: '',
           nomUser: this.user.name,
           emailUser: this.user.mail,
         });
     });
   }
-  
-  @Output()
-    toggleChange: EventEmitter<void>;
-
-  @ViewChild('slide')
-    matSlideToggle: MatSlideToggle;
 
   validerFormulaire() {
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
     this.usersService.update(this.form.value, parseInt(id)).subscribe(
       (user: User) => {
-        this.router.navigate(['/users/userprofil/'+id]);
+        this.router.navigate(['/users/userprofil/' + id]);
       },
       () => {}
     );

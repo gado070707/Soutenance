@@ -1,36 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Connection</title>
-</head>
-<body>
-  <div class="container">
-    <form method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
-      <div class="row">
-        <div class="col-25">
-          <label for="mail">Email address</label>
-        </div>
-        <div class="col-50">
-          <input type="email" id="mail" formControlName="mail" placeholder="pierre.durand@orange.fr" required>
-        </div>
+<div class="container">
+  <div id="formulaires">
+    <h4>Connexion</h4>
+    <form class="form-fields" method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
+      <div>
+        <mat-form-field>
+          <mat-label>Adresse email</mat-label>
+          <input matInput type="email" placeholder="pierre.durand@orange.fr" maxlength="25" formControlName="mail"
+            pattern="^[a-zA-Z]+" required />
+        </mat-form-field>
       </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="password">Password</label>
-        </div>
-        <div class="col-50">
-          <input type="text" id="password" formControlName="password" placeholder="********" required>
-        </div>
-      </div><br>
-      
-	 <a href="" id="a_pass">Mot de passe oublié ?</a><br><br>  
-        <!-- <app-barre-alerte id="loginIncorrecte" [hidden]="erreurDeLogin()"></app-barre-alerte> -->
-        <div id="loginIncorrecte" [hidden]="erreurDeLogin()">Incorrect username or password.</div><br/>
-        <input type="submit" value="Sign in" id="button_connection">
+
+      <div>
+        <mat-form-field>
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" placeholder="********" pattern="^[a-zA-Z0-9]+" minlength="8" maxlength="25" formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 8 caractères"
+            required />
+        </mat-form-field>
+      </div>
+
+      <div>
+        <button mat-raised-button MatFormFieldControl type="submit" [disabled]="!connexionForm.valid" color="primary">
+          Je me connecte </button>
+      </div>
     </form>
   </div>
-</body>
-</html>
+</div>

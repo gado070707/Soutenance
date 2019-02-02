@@ -3,9 +3,9 @@
 
 body, html 
 {
-    min-height: 600px;
+    height:100%;
     margin: 0 auto;
-    background-color: #FFF0A4 !important;
+    background-color: #FFF0A4;
 }
 
 body
@@ -16,7 +16,7 @@ body
 
 a 
 {
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 .container
@@ -39,3 +39,6 @@ section
     margin: 0 auto;
     padding: 2rem;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
