@@ -1,72 +1,3 @@
-<<<<<<< HEAD
-<div class="container">
-  <form method="post" [formGroup]="form" (ngSubmit)="chooseFunction()">
-    <div class="row">
-      <div>
-        <label for="name">Nom</label>
-      </div>
-      <div>
-        <input type="text" id="name" formControlName="name" placeholder="Durand" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="firstname">Prénom</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="firstname" formControlName="firstname" placeholder="Pierre" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="mail">Adresse Mail</label>
-      </div>
-      <div>
-        <input type="email" id="mail" formControlName="mail" placeholder="pierre.durand@orange.fr" required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="password">Mot de passe</label>
-      </div>
-      <div>
-        <input type="text" id="password" formControlName="password" placeholder="Mot de passe..." required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="tel">Téléphone</label>
-      </div>
-      <div>
-        <input type="text" id="tel" formControlName="tel" placeholder="ex: 0642424242...">
-      </div>
-    </div>
-
-    <div class="row">
-      <div>
-        <label for="Societe">Si vous êtes un FoodTruck, cliquez ici -></label>
-        <input type="checkbox" id="checkBoxSocieteSiret" (click)="societe()" />
-      </div>
-    </div>
-    <div class="row">
-      <label id="labelSociete" [style]="getStyle()">Nom de la société</label>
-      <input type="text" formControlName="textSociete" placeholder="Aston" [hidden]="getCheckbox()"
-        required />
-    </div>
-    <div>
-      <label id="labelSiret" [style]="getStyle()">Numéro de SIRET</label>
-      <input type="text" formControlName="textSiret" placeholder="123456789" [hidden]="getCheckbox()"
-        required />
-    </div>
-    <div class="row">
-      <input type="submit" value="Je m'inscris !">
-    </div>
-  </form>
-=======
 <div class="container">
   <div id="formulaires">
     <mat-tab-group>
@@ -190,4 +121,3 @@
   </div>
 
 </div>
->>>>>>> rudy

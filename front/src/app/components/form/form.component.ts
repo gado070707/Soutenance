@@ -1,89 +1,3 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-// import { User } from 'src/app/models/user';
-import { User } from 'src/app/models/user';
-// import { UsersService } from 'src/app/services/users.service';
-import { UsersService } from 'src/app/services/users.service';
-
-
-@Component({
-  selector: 'app-register',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
-})
-export class FormComponent implements OnInit {
-
-  form: FormGroup;
-  user: User = {} as User;
-  returnUrl: string;
-  error: Error;
-  private checkboxSocieteSiret = true;
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private activeRoutes: ActivatedRoute,
-    private router: Router,
-    private usersService: UsersService,
-  ) { }
-
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      name: '',
-      firstname: '',
-      password: '',
-      mail: '',
-      tel: '',
-      active: true
-    });
-
-    const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
-
-    if( id !== '') {
-      this.usersService.find(parseInt(id)).subscribe(
-        data => {
-          this.user = data;
-
-          this.form = this.formBuilder.group({
-            name: this.user.name,
-            firstname: this.user.firstname,
-            password: this.user.password,
-            mail: this.user.mail,
-            tel: this.user.tel,
-            active: this.user.active
-          });
-      });
-    }
-
-    this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
-  }
-
-  chooseFunction() {
-    const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
-
-    if ( id === '') {
-      this.usersService.add(this.form.value).subscribe(
-        (user: User) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-            this.error = error;
-        }
-      );
-    } else {
-      this.usersService.update(this.form.value, parseInt(id)).subscribe(
-        (user: User) => {
-          this.router.navigate([this.returnUrl]);
-        },
-        error => {
-            this.error = error;
-        }
-      );
-    }
-  }
-}
-=======
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -115,7 +29,8 @@ export class FormComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-
+    // tslint:disable-next-line:max-line-length
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// Formulaire de l'utilisateur
     this.formUser = this.formBuilder.group({
       name: '',
@@ -145,6 +60,8 @@ export class FormComponent implements OnInit {
         });
     }
 
+    // tslint:disable-next-line:max-line-length
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //// Formulaire du food truck
     this.formFoodTruck = this.formBuilder.group({
       textSociete: '',
@@ -162,20 +79,22 @@ export class FormComponent implements OnInit {
         data => {
           this.userPro = data;
           this.formFoodTruck = this.formBuilder.group({
-            textSociete: this.user.textSociete,
-            textSiret: this.user.textSiret,
-            name: this.user.name,
-            firstname: this.user.firstname,
-            password: this.user.password,
-            mail: this.user.mail,
-            tel: this.user.tel,
-            active: this.user.active,
+            textSociete: this.userPro.society,
+            textSiret: this.userPro.siret,
+            name: this.userPro.name,
+            firstname: this.userPro.firstname,
+            password: this.userPro.password,
+            mail: this.userPro.email,
+            tel: this.userPro.tel,
+            active: this.userPro.active,
           });
         });
     }
     this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //// Route de l'utilisateur
 functionUser() {
   const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
@@ -201,6 +120,8 @@ functionUser() {
   }
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Route de du foodtruck
 foodTruck() {
   const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
@@ -225,7 +146,8 @@ foodTruck() {
     );
   }
 }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Fonction toogle
 societe() {
   if (this.getCheckbox() === false) {
     this.setCheckbox(true);
@@ -261,4 +183,3 @@ setCheckbox(checkboxSocieteSiret: boolean) {
   //   }
   // }
 }
->>>>>>> rudy
