@@ -2,7 +2,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatNativeDateModule} from '@angular/material';
+import { 
+    MatToolbarModule, 
+    MatButtonModule, 
+    MatSidenavModule, 
+    MatIconModule, 
+    MatListModule, 
+    MatNativeDateModule,
+    MatTabsModule,
+    } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,7 +26,6 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { PortalModule } from '@angular/cdk/portal';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MapComponent } from './components/map/map.component';
 
 //  Composants
 import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
@@ -32,6 +39,7 @@ import { AppComponent } from './app.component';
 import { HeadComponent } from './components/head/head.component';
 import { FootComponent } from './components/foot/foot.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +80,8 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
     AgmCoreModule.forRoot({'apiKey': 'AIzaSyAJPAVVutBcSJld0TDDIeRSkEhNLyKQfvI'}) ,
     PortalModule,
     MatTooltipModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

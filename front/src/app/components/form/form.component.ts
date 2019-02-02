@@ -88,7 +88,7 @@ export class FormComponent implements OnInit {
             tel: this.userPro.tel,
             active: this.userPro.active,
           });
-        });
+      });
     }
     this.returnUrl = this.activeRoutes.snapshot.queryParams['returnUrl'] || '/';
   }
