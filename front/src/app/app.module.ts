@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,8 @@ import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdet
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
 import { PopupopComponent } from './components/popup/popupop.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -39,6 +42,8 @@ import { PopupopComponent } from './components/popup/popupop.component';
     SidenavComponent,
     ProfileUtilisateurComponent,
     PopupopComponent,
+    AccueilComponent,
+    MapComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -62,6 +67,7 @@ import { PopupopComponent } from './components/popup/popupop.component';
     MatRippleModule,
     MatSlideToggleModule,
     MatDialogModule,
+    AgmCoreModule.forRoot({'apiKey': 'AIzaSyAJPAVVutBcSJld0TDDIeRSkEhNLyKQfvI'}) 
   ],
   providers: [],
   bootstrap: [AppComponent]

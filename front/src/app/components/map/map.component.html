@@ -1,0 +1,13 @@
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" mapTypeId="roadmap">
+  <agm-marker *ngFor="let marker of markers" (markerClick)="clickedMarker(m.siren, m.id_fermier)" 
+    [latitude]="marker.lat"
+    [longitude]="marker.lng"
+    animation="DROP">
+    <agm-info-window>
+      <div class="card">
+        <strong>{{ marker.name }}</strong>
+        <p>{{ marker.name }}</p>
+      </div>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>

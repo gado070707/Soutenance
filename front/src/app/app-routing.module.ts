@@ -7,11 +7,13 @@ import { FormComponent } from './components/form/form.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
 import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
 
 import { WithCredentialInterceptor } from './helpers/with-credentials.interceptor';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Route[] = [
+  { path: '', component: AccueilComponent},
   { path: 'form', component: FormComponent},
   { path: 'connexion', component: ConnexionComponent },
   { path: 'user',
