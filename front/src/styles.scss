@@ -14,11 +14,6 @@ body
     font-size: 1rem;
 }
 
-a 
-{
-    text-decoration: none;
-}
-
 .container
 {
     width: 80%;
@@ -30,6 +25,7 @@ a
     a 
     {
         color: white;
+        text-decoration: none;
     }
 }
 
