@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Marker } from '../../models/marker';
 import { MarkersService } from '../../services/markers.service';
 //import { MapService } from '../../services/map.service';
+import * as data from '../../listetruck/trucks.json';
 
 @Component({
   selector: 'app-map',
@@ -10,11 +11,12 @@ import { MarkersService } from '../../services/markers.service';
 })
 export class MapComponent implements OnInit {
 
+  data = JSON.stringify(data);
   currentPosition: Position;
   lat: number;
   lng: number;
   zoom: number = 14;
-  markers: [];
+  markers: any[];
   km: number = 8;
 
   constructor(private markersService: MarkersService) { }
@@ -27,60 +29,22 @@ export class MapComponent implements OnInit {
       that.lat = that.currentPosition.coords.latitude;
       that.lng = that.currentPosition.coords.longitude;
       
-      // that.markers = {
-      //   {
-      //     "jour": 1,
-      //     "marker": {
-      //       "lat":  "50.633396N",
-      //       "lng":  "3.021728E"
-      //     },
-      //     "trucks": {
-      //       {
-      //         "id": 1,
-      //         "name": "Le comptoir volant"
-      //       },
-      //       {
-      //         "id": 2,
-      //         "name": "L'asiatique croustillant"
-      //       },
-      //       {
-      //         "id": 3,
-      //         "name": "Les Bruger delicieux"
-      //       }
-      //     }
-      //   },
-      //   {
-      //     "jour": 2,
-      //     "marker": {
-      //       "lat":  "50.633396",
-      //       "lng":  "3.021728"
-      //     },
-      //     "trucks": {
-      //       {
-      //         "id": 4,
-      //         "name": "Le mignon"
-      //       },
-      //       {
-      //         "id": 5,
-      //         "name": "Resto Do"
-      //       },
-      //       {
-      //         "id": 6,
-      //         "name": "Salad'Bar"
-      //       }
-      //     }
-      //   }
-      // };
-
-      
-      // that.markersService.all(that.lng, that.lat, that.km).subscribe(
-      //   (data: Marker[]) => {
-      //      console.log(data);
-      //     that.markers = data;
-      //     console.log(that.markers);
-      //   }
-      // );
+      that.markers = [
+        {
+          "marker": {
+            "lat":  50.633803, 
+            "lng":  3.020398
+          },
+          "truck": data.truck1
+        },
+        {
+          "marker": {
+            "lat":  50.633364,
+            "lng":  3.020868
+          },
+          "truck": data.truck5
+        }
+      ];
     });
   }
-
 }
