@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
-import { AgmCoreModule } from '@agm/core';
+// import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { PortalModule } from '@angular/cdk/portal';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -81,7 +81,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
-    AgmCoreModule.forRoot({'apiKey': 'AIzaSyAJPAVVutBcSJld0TDDIeRSkEhNLyKQfvI'}) ,
+    // AgmCoreModule.forRoot({'apiKey': 'AIzaSyAJPAVVutBcSJld0TDDIeRSkEhNLyKQfvI'}) ,
     PortalModule,
     MatTooltipModule,
     MatRippleModule,
