@@ -40,6 +40,8 @@ import { HeadComponent } from './components/head/head.component';
 import { FootComponent } from './components/foot/foot.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { MapComponent } from './components/map/map.component';
+import { PopupopComponent } from './components/userprofile/popupop/popupop.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { MapComponent } from './components/map/map.component';
     SidenavComponent,
     BarreAlerteComponent,
     ProfileUtilisateurComponent,
+    PopupopComponent,
+    CarouselComponent,
     AccueilComponent,
     MapComponent,
   ],
