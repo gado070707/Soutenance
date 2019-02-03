@@ -27,6 +27,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
 import { PopupopComponent } from './components/userprofile/popupop/popupop.component';
 import {MatRippleModule} from '@angular/material/core';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {MatRippleModule} from '@angular/material/core';
     SidenavComponent,
     BarreAlerteComponent,
     ProfileUtilisateurComponent,
-    PopupopComponent
+    PopupopComponent,
+    CarouselComponent
   ],
   imports: [
     AppRoutingModule,
