@@ -2,6 +2,9 @@
   <div class="container">
     <a routerLink="/" class="logo">{{ appTitle }}</a>
     <nav>
+        <div *ngIf="!authservice.isLoggedIn()"><a routerLink="/connexion" (click)="drawer.toggle()">Se connecter</a></div>
+        <div *ngIf="!authservice.isLoggedIn()"><a routerLink="/form" (click)="drawer.toggle()">S'enregistrer</a></div>
+        <div *ngIf="authservice.isLoggedIn()"><a routerLink="/form" (click)="authservice.logout(); drawer.toggle()">Deconnexion</a></div>
     </nav>
   </div>
 </header>

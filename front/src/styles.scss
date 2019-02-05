@@ -5,18 +5,13 @@ body, html
 {
     height:100%;
     margin: 0 auto;
-    background-color: #FFF0A4;
+    background-color: white;
 }
 
 body
 {
     font-family: 'Montserrat';
     font-size: 1rem;
-}
-
-a 
-{
-    text-decoration: none;
 }
 
 .container
@@ -30,6 +25,7 @@ a
     a 
     {
         color: white;
+        text-decoration: none;
     }
 }
 
@@ -40,5 +36,10 @@ section
     padding: 2rem;
 }
 
-body, html { height:100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

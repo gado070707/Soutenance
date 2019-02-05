@@ -33,13 +33,14 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormComponent } from './components/form/form.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BarreAlerteComponent } from './components/barre-alerte/barre-alerte.component';
 import { AppComponent } from './app.component';
 import { HeadComponent } from './components/head/head.component';
 import { FootComponent } from './components/foot/foot.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { MapComponent } from './components/map/map.component';
+import { PopupopComponent } from './components/userprofile/popupop/popupop.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -50,9 +51,10 @@ import { MapComponent } from './components/map/map.component';
     FormComponent,
     TrucklistComponent,
     TruckdetailsComponent,
-    SidenavComponent,
     BarreAlerteComponent,
     ProfileUtilisateurComponent,
+    PopupopComponent,
+    CarouselComponent,
     AccueilComponent,
     MapComponent,
   ],

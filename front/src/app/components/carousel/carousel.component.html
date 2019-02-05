@@ -1,0 +1,14 @@
+<div class="carousel container">
+  <div class="imagesBurger">
+    <a href=""><img id="imgA" src="../../../assets/ba150.png"></a>
+    <a href=""><img id="imgB" class="bb" src="../../../assets/bb150.png"></a>
+    <a href=""><img id="imgC" src="../../../assets/bc150.png"></a>
+  </div>
+  <div class="fleche" [ngClass]="{'flexarrow': !upArrowStatus}">
+    <a href="{{img}}" [ngClass]="{'show': upArrowStatus, 'hide': !upArrowStatus}" (click)="defilementDesImagesVersLeHaut(); arrowShow();"><img class="imgFleH" src="../../../assets/fleH.png" /></a>
+    <a href="{{img}}" [ngClass]="{'show': downArrowStatus, 'hide': !downArrowStatus}" (click)="defilementDesImagesVersLeBas(); arrowShow();"><img class="imgFleB" src="../../../assets/fleB.png" /></a>
+  </div>
+</div>
+  <!-- <div class="fleche">
+    
+  </div> -->
