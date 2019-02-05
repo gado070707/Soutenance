@@ -14,6 +14,7 @@ export class ConnexionComponent implements OnInit {
   returnUrl: string;
   error: Error;
   badPassword = true;
+  
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,

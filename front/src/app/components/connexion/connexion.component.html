@@ -13,13 +13,13 @@
       <div>
         <mat-form-field>
           <mat-label>Mot de passe</mat-label>
-          <input matInput type="password" placeholder="********" pattern="^[a-zA-Z0-9]+" minlength="8" maxlength="25" formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 8 caractères"
+          <input matInput type="password" placeholder="********"  maxlength="25" formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 6 caractères"
             required />
         </mat-form-field>
       </div>
 
       <div>
-        <button mat-raised-button MatFormFieldControl type="submit" [disabled]="!connexionForm.valid" color="primary">
+        <button mat-raised-button MatFormFieldControl type="submit" color="primary">
           Je me connecte </button>
       </div>
     </form>

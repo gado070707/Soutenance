@@ -3,7 +3,6 @@
 
 body, html 
 {
-    height:100%;
     margin: 0 auto;
     background-color: white;
 }
@@ -16,11 +15,11 @@ body
 
 .container
 {
-    width: 80%;
-    margin:0 auto;
+    width: 100%;
     padding: 1.3rem;
-    display: grid;
-    grid-template-columns: 30% auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     a 
     {
