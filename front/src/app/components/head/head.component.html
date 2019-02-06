@@ -4,8 +4,8 @@
     <div class="linkcontainer">
         <div *ngIf="!authservice.isLoggedIn()"><a routerLink="/connexion">Se connecter</a></div>
         <div *ngIf="!authservice.isLoggedIn()"><a routerLink="/form" >S'enregistrer</a></div>
-        <div *ngIf="authservice.isLoggedIn()"><a routerLink="/form" (click)="authservice.logout()">Deconnexion</a></div>
-        <div *ngIf="authservice.isLoggedIn()"><a routerLink="/">Profil</a></div>
+        <div *ngIf="authservice.isLoggedIn()"><a (click)="authservice.logout()">Deconnexion</a></div>
+        <div *ngIf="authservice.isLoggedIn()"><a routerLink="user/profil/{{name}}">Profil</a></div>
     </div>
   </div>
 </header>

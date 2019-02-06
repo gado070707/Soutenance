@@ -3,9 +3,11 @@
 const controllers = require('../controllers/user');
 
 api.post('/users', controllers.create);
-api.put('/users', controllers.update);
+api.put('/user/:id', controllers.update);
+api.put('/userdel/:id', controllers.updatedel);
 
-api.get('/users/:id', controllers.find);
+api.get('/users/:id', controllers.findById);
+api.get('/user/:name', controllers.findByName);
 api.get('/users', controllers.findAll);
 
 api.delete('/users/:id', controllers.delete);

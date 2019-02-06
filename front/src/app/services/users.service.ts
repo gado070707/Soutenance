@@ -21,8 +21,14 @@ export class UsersService {
     return this.http.post(this.API_BASE_URL + '/register', user);
   }
 
-  find(id: Number): Observable<User> {
+  findById(id: Number): Observable<User> {
     const url = this.API_BASE_URL + '/api/users/' + id;
+    return this.http.get<User>(url)
+      .pipe( map(res => res) );
+  }
+
+  findByName(name: String): Observable<User> {
+    const url = this.API_BASE_URL + '/api/user/' + name;
     return this.http.get<User>(url)
       .pipe( map(res => res) );
   }
@@ -32,13 +38,13 @@ export class UsersService {
       .pipe( map(res => res) );
   }
 
-  delete(id: Number): Observable<{}> {
-    const url = this.API_BASE_URL + '/api/users/' + id;
-    return this.http.delete(url);
+  update(user: User, id: Number) {
+    const url = this.API_BASE_URL + '/api/user/' + id;
+    return this.http.put<User>(url, user);
   }
 
-  update(user: User, id: Number) {
-    const url = this.API_BASE_URL + '/api/users/' + id;
+  updateDelete(user: User, id: Number) {
+    const url = this.API_BASE_URL + '/api/userdel/' + id;
     return this.http.put<User>(url, user);
   }
 }

@@ -6,7 +6,7 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { FormComponent } from './components/form/form.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
-import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
+import { ProfilComponent } from './components/profil/profil.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 
 import { WithCredentialInterceptor } from './helpers/with-credentials.interceptor';
@@ -19,8 +19,7 @@ const routes: Route[] = [
   { path: 'user',
     canActivate: [AuthGuard],
     children: [
-      { path: 'userprofil/:id', component: ProfileUtilisateurComponent},
-      { path: 'userprof/', component: ProfileUtilisateurComponent},
+      { path: 'profil/:name', component: ProfilComponent},
         // { path: 'list', component: ListComponent, },
         // { path: 'add', component: AddComponent },
         // { path: ':id', component: DetailsComponent },

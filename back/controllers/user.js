@@ -54,8 +54,19 @@ exports.findAll = (req, res) => {
     );
 };
 
-exports.find = (req, res) => {
+exports.findById = (req, res) => {
     UserService.find({id: req.params.id}).then(
+        (data) => {
+            res.status(201).json(data);
+        },
+        (err) => {
+            res.status(500).json(err);
+        }
+    );
+};
+
+exports.findByName = (req, res) => {
+    UserService.find({name: req.params.name}).then(
         (data) => {
             res.status(201).json(data);
         },
@@ -72,6 +83,17 @@ exports.update = (req, res) => {
         },
         (err) => {
             res.status(500).json(err);
+        }
+    );
+};
+
+exports.updatedel = (req, res) => {
+    UserService.update(req.body, req.params.id ).then(
+        (data) => {
+            res.status(201).json(data.body);
+        },
+        (err) => {
+            console.log(err)
         }
     );
 };

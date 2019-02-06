@@ -41,6 +41,7 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { MapComponent } from './components/map/map.component';
 import { PopupopComponent } from './components/userprofile/popupop/popupop.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
     CarouselComponent,
     AccueilComponent,
     MapComponent,
+    ProfilComponent,
   ],
   imports: [
     AppRoutingModule,

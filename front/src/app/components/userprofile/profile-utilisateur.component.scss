@@ -2,6 +2,41 @@ body{
   background-color: #FFF0A4;
 }
 
+.profilcontainer {
+  display: flex;
+  align-items: center;
+}
+
+.photocontainer {
+  position: relative;
+  margin: 1%;
+  margin-right: 10%;
+}
+
+.cardcontainer {
+  width: 100%;
+}
+
+.cardelements {
+  margin: 5% 0;
+}
+
+.buttonprofilcontainer {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.cardformcontainer {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.formcontainer {
+  display: flex;
+}
+
 
 @media screen and (max-width: 640px) {
 

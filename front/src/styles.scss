@@ -25,6 +25,7 @@ body
     {
         color: white;
         text-decoration: none;
+        cursor: pointer;
     }
 }
 
@@ -41,4 +42,9 @@ section
 
 .hide {
     display: none;
+}
+
+.button1 {
+    background: rgb(129, 6, 37);
+    margin: 2%;
 }

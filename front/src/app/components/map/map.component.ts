@@ -15,7 +15,7 @@ export class MapComponent implements OnInit {
   currentPosition: Position;
   lat: number;
   lng: number;
-  zoom: number = 14;
+  zoom: number = 16;
   markers: any[];
   km: number = 8;
 
