@@ -74,6 +74,11 @@ exports.delete = (id) => {
 
 exports.update = (data, id) => {
     return User.update(data, 
+        { where: {id: id}   });
+}
+
+exports.updatedel = (data, id) => {
+    return User.update(data, 
         { where: {id: id}
     });
 }

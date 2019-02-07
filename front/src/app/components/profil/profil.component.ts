@@ -14,7 +14,6 @@ export class ProfilComponent implements OnInit {
   form: FormGroup;
   user: User = {} as User;
 
-  id: Number;
   role: Number;
 
   constructor(
@@ -24,13 +23,11 @@ export class ProfilComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const username = this.activeRoutes.snapshot.paramMap.get('name') || '';
+    const id = this.activeRoutes.snapshot.paramMap.get('id');
 
-    this.usersService.findByName(username).subscribe(
-      data => {
+    this.usersService.findById(parseInt(id)).subscribe(
+      data => { console.log(id)
         this.user = data;
-
-        this.id = this.user.id;
         this.role = this.user.role;
     }); 
   }

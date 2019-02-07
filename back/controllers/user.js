@@ -26,7 +26,7 @@ exports.authentification = (req, res) => {
             });            
         },
         err => {
-            console.log(err+" OK");
+            console.log(err);
         }
     );
 };
@@ -77,8 +77,8 @@ exports.findByName = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    UserService.update(req.body).then(
-        (data) => {
+    UserService.update(req.body, req.params.id).then(
+        (data, id) => {
             res.status(201).json(data);
         },
         (err) => {
@@ -88,7 +88,7 @@ exports.update = (req, res) => {
 };
 
 exports.updatedel = (req, res) => {
-    UserService.update(req.body, req.params.id ).then(
+    UserService.updatedel(req.body, req.params.id ).then(
         (data) => {
             res.status(201).json(data.body);
         },

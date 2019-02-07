@@ -6,6 +6,9 @@ import { UsersService } from '../../services/users.service';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+const LOCAL_STORAGE_USER_KEY = 'currentItem';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -13,6 +16,9 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./profile-utilisateur.component.scss']
 })
 export class ProfileUtilisateurComponent implements OnInit {
+
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
 
   @Input() id;
 
@@ -41,11 +47,14 @@ export class ProfileUtilisateurComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private activeRoutes: ActivatedRoute,
     private usersService: UsersService,
+    private route: ActivatedRoute,
     private router: Router,
     private authservice: AuthService
-    ) {}
+    ) {
+      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)));
+      this.currentUser = this.currentUserSubject.asObservable();
+    }
 
   @Output()
     toggleChange: EventEmitter<void>;
@@ -54,7 +63,9 @@ export class ProfileUtilisateurComponent implements OnInit {
     matSlideToggle: MatSlideToggle;
 
   ngOnInit() {
-    this.usersService.findById(parseInt(this.id)).subscribe(
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.usersService.findById(parseInt(id)).subscribe(
       data => {
         this.user = data;
 
@@ -69,6 +80,8 @@ export class ProfileUtilisateurComponent implements OnInit {
           tel: this.user.telephone,
         });
     });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   showformuser() {
@@ -76,20 +89,39 @@ export class ProfileUtilisateurComponent implements OnInit {
   }
 
   updateuser() {
-    this.usersService.update(this.formProfilUser.value, parseInt(this.id)).subscribe(
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if(this.formProfilUser.value.password == '') {
+      let elements = this.formProfilUser.value;
+
+      this.formProfilUser = this.formBuilder.group({
+        name: elements.name,
+        mail: elements.mail,
+        telephone: elements.tel,
+      });
+    }
+
+    this.usersService.update(this.formProfilUser.value, parseInt(id)).subscribe(
       (user: User) => {
-        this.router.navigate([this.returnUrl]);
+        this.usersService.findById(parseInt(this.id)).subscribe(
+          (user: User) => {
+            
+            window.location.reload();
+
+          });
       },
       error => {}
     );
   }
 
   suppruser() {
+    const id = this.route.snapshot.paramMap.get('id');
+
     this.formProfilUser = this.formBuilder.group({
       active: false
     });
 
-    this.usersService.updateDelete(this.formProfilUser.value, parseInt(this.id)).subscribe(
+    this.usersService.updateDelete(this.formProfilUser.value, parseInt(id)).subscribe(
       () => {
         this.authservice.logout();
         this.router.navigate(["/"]);
