@@ -14,18 +14,11 @@
     }
 
     .fleche{
+        margin-left: 4%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-    }
-
-    .imgFleH {
-        cursor: pointer;
-    }
-
-    .imgFleB {       
-        cursor: pointer;
-    }
+    }    
 }
 
 @media screen and (min-width: 640px) {
@@ -33,7 +26,6 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
-        // align-items: center;
     }
     .imagesBurger {
         overflow: hidden;
@@ -44,20 +36,30 @@
     }
 
     .fleche{
+        margin: 4%;
         min-height: 150px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
+}
 
-    .imgFleB {
-        cursor: pointer;
-    }
-    .imgFleH {
-        cursor: pointer;
-    }
+.cardhomecontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 3%;
+    font-size: 1.2em;
+}
 
-    .flexarrow{
-        justify-content: flex-end;
-    }
+.cardhomeimg{
+    width: 75%;
+}
+
+.flexarrow{
+    justify-content: flex-end;
+}
+
+.imgArrow {
+    cursor: pointer;
 }

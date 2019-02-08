@@ -107,7 +107,6 @@ export class ProfileUtilisateurComponent implements OnInit {
           (user: User) => {
             
             window.location.reload();
-
           });
       },
       error => {}
