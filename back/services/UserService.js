@@ -72,8 +72,13 @@ exports.delete = (id) => {
     });
 }
 
-exports.update = (data) => {
-    return User.update(data, { 
-        where: { id: data.id } 
+exports.update = (data, id) => {
+    return User.update(data, 
+        { where: {id: id}   });
+}
+
+exports.updatedel = (data, id) => {
+    return User.update(data, 
+        { where: {id: id}
     });
 }

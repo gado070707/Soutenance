@@ -1,13 +1,29 @@
-<div class="carousel container">
-  <div class="imagesBurger">
+<div class="carousel">
+  <div>
+    <div *ngFor="let truck of trucks">
+      <mat-card class="cardhomecontainer" *ngIf="truck.id >= imgBase  &&  truck.id <= imgBase+2">
+        <div>
+          <div class="cardhomeimg">
+            <img width="100%" src="../../../assets/trucks/{{ truck.image }}">
+          </div>
+        </div>
+        <div>
+          <div class="cardelements">{{ truck.name }}</div>
+        </div> 
+      </mat-card>
+    </div>
+  </div>
+  <div class="fleche" [ngClass]="{'flexarrow': !upArrowStatus}">
+    <div [ngClass]="{'show': upArrowStatus, 'hide': !upArrowStatus}" (click)="arrowPush('Up'); arrowShow();"><img class="imgArrow" src="../../../assets/fleH.png" /></div>
+    <div [ngClass]="{'show': downArrowStatus, 'hide': !downArrowStatus}" (click)="arrowPush('Down'); arrowShow();"><img class="imgArrow" src="../../../assets/fleB.png" /></div>
+  </div>
+  <!-- <div class="imagesBurger">
     <a href=""><img id="imgA" src="../../../assets/ba150.png"></a>
     <a href=""><img id="imgB" class="bb" src="../../../assets/bb150.png"></a>
     <a href=""><img id="imgC" src="../../../assets/bc150.png"></a>
-  </div>
-  <div class="fleche">
-    <a href="{{img}}" (click)="defilementDesImagesVersLeBas()"><img class="imgFleB" src="../../../assets/fleB.png" /></a>
-    <a href="{{img}}" (click)="defilementDesImagesVersLeHaut()"><img class="imgFleH" src="../../../assets/fleH.png" /></a>
-  </div>
+  </div> -->
+ 
+  
 </div>
   <!-- <div class="fleche">
     

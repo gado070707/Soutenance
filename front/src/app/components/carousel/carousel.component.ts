@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { indexDebugNode } from '@angular/core/src/debug/debug_node';
+import datas from '../../listetruck/trucks.json';
 
 @Component({
   selector: 'app-carousel',
@@ -7,37 +8,43 @@ import { indexDebugNode } from '@angular/core/src/debug/debug_node';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
- indiceDesBurgers = 0;
- nomDeLImage = ['#imgA', '#imgB', '#imgC'];
- img = '';
+ upArrowStatus = true;
+ downArrowStatus = true;
+ trucks;
+ imgBase: number = 1;
+ imgMax: number = 0;
+
   constructor() {
    }
 
   ngOnInit() {
-
+    this.trucks = datas;
+    this.arrowShow();
   }
 
-  defilementDesImagesVersLeBas() {
-    if (this.indiceDesBurgers <= 0 ) {
-      this.indiceDesBurgers++;
-      this.img = this.nomDeLImage[this.indiceDesBurgers];
-    } else if (this.indiceDesBurgers == 1 ) {
-      this.indiceDesBurgers++;
-      this.img = this.nomDeLImage[this.indiceDesBurgers];
-    } else if (this.indiceDesBurgers == 2 ) {
-      this.img = this.nomDeLImage[this.indiceDesBurgers];
+  arrowPush(sens){
+    if(sens == "Up"){
+      this.imgBase = this.imgBase - 3;
+    }
+    else if(sens == "Down") {
+      this.imgBase = this.imgBase + 3;
     }
   }
 
-  defilementDesImagesVersLeHaut() {
-    if (this.indiceDesBurgers == 2 ) {
-      this.indiceDesBurgers--;
-      this.img = this.nomDeLImage[this.indiceDesBurgers];
-    } else if (this.indiceDesBurgers == 1 ) {
-      this.indiceDesBurgers--;
-      this.img = this.nomDeLImage[this.indiceDesBurgers];
-    } else if (this.indiceDesBurgers == 0 ) {
-    this.img = this.nomDeLImage[this.indiceDesBurgers];
+  arrowShow() {
+    this.imgMax = this.trucks.length;
+
+    if(this.imgBase == 1) {
+      this.upArrowStatus = !this.upArrowStatus;
+      this.downArrowStatus = true; 
+    }
+    else if(this.imgBase == this.imgMax - 2){
+      this.downArrowStatus = !this.downArrowStatus;
+      this.upArrowStatus = true;
+    }
+    else {
+      this.upArrowStatus = true;
+      this.downArrowStatus = true;
     }
   }
 }

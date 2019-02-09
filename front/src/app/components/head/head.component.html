@@ -1,7 +1,11 @@
 <header>
   <div class="container">
-    <a routerLink="/" class="logo">{{ appTitle }}</a>
-    <nav>
-    </nav>
+    <div class="logocontainer"><a routerLink="/" class="logo">{{ appTitle }}</a></div>
+    <div class="linkcontainer">
+        <div *ngIf="!authservice.isLoggedIn()" class="headlink"><a routerLink="/connexion">Se connecter</a></div>
+        <div *ngIf="!authservice.isLoggedIn()" class="headlink"><a routerLink="/form" >S'enregistrer</a></div>
+        <div *ngIf="authservice.isLoggedIn()" class="headlink"><a (click)="authservice.logout()">Deconnexion</a></div>
+        <div *ngIf="authservice.isLoggedIn()" class="headlink"><a routerLink="/user/profil/{{id}}">Profil</a></div>
+    </div>
   </div>
 </header>

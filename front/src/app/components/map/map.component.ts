@@ -15,7 +15,7 @@ export class MapComponent implements OnInit {
   currentPosition: Position;
   lat: number;
   lng: number;
-  zoom: number = 14;
+  zoom: number = 16;
   markers: any[];
   km: number = 8;
 
@@ -35,14 +35,14 @@ export class MapComponent implements OnInit {
             "lat":  50.633803, 
             "lng":  3.020398
           },
-          "truck": data.truck1
+          "truck": data[0]
         },
         {
           "marker": {
             "lat":  50.633364,
             "lng":  3.020868
           },
-          "truck": data.truck5
+          "truck": data[4]
         }
       ];
     });

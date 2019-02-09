@@ -1,26 +1,32 @@
-{
-        "truck1": {
+[
+    {
             "id": 1,
-            "name": "Le comptoir volant"
-        },
-        "truck2": {
+            "name": "Le comptoir volant",
+            "image": "truck1.jpg"
+    },
+    {
             "id": 2,
-            "name": "L'asiatique croustillant"
-        },
-        "truck3": {
+            "name": "L'asiatique croustillant",
+            "image": "truck2.jpg"
+    },
+    {
             "id": 3,
-            "name": "Les Bruger delicieux"
-        },
-        "truck4": {
+            "name": "Les Burgers delicieux",
+            "image": "truck3.jpg"
+    },
+    {
             "id": 4,
-            "name": "Le mignon" 
-        },
-        "truck5": {
+            "name": "Le mignon",
+            "image": "truck4.jpg" 
+    },
+    {
             "id": 5,
-            "name": "Resto Do"
-        },
-        "truck6": {
+            "name": "Resto Do",
+            "image": "truck5.jpg"
+    },
+    {
             "id": 6,
-            "name": "Salad'Bar"
-        }
-}
+            "name": "Salad'Bar",
+            "image": "truck6.jpg"
+    }
+]

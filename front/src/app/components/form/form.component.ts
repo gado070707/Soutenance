@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
   user: User = {} as User;
   userPro: UserPro = {} as UserPro;
   returnUrl: string;
-  error: Error;
+
   public checkboxSocieteSiret = false;
 
   constructor(
@@ -29,9 +29,7 @@ export class FormComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    // tslint:disable-next-line:max-line-length
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //// Formulaire de l'utilisateur
+//    Formulaire de l'utilisateur
     this.formUser = this.formBuilder.group({
       name: '',
       firstname: '',
@@ -45,7 +43,7 @@ export class FormComponent implements OnInit {
 
     if (id !== '') {
       // tslint:disable-next-line:radix
-      this.usersService.find(parseInt(id)).subscribe(
+      this.usersService.findById(parseInt(id)).subscribe(
         data => {
           this.user = data;
 
@@ -54,15 +52,14 @@ export class FormComponent implements OnInit {
             firstname: this.user.firstname,
             password: this.user.password,
             mail: this.user.mail,
-            tel: this.user.tel,
+            tel: this.user.telephone,
             active: this.user.active,
           });
         });
     }
 
-    // tslint:disable-next-line:max-line-length
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //// Formulaire du food truck
+//    Formulaire du food truck
+
     this.formFoodTruck = this.formBuilder.group({
       textSociete: '',
       textSiret: '',
@@ -103,9 +100,7 @@ functionUser() {
       (user: User) => {
         this.router.navigate([this.returnUrl]);
       },
-      error => {
-        this.error = error;
-      }
+      error => {}
     );
   } else {
     // tslint:disable-next-line:radix
@@ -113,9 +108,7 @@ functionUser() {
       (user: User) => {
         this.router.navigate([this.returnUrl]);
       },
-      error => {
-        this.error = error;
-      }
+      error => {}
     );
   }
 }
@@ -127,12 +120,10 @@ foodTruck() {
 
   if (id === '') {
     this.usersProService.add(this.formFoodTruck.value).subscribe(
-      (user: User) => {
+      (user: UserPro) => {
         this.router.navigate([this.returnUrl]);
       },
-      error => {
-        this.error = error;
-      }
+      error => {}
     );
   } else {
     // tslint:disable-next-line:radix
@@ -140,9 +131,7 @@ foodTruck() {
       (userPro: UserPro) => {
         this.router.navigate([this.returnUrl]);
       },
-      error => {
-        this.error = error;
-      }
+      error => {}
     );
   }
 }

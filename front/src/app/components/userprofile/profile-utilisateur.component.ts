@@ -1,10 +1,14 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, Inject, Input } from '@angular/core';
 import { FormGroup, FormBuilder} from '@angular/forms';
 import { MatSlideToggle } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { UsersService } from '../../services/users.service';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+
+const LOCAL_STORAGE_USER_KEY = 'currentItem';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -13,15 +17,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfileUtilisateurComponent implements OnInit {
 
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+
+  @Input() id;
+
   centered = false;
   disabled = false;
   unbounded = false;
   radius: number;
   color: string;
 
-  form: FormGroup;
+  formProfilUser: FormGroup;
 
   user: User = {} as User;
+
+  name: string;
+  mail: string;
+  returnUrl: string;
+
+  active: boolean = false;
+
+  formuserstatus = false;
 
   private boutonPseudo = !false;
   private boutonNom = !false;
@@ -30,10 +47,14 @@ export class ProfileUtilisateurComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private activeRoutes: ActivatedRoute,
     private usersService: UsersService,
+    private route: ActivatedRoute,
     private router: Router,
-    ) {}
+    private authservice: AuthService
+    ) {
+      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)));
+      this.currentUser = this.currentUserSubject.asObservable();
+    }
 
   @Output()
     toggleChange: EventEmitter<void>;
@@ -42,77 +63,70 @@ export class ProfileUtilisateurComponent implements OnInit {
     matSlideToggle: MatSlideToggle;
 
   ngOnInit() {
-    const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
+    const id = this.route.snapshot.paramMap.get('id');
 
-    this.usersService.find(parseInt(id)).subscribe(
+    this.usersService.findById(parseInt(id)).subscribe(
       data => {
         this.user = data;
 
-        this.form = this.formBuilder.group({
+        this.name = this.user.name;
+        this.mail = this.user.mail;
+
+        this.formProfilUser = this.formBuilder.group({
           pseudoUser: '',
-          nomUser: this.user.name,
-          emailUser: this.user.mail,
+          name: this.user.name,
+          mail: this.user.mail,
+          password: '',
+          tel: this.user.telephone,
         });
     });
+
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  validerFormulaire() {
-    const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
+  showformuser() {
+    this.formuserstatus = !this.formuserstatus;
+  }
 
-    this.usersService.update(this.form.value, parseInt(id)).subscribe(
+  updateuser() {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if(this.formProfilUser.value.password == '') {
+      let elements = this.formProfilUser.value;
+
+      this.formProfilUser = this.formBuilder.group({
+        name: elements.name,
+        mail: elements.mail,
+        telephone: elements.tel,
+      });
+    }
+
+    this.usersService.update(this.formProfilUser.value, parseInt(id)).subscribe(
       (user: User) => {
-        this.router.navigate(['/users/userprofil/' + id]);
+        this.usersService.findById(parseInt(this.id)).subscribe(
+          (user: User) => {
+            
+            window.location.reload();
+          });
       },
-      () => {}
+      error => {}
     );
   }
 
-  toggleTest() {
-    // this.matSlideToggle.toggle();
-  }
+  suppruser() {
+    const id = this.route.snapshot.paramMap.get('id');
 
-  toogle1() {
-    if (this.boutonPseudo === false) {
-      this.boutonPseudo = true;
-    } else {
-      this.boutonPseudo = false;
-    }
-  }
-  toogle2() {
-    if (this.boutonNom === false) {
-      this.boutonNom = true;
-    } else {
-      this.boutonNom = false;
-    }
-  }
-  toogle3() {
-    if (this.boutonEmail === false) {
-      this.boutonEmail = true;
-    } else {
-      this.boutonEmail = false;
-    }
-  }
+    this.formProfilUser = this.formBuilder.group({
+      active: false
+    });
 
-  getBoutonPseudo() {
-    return this.boutonPseudo;
-  }
-
-  setBoutonPseudo(boutonPseudo) {
-    this.boutonPseudo = boutonPseudo;
-  }
-  getBoutonNom() {
-    return this.boutonNom;
-  }
-
-  setBoutonNom(boutonNom) {
-    this.boutonNom = boutonNom;
-  }
-  getBoutonEmail() {
-    return this.boutonEmail;
-  }
-
-  setBoutonEmail(boutonEmail) {
-    this.boutonEmail = boutonEmail;
+    this.usersService.updateDelete(this.formProfilUser.value, parseInt(id)).subscribe(
+      () => {
+        this.authservice.logout();
+        this.router.navigate(["/"]);
+      },
+      error => {}
+    );
   }
 
     // popup(): void {

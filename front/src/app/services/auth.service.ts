@@ -36,8 +36,7 @@ export class AuthService {
         };
 
         return this.http.post<User>(this.API_BASE_URL + '/authentification', data)
-            .pipe(tap(user => {
-            }))
+            .pipe(tap(user => {}))
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response.
                 if (user) {

@@ -1,37 +1,68 @@
-<div class="example-ripple-container mat-elevation-z4" matRipple [matRippleCentered]="centered" [matRippleDisabled]="disabled"
-  [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color">
-  Votre photo
+<div class="profilcontainer">
+  <div class="example-ripple-container mat-elevation-z4 photocontainer" matRipple [matRippleCentered]="centered" [matRippleDisabled]="disabled"
+    [matRippleUnbounded]="unbounded" [matRippleRadius]="radius" [matRippleColor]="color">
+    Votre photo
+  </div>
+  <div>
+    <mat-card class="cardcontainer">
+      <div class="cardelements">{{ user.name }}</div>
+      <div class="cardelements">{{ user.mail }}</div>  
+    </mat-card>
+    <div class="buttonprofilcontainer">
+        <button type="button" class="btn btn-danger button1" (click)="showformuser()">Editer mon compte</button>
+        <button type="button" class="btn btn-danger button1" (click)="suppruser()">Supprimer mon comtpe</button>
+    </div>    
+  </div>
 </div>
-<br />
-<div class="centrer">
-<form [formGroup]="form" (ngSubmit)="validerFormulaire()">
-  <div class="form-fields">
-    <mat-label class="titre"> Modification </mat-label>
-  </div>
-  <div class="form-fields">
-    <mat-slide-toggle #slide (click)="toogle1()"></mat-slide-toggle><div class="espace"></div>
-    <input matInput type="text" placeholder="{{user.pseudo}}" maxlength="25" formControlName="pseudoUser" [hidden]="getBoutonPseudo()" required /><div class="espace"></div>
-    <mat-label> {{ user.pseudo }} </mat-label><div class="espace"></div>
-  </div>
-  <div class="form-fields">
-    <mat-slide-toggle #slide (click)="toogle2()"></mat-slide-toggle><div class="espace"></div>
-    <input matInput type="text" placeholder="{{user.nom}}" maxlength="25" formControlName="nomUser" [hidden]="getBoutonNom()" required /><div class="espace"></div>
-    <mat-label> {{ user.name }} </mat-label><div class="espace"></div>
-  </div>
-  <div class="form-fields">
-    <mat-slide-toggle #slide (click)="toogle3()"></mat-slide-toggle><div class="espace"></div>
-    <input matInput type="email" placeholder="{{user.email}}" maxlength="25" formControlName="emailUser" [hidden]="getBoutonEmail()" required /><div class="espace"></div>
-    <mat-label> {{user.mail}} </mat-label><div class="espace"></div>
-  </div>
-  <div class="vertical"></div>
-  <div class="form-fields boutonValider">
-    <button mat-raised-button MatFormFieldControl type="submit" [disabled]="!form.valid" color="primary">Valider</button>
-  </div>
-</form>
 
-<!--<div class="vertical"></div>
-  <div class="form-fields boutonEffacer">
-    <app-popupop></app-popupop>
-  </div>
-</div>-->
+<mat-card class="cardformcontainer" [ngClass]="{show: formuserstatus, hide: !formuserstatus}">
+  <form class="form-fields" method="post" [formGroup]="formProfilUser" (ngSubmit)="updateuser()">
+    <div class="formcontainer">
+
+      <div style="margin: 2%;">
+        <mat-form-field>
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" placeholder="Durand" maxlength="25" formControlName="name" pattern="^[a-zA-Z]+"
+            required />
+        </mat-form-field>
+      </div>
+
+      <!-- <div>
+        <mat-form-field>
+          <mat-label>Prénom</mat-label>
+          <input matInput type="text" placeholder="Pierre" maxlength="25" formControlName="firstname" pattern="^[a-zA-Z]+"
+            required />
+        </mat-form-field>
+      </div> -->
+
+      <div style="margin: 2%;">
+        <mat-form-field>
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" placeholder="********" min="8" minlength="8" maxlength="25"
+            formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 8 caractères" required />
+        </mat-form-field>
+      </div>
+
+      <div style="margin: 2%;">
+        <mat-form-field>
+          <mat-label>Adresse Mail</mat-label>
+          <input matInput id="mail" type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
+            formControlName="mail" pattern="" required />
+        </mat-form-field>
+      </div>
+
+      <div style="margin: 2%;">
+        <mat-form-field>
+          <mat-label>Téléphone</mat-label>
+          <input matInput id="tel" type="tel" placeholder="0606060606" maxlength="25" formControlName="tel" required />
+        </mat-form-field>
+      </div>
+
+      <div style="margin: 2%;">
+        <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
+      </div>
+
+    </div>
+  </form>
+</mat-card>
   

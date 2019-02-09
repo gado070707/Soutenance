@@ -26,7 +26,7 @@ exports.authentification = (req, res) => {
             });            
         },
         err => {
-            console.log(err+" OK");
+            console.log(err);
         }
     );
 };
@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
     );
 };
 
-exports.find = (req, res) => {
+exports.findById = (req, res) => {
     UserService.find({id: req.params.id}).then(
         (data) => {
             res.status(201).json(data);
@@ -65,13 +65,35 @@ exports.find = (req, res) => {
     );
 };
 
-exports.update = (req, res) => {
-    UserService.update(req.body).then(
+exports.findByName = (req, res) => {
+    UserService.find({name: req.params.name}).then(
         (data) => {
             res.status(201).json(data);
         },
         (err) => {
             res.status(500).json(err);
+        }
+    );
+};
+
+exports.update = (req, res) => {
+    UserService.update(req.body, req.params.id).then(
+        (data, id) => {
+            res.status(201).json(data);
+        },
+        (err) => {
+            res.status(500).json(err);
+        }
+    );
+};
+
+exports.updatedel = (req, res) => {
+    UserService.updatedel(req.body, req.params.id ).then(
+        (data) => {
+            res.status(201).json(data.body);
+        },
+        (err) => {
+            console.log(err)
         }
     );
 };
