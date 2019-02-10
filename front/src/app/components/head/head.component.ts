@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../../models/user';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const LOCAL_STORAGE_USER_KEY = 'currentItem';
 
@@ -18,7 +19,11 @@ export class HeadComponent implements OnInit {
 
   private currentUserSubject: BehaviorSubject<User>;
 
-  constructor(private authservice: AuthService) { 
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authservice: AuthService
+  ) { 
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)));
    }
 
@@ -26,4 +31,8 @@ export class HeadComponent implements OnInit {
     this.id = this.currentUserSubject.value.id;
   }
     
+  logout() {
+    this.authservice.logout();
+    this.router.navigate(['/']);
+  }
 }
