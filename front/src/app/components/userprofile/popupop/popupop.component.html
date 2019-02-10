@@ -1,22 +1,43 @@
 
-<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">Supprimer le compte</button>
+<div class="suppression">
+<button type="button" class="btn btn-danger button1" data-toggle="modal" data-target="#myModal">Supprimer le compte</button>
  <!-- Modal -->
+
+ <!-- Première fenêtre d'avertissement -->
  <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close btn-danger" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Compte supprimé</h4>
+          <button type="button" class="close btn-danger button1" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Suppression du compte</h4>
         </div>
         <div class="modal-body">
-          <p>Le compte vient d'être supprimé</p>
+          <p>Etes-vous certain de supprimer votre compte ?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-danger button1" data-dismiss="modal2" data-toggle="modal" data-target="#myModal2" >Supprimer le compte</button>
+
+          <!-- Deuxième fenêtre de suppression du compte -->
+          <div class="modal2 fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">  
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close btn-danger button1" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Compte supprimé</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Le compte vient d'être supprimé</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger button1" data-dismiss="modal" >Fermer</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      
+      </div> 
     </div>
   </div>
+</div>

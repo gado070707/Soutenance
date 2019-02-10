@@ -42,6 +42,7 @@ import { MapComponent } from './components/map/map.component';
 import { PopupopComponent } from './components/userprofile/popupop/popupop.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { PayerComponent } from './components/payer/payer.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ProfilComponent } from './components/profil/profil.component';
     AccueilComponent,
     MapComponent,
     ProfilComponent,
+    PayerComponent,
   ],
   imports: [
     AppRoutingModule,

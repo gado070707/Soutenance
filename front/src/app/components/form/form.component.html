@@ -1,7 +1,7 @@
 <div class="container">
   <div id="formulaires">
     <mat-tab-group>
-      <!-- Onglet utilisateur -->
+      <!-- Onglet de l'utilisateur -->
       <mat-tab label="Utilisateur" (click)="societe()">
         <form class="form-fields" method="post" [formGroup]="formUser" (ngSubmit)="functionUser()">
           <div>
@@ -31,7 +31,7 @@
           <div>
             <mat-form-field>
               <mat-label>Adresse Mail</mat-label>
-              <input matInput id="mail" type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
+              <input matInput type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
                 formControlName="mail" pattern="" required />
             </mat-form-field>
           </div>
@@ -39,7 +39,7 @@
           <div>
             <mat-form-field>
               <mat-label>Téléphone</mat-label>
-              <input matInput id="tel" type="tel" placeholder="0606060606" maxlength="25" formControlName="tel"
+              <input matInput type="tel" placeholder="0606060606" maxlength="25" formControlName="tel"
                 required />
             </mat-form-field>
           </div>
@@ -82,7 +82,7 @@
           <div>
             <mat-form-field>
               <mat-label>Adresse Mail</mat-label>
-              <input matInput id="mail" type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
+              <input matInput type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
                 formControlName="mail" pattern="" required />
             </mat-form-field>
           </div>
@@ -90,7 +90,7 @@
           <div>
             <mat-form-field>
               <mat-label>Téléphone</mat-label>
-              <input matInput id="tel" type="tel" placeholder="0606060606" maxlength="25" formControlName="tel"
+              <input matInput type="tel" placeholder="0606060606" maxlength="25" formControlName="tel"
                 required />
             </mat-form-field>
           </div>

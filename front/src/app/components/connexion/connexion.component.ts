@@ -14,7 +14,7 @@ export class ConnexionComponent implements OnInit {
   returnUrl: string;
   error: Error;
   badPassword = true;
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -47,6 +47,7 @@ export class ConnexionComponent implements OnInit {
           this.router.navigate([this.returnUrl]);
         },
         error => {
+          console.log('Mauvais mot de passe');
           this.setBadPassword(false);
           this.erreurDeLogin();
           this.error = error;
