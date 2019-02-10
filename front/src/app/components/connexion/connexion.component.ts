@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { first, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-connexion',
@@ -14,6 +14,7 @@ export class ConnexionComponent implements OnInit {
   returnUrl: string;
   error: Error;
   badPassword = true;
+  test = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,22 +40,30 @@ export class ConnexionComponent implements OnInit {
     return this.connexionForm.controls;
   }
 
+  isGoodPassword() {
+    // console.log(this.connexion());
+    const a = this.connexion();
+    // console.log(a['isStopped']);
+    return a;
+  }
+
   connexion() {
-    this.authService.login(this.form.mail.value, this.form.password.value)
+    const a = this.authService.login(this.form.mail.value, this.form.password.value)
       .pipe(first())
       .subscribe(
         data => {
+          console.log(data);
           window.location.reload();
           this.router.navigate([this.returnUrl]);
         },
         error => {
-          console.log('Mauvais mot de passe');
+          // console.log('Mauvais mot de passe');
           this.setBadPassword(false);
           this.erreurDeLogin();
           this.error = error;
-        }
-    );
-  }
+        });
+        return a;
+}
 
   erreurDeLogin() {
     return this.getBadPassword();

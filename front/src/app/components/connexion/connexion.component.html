@@ -1,7 +1,7 @@
 <div class="container">
   <div id="formulaires">
     <h4>Connexion</h4>
-    <form class="form-fields" method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
+    <form class="form-fields" method="post" [formGroup]="connexionForm" (ngSubmit)="isGoodPassword()">
       <div>
         <mat-form-field>
           <mat-label>Adresse email</mat-label>
