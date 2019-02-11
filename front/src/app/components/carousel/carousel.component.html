@@ -3,13 +3,14 @@
     <div *ngFor="let truck of trucks">
       <mat-card class="cardhomecontainer" *ngIf="truck.id >= imgBase  &&  truck.id <= imgBase+2">
         <div class="cardhomeimg">
-          <img width="100%" src="../../../assets/trucks/{{ truck.image }}">
+            <a href="#" routerLink="{{truck.routes}}" ><img width="100%" src="../../../assets/trucks/{{ truck.image }}"/></a>
         </div>
         <div class="cardhomelements">{{ truck.name }}</div> 
       </mat-card>
     </div>
   </div>
   <div class="fleche" [ngClass]="{'flexarrow': !upArrowStatus}">
+      <!-- <a mat-list-item routerLink="/jobs">Jobs</a> -->
     <div [ngClass]="{'show': upArrowStatus, 'hide': !upArrowStatus}" (click)="arrowPush('Up'); arrowShow();"><img class="imgArrow" src="../../../assets/fleH.png" /></div>
     <div [ngClass]="{'show': downArrowStatus, 'hide': !downArrowStatus}" (click)="arrowPush('Down'); arrowShow();"><img class="imgArrow" src="../../../assets/fleB.png" /></div>
   </div>

@@ -2,31 +2,37 @@
     {
             "id": 1,
             "name": "Le comptoir volant",
-            "image": "truck1.jpg"
+            "image": "truck1.jpg",
+            "routes": "trucks/foodtruck/premier"
     },
     {
             "id": 2,
             "name": "L'asiatique croustillant",
-            "image": "truck2.jpg"
+            "image": "truck2.jpg",
+            "routes": "trucks/foodtruck/deuxieme"
     },
     {
             "id": 3,
             "name": "Les Burgers delicieux",
-            "image": "truck3.jpg"
+            "image": "truck3.jpg",
+            "routes": "trucks/foodtruck/troisieme"
     },
     {
             "id": 4,
             "name": "Le mignon",
-            "image": "truck4.jpg" 
+            "image": "truck4.jpg",
+            "routes": "trucks/foodtruck/quatrieme"
     },
     {
             "id": 5,
             "name": "Resto Do",
-            "image": "truck5.jpg"
+            "image": "truck5.jpg",
+            "routes": "trucks/foodtruck/cinquieme"
     },
     {
             "id": 6,
             "name": "Salad'Bar",
-            "image": "truck6.jpg"
+            "image": "truck6.jpg",
+            "routes": "trucks/foodtruck/sixieme"
     }
 ]
