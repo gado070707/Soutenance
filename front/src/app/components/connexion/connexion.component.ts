@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { UsersProService } from 'src/app/services/userspro.service';
 
 @Component({
   selector: 'app-connexion',
@@ -41,16 +42,16 @@ export class ConnexionComponent implements OnInit {
 
   connexion() {
     this.authService.login(this.form.mail.value, this.form.password.value)
-      .pipe(first())
-      .subscribe(
+      .pipe(first()).subscribe(
         data => {
-          window.location.reload();
           this.router.navigate([this.returnUrl]);
+          //window.location.reload();
+          
         },
-        error => {
+        err => {
           this.setBadPassword(false);
           this.erreurDeLogin();
-          this.error = error;
+          this.error = err.error.message;
         }
     );
   }
@@ -66,7 +67,3 @@ export class ConnexionComponent implements OnInit {
     return this.badPassword = badPassword;
   }
 }
-
-// angular2-cookie
-// ngx cookie
-// Angular guard

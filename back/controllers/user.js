@@ -15,6 +15,11 @@ exports.register = (req, res) => {
 exports.authentification = (req, res) => {
     UserService.authenticate(req.body).then(
         user => {
+            if(!user) {
+                res.status(401).json({message:"Identifiant incorrect"});
+                return;
+            }
+
             jwt.generateToken(user, (err, token) => {
                 res.cookie('token', token, {
                     path: '/',

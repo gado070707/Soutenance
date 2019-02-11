@@ -31,19 +31,16 @@ findByMail = (attribut) => {
 }
 
 exports.authenticate = data => {
-    return findByMail({ mail: data.mail }).then(
-        
+    return findByMail({ mail: data.mail }).then(        
         user => {
             if(!user) {
-                console.log(data.mail);
-
-                throw new Error("User not found");
+                return null
             }
 
             return bcryptPassword.verify(data.password, user.password).then(
                 isOk => {
                     if(!isOk) {
-                        throw new Error("Password invalid");
+                        return null
                     }
                     else {
                         return user;
