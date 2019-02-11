@@ -1,0 +1,61 @@
+.truckProfil {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #eaf1ff;
+    padding-top: none;
+    padding-left: 15%;
+    .sideInfo{
+        flex: left;
+        width: 23.75rem;
+        height: 106.875rem;
+        background-color: blue;
+        .logo{
+            width: 23.75rem;
+            height: 16.875rem;
+            background-color: red;
+        }
+        .aboutUs{
+            width: 23.75rem;
+            height: 10rem;
+            background-color: royalblue;
+        }
+        .contact{
+            width: 23.75rem;
+            height: 80rem;
+        }
+    }
+    .page{
+        flex: right;
+        width: 47.5rem;
+        height: 106.875rem;
+        background-color: greenyellow;
+        .schedule{
+            width: 47.5rem;
+            height: 26.875rem;
+            background-color: pink;
+        }
+        .card{
+            width: 47.5rem;
+            height: 80rem;
+            background-color: green;
+            ul {
+                width: 47.5rem;
+                height: 80rem;
+                background-color:greenyellow;
+                list-style-type: none;
+                margin-left: 0;
+                padding: 0;
+                li:first-child {
+                    margin-top: 0;
+                }
+                li{
+                    width: 47.5rem;
+                    height: 10%;
+                    background-color: aqua;
+                    margin-top: 5rem;
+                }
+            }
+        }
+    }
+}

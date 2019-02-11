@@ -31,7 +31,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProfileUtilisateurComponent } from './components/userprofile/profile-utilisateur.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormComponent } from './components/form/form.component';
-import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { BarreAlerteComponent } from './components/barre-alerte/barre-alerte.component';
 import { AppComponent } from './app.component';
@@ -45,6 +44,12 @@ import { ProfilComponent } from './components/profil/profil.component';
 import { TruckownerprofileComponent } from './components/truckownerprofile/truckownerprofile.component';
 import { PayerComponent } from './components/payer/payer.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { PremierFoodTruckComponent } from './components/trucks/listeDeTrucks/premier-food-truck/premier-food-truck.component';
+import { DeuxiemeFoodTruckComponent } from './components/trucks/listeDeTrucks/deuxieme-food-truck/deuxieme-food-truck.component';
+import { TroisiemeFoodTruckComponent } from './components/trucks/listeDeTrucks/troisieme-food-truck/troisieme-food-truck.component';
+import { QuatriemeFoodTruckComponent } from './components/trucks/listeDeTrucks/quatrieme-food-truck/quatrieme-food-truck.component';
+import { CinquiemeFoodTruckComponent } from './components/trucks/listeDeTrucks/cinquieme-food-truck/cinquieme-food-truck.component';
+import { SixiemeFoodTruckComponent } from './components/trucks/listeDeTrucks/sixieme-food-truck/sixieme-food-truck.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +58,6 @@ import { BasketComponent } from './components/basket/basket.component';
     FootComponent,
     ConnexionComponent,
     FormComponent,
-    TrucklistComponent,
     TruckdetailsComponent,
     BarreAlerteComponent,
     ProfileUtilisateurComponent,
@@ -65,6 +69,12 @@ import { BasketComponent } from './components/basket/basket.component';
     TruckownerprofileComponent,
     PayerComponent,
     BasketComponent,
+    PremierFoodTruckComponent,
+    DeuxiemeFoodTruckComponent,
+    TroisiemeFoodTruckComponent,
+    QuatriemeFoodTruckComponent,
+    CinquiemeFoodTruckComponent,
+    SixiemeFoodTruckComponent
   ],
   imports: [
     AppRoutingModule,

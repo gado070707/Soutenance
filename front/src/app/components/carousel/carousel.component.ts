@@ -13,6 +13,7 @@ export class CarouselComponent implements OnInit {
  trucks;
  imgBase: number = 1;
  imgMax: number = 0;
+ 
 
   constructor() {
    }
