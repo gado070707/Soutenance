@@ -33,6 +33,7 @@ export class HeadComponent implements OnInit {
     
   logout() {
     this.authservice.logout();
+    window.location.reload();
     this.router.navigate(['/']);
   }
 }
