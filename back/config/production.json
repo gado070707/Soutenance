@@ -3,7 +3,7 @@
         "name": "Aston API DEV"
     },
     "server": {
-        "addr": "findmytruck.fr",
+        "addr": "localhost",
         "port": 3000,
         "jwt": {
             "expiresIn": 3600

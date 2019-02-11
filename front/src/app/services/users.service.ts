@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { User } from '../models/user';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { Links } from '../includes/links';
 })
 export class UsersService {
 
-  constructor( 
+  constructor(
     private http: HttpClient,
     private link: Links,
   ) {}
@@ -21,25 +21,30 @@ export class UsersService {
     return this.http.post(this.API_BASE_URL + '/register', user);
   }
 
-  find(id: Number): Observable<User> {
-    const url = this.API_BASE_URL + '/' + id;
+  findById(id: Number): Observable<User> {
+    const url = this.API_BASE_URL + '/api/users/' + id;
+    return this.http.get<User>(url)
+      .pipe( map(res => res) );
+  }
+
+  findByName(name: String): Observable<User> {
+    const url = this.API_BASE_URL + '/api/user/' + name;
     return this.http.get<User>(url)
       .pipe( map(res => res) );
   }
 
   all(): Observable<User[]> {
-    return this.http.get<User[]>(this.API_BASE_URL)
+    return this.http.get<User[]>(this.API_BASE_URL + '/api/users/')
       .pipe( map(res => res) );
   }
 
-  delete(id: Number): Observable<{}> {
-    const url = this.API_BASE_URL + '/' + id;
-    return this.http.delete(url);
+  update(user: User, id: Number) {
+    const url = this.API_BASE_URL + '/api/user/' + id;
+    return this.http.put<User>(url, user);
   }
 
-  update(user: User, id: Number) {
-    const url = this.API_BASE_URL + '/' + id;
+  updateDelete(user: User, id: Number) {
+    const url = this.API_BASE_URL + '/api/userdel/' + id;
     return this.http.put<User>(url, user);
   }
 }
-  

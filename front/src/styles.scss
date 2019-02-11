@@ -3,9 +3,8 @@
 
 body, html 
 {
-    height:100%;
     margin: 0 auto;
-    background-color: #FFF0A4;
+    background-color: white;
 }
 
 body
@@ -14,22 +13,19 @@ body
     font-size: 1rem;
 }
 
-a 
-{
-    text-decoration: none;
-}
-
 .container
 {
-    width: 80%;
-    margin:0 auto;
+    width: 100%;
     padding: 1.3rem;
-    display: grid;
-    grid-template-columns: 30% auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
     a 
     {
         color: white;
+        text-decoration: none;
+        cursor: pointer;
     }
 }
 
@@ -38,4 +34,17 @@ section
     width: 80%;
     margin: 0 auto;
     padding: 2rem;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.button1 {
+    background: rgb(129, 6, 37);
+    margin: 2%;
 }

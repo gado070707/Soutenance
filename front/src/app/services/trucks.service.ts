@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 import { Truck } from '../models/truck';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -13,7 +13,8 @@ export class TrucksService {
 
   constructor( private http: HttpClient) { }
 
-  add(Truck: Truck) {
+  // tslint:disable-next-line:no-shadowed-variable
+  add (Truck: Truck) {
     return this.http.post(API_BASE_URL, Truck);
   }
 
@@ -33,9 +34,9 @@ export class TrucksService {
     return this.http.delete(url);
   }
 
+  // tslint:disable-next-line:no-shadowed-variable
   update(Truck: Truck, id: Number) {
     const url = API_BASE_URL + '/' + id;
     return this.http.put<Truck>(url, Truck);
   }
 }
-  

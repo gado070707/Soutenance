@@ -1,62 +1,123 @@
-<!DOCTYPE html>
-<html lang="fr">
+<div class="container">
+  <div id="formulaires">
+    <mat-tab-group>
+      <!-- Onglet de l'utilisateur -->
+      <mat-tab label="Utilisateur" (click)="societe()">
+        <form class="form-fields" method="post" [formGroup]="formUser" (ngSubmit)="functionUser()">
+          <div>
+            <mat-form-field>
+              <mat-label>Nom</mat-label>
+              <input matInput type="text" placeholder="Durand" maxlength="25" formControlName="name" pattern="^[a-zA-Z]+"
+                required />
+            </mat-form-field>
+          </div>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Inscription Utilisateur</title>
-</head>
+          <div>
+            <mat-form-field>
+              <mat-label>Prénom</mat-label>
+              <input matInput type="text" placeholder="Pierre" maxlength="25" formControlName="firstname" pattern="^[a-zA-Z]+"
+                required />
+            </mat-form-field>
+          </div>
 
-<body>
-  <div class="container">
-    <form method="post" [formGroup]="form" (ngSubmit)="chooseFunction()">
-      <div class="row">
-        <div class="col-25">
-          <label for="name">Nom</label>
-        </div>
-        <div class="col-50">
-          <input type="text" id="name" formControlName="name" placeholder="Nom" required>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="firstname">Prénom</label>
-        </div>
-        <div class="col-50">
-          <input type="text" id="firstname" formControlName="firstname" placeholder="Prénom" required>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="password">Mot de passe</label>
-        </div>
-        <div class="col-50">
-          <input type="text" id="password" formControlName="password" placeholder="Mot de passe" required>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-25">
-            <label for="mail">Adresse Mail</label>
+          <div>
+            <mat-form-field>
+              <mat-label>Mot de passe</mat-label>
+              <input matInput type="password" placeholder="********" min="8" minlength="8" maxlength="25"
+                formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 8 caractères" required />
+            </mat-form-field>
           </div>
-          <div class="col-50">
-            <input type="email" id="mail" formControlName="mail" placeholder="Adresse Mail" required>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Adresse Mail</mat-label>
+              <input matInput type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
+                formControlName="mail" pattern="" required />
+            </mat-form-field>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="tel">Téléphone</label>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Téléphone</mat-label>
+              <input matInput type="tel" placeholder="0606060606" maxlength="25" formControlName="tel"
+                required />
+            </mat-form-field>
           </div>
-          <div class="col-50">
-            <input type="text" id="tel" formControlName="tel" placeholder="Numéro de téléphone">
+
+          <div>
+            <button mat-raised-button MatFormFieldControl type="submit" [disabled]="!formUser.valid" color="primary">Je
+              m'inscris !</button>
           </div>
-        </div>
-      <div class="row">
-        <input type="submit" value="Je m'inscris !">
-      </div>
-    </form>
+        </form>
+      </mat-tab>
+      
+      <!-- Onglet du foodtruck -->
+      <mat-tab label="Foodtruck">
+        <form class="form-fields" method="post" [formGroup]="formFoodTruck" (ngSubmit)="foodTruck()">
+
+          <div>
+            <mat-form-field>
+              <mat-label>Nom</mat-label>
+              <input matInput type="text" placeholder="Durand" maxlength="25" formControlName="name" pattern="^[a-zA-Z]+"
+                required />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Prénom</mat-label>
+              <input matInput type="text" placeholder="Pierre" maxlength="25" formControlName="firstname" pattern="^[a-zA-Z]+"
+                required />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Mot de passe</mat-label>
+              <input matInput type="password" placeholder="********" min="8" minlength="8" maxlength="25"
+                formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 8 caractères" required />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Adresse Mail</mat-label>
+              <input matInput type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
+                formControlName="mail" pattern="" required />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field>
+              <mat-label>Téléphone</mat-label>
+              <input matInput type="tel" placeholder="0606060606" maxlength="25" formControlName="tel"
+                required />
+            </mat-form-field>
+          </div>
+
+
+          <div>
+            <mat-form-field id="inputmffsociete">
+              <mat-label>Nom de la société</mat-label>
+              <input matInput id="inputSociete" type="text" maxlength="25" formControlName="textSociete" placeholder="Aston"
+                required />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field id="inputmffsiret">
+              <mat-label>Numéro de SIRET</mat-label>
+              <input matInput id="inputSiret" type="text" maxlength="25" formControlName="textSiret" placeholder="123456789"
+                required />
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-raised-button MatFormFieldControl type="submit" [disabled]="!formFoodTruck.valid" color="primary">Je
+              m'inscris !</button>
+          </div>
+        </form>
+      </mat-tab>
+    </mat-tab-group>
   </div>
 
-</body>
-
-</html>
+</div>

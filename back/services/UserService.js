@@ -3,7 +3,7 @@ const bcryptPassword = require('../modules/bcrypt-password');
 
 //  Appels de la BDD
 
-function create(data) { console.log(data)
+function create(data) {
     return User.create({
         name: data.name,
         password: data.password,
@@ -31,19 +31,16 @@ findByMail = (attribut) => {
 }
 
 exports.authenticate = data => {
-    return findByMail({ mail: data.mail }).then(
-        
+    return findByMail({ mail: data.mail }).then(        
         user => {
             if(!user) {
-                console.log(data.mail);
-
-                throw new Error("User not found");
+                return null
             }
 
             return bcryptPassword.verify(data.password, user.password).then(
                 isOk => {
                     if(!isOk) {
-                        throw new Error("Password invalid");
+                        return null
                     }
                     else {
                         return user;
@@ -72,8 +69,13 @@ exports.delete = (id) => {
     });
 }
 
-exports.update = (data) => {
-    return User.update(data, { 
-        where: { id: data.id } 
+exports.update = (data, id) => {
+    return User.update(data, 
+        { where: {id: id}   });
+}
+
+exports.updatedel = (data, id) => {
+    return User.update(data, 
+        { where: {id: id}
     });
 }

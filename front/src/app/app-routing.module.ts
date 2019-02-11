@@ -6,17 +6,20 @@ import { ConnexionComponent } from './components/connexion/connexion.component';
 import { FormComponent } from './components/form/form.component';
 import { TruckdetailsComponent } from './components/trucks/truckdetails/truckdetails.component';
 import { TrucklistComponent } from './components/trucks/trucklist/trucklist.component';
+import { ProfilComponent } from './components/profil/profil.component';
+import { AccueilComponent } from './components/accueil/accueil.component';
 
 import { WithCredentialInterceptor } from './helpers/with-credentials.interceptor';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Route[] = [
+  { path: '', component: AccueilComponent},
   { path: 'form', component: FormComponent},
   { path: 'connexion', component: ConnexionComponent },
-  { path: 'users',
+  { path: 'user',
     canActivate: [AuthGuard],
     children: [
-        // { path: '', redirectTo: 'list', pathMatch: 'full' },
+      { path: 'profil/:id', component: ProfilComponent},
         // { path: 'list', component: ListComponent, },
         // { path: 'add', component: AddComponent },
         // { path: ':id', component: DetailsComponent },
