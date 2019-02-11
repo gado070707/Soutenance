@@ -91,7 +91,7 @@ export class ProfileUtilisateurComponent implements OnInit {
   updateuser() {
     const id = this.route.snapshot.paramMap.get('id');
 
-    if(this.formProfilUser.value.password == '') {
+    if (this.formProfilUser.value.password == '') {
       let elements = this.formProfilUser.value;
 
       this.formProfilUser = this.formBuilder.group({
@@ -105,7 +105,6 @@ export class ProfileUtilisateurComponent implements OnInit {
       (user: User) => {
         this.usersService.findById(parseInt(this.id)).subscribe(
           (user: User) => {
-            
             window.location.reload();
           });
       },

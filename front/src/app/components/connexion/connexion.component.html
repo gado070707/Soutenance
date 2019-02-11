@@ -1,7 +1,7 @@
 <div class="container">
   <div id="formulaires">
     <h4>Connexion</h4>
-    <form class="form-fields" method="post" [formGroup]="connexionForm" (ngSubmit)="connexion()">
+    <form class="form-fields" method="post" [formGroup]="connexionForm" (ngSubmit)="isGoodPassword()">
       <div>
         <mat-form-field>
           <mat-label>Adresse email</mat-label>
@@ -13,7 +13,7 @@
       <div>
         <mat-form-field>
           <mat-label>Mot de passe</mat-label>
-          <input matInput type="password" placeholder="********"  maxlength="25" formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 6 caractères"
+          <input matInput type="password" placeholder="********"  maxlength="25" formControlName="password" matTooltip="Veuillez entrer un mot de passe avec un minimum de 8 caractères"
             required />
         </mat-form-field>
       </div>

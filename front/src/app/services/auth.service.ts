@@ -35,9 +35,10 @@ export class AuthService {
             mail: mail,
             password: password
         };
+        // console.log('mail : ' + mail + '! Password : ' + password);
+        console.log();
+        const a = this.http.post<User>(this.API_BASE_URL + '/authentification', data)
 
-        return this.http.post<User>(this.API_BASE_URL + '/authentification', data)
-            .pipe(tap(user => {}))
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response.
                 if (user) {
@@ -46,9 +47,15 @@ export class AuthService {
                     localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
                     this.currentUserSubject.next(user);
                 }
-
                 return user;
             }));
+            // console.log(a);
+            if (a) {
+                // console.log('mail : ' + mail + '! Password : ' + password);
+            } else {
+                // console.log('mail : ' + mail + '! Password : ' + password);
+            }
+            return a;
     }
 
     logout() {

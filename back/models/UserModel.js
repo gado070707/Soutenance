@@ -31,11 +31,11 @@ module.exports = sequelize.define('users', {
         field: "active",
         allowNull: true,
     },
-    entreprise:{
-        type:Sequelize.STRING,
-        field:"entreprise",
-        allowNull : true
-    },
+    // entreprise:{
+    //     type:Sequelize.STRING,
+    //     field:"entreprise",
+    //     allowNull : true
+    // },
     created_at:{
         type:Sequelize.DATE,
         field:"created_at",

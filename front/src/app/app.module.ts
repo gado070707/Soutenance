@@ -43,6 +43,7 @@ import { PopupopComponent } from './components/userprofile/popupop/popupop.compo
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { TruckownerprofileComponent } from './components/truckownerprofile/truckownerprofile.component';
+import { PayerComponent } from './components/payer/payer.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TruckownerprofileComponent } from './components/truckownerprofile/truck
     MapComponent,
     ProfilComponent,
     TruckownerprofileComponent,
+    PayerComponent,
   ],
   imports: [
     AppRoutingModule,
