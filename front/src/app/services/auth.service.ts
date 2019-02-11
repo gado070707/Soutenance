@@ -49,6 +49,11 @@ export class AuthService {
         }));
     }
 
+    updateUser(user: User) {
+        localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
+        this.currentUserSubject.next(user);
+    }
+
     logout() {
         // remove user form local storage to log user out.
         localStorage.removeItem(LOCAL_STORAGE_USER_KEY);

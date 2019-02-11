@@ -1,7 +1,8 @@
 export interface Truck {
     id?: Number;
     name: string;
-    tel: string;
-    carte: string;
+    truckowner: number;
+    precommande: boolean;
+    paiement: boolean;
     active: boolean;
 }

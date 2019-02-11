@@ -4,20 +4,28 @@
     Votre photo
   </div>
   <div>
-    <mat-card class="cardcontainer">
-      <div class="cardelements">{{ user.name }}</div>
-      <div class="cardelements">{{ user.mail }}</div>  
-    </mat-card>
+    <div class="cardprofilcontainer">
+      <mat-card class="cardcontainer">
+        <div class="cardelements">{{ user.name }}</div>
+        <div class="cardelements">{{ user.mail }}</div>  
+      </mat-card>
+      <div *ngFor="let truck of trucks">
+        <mat-card class="cardcontainer">
+          <div class="cardelements">{{ truck.name }}</div>
+          <div class="cardelements">{{ truck.mail }}</div>  
+        </mat-card>
+      </div>
+    </div>
     <div class="buttonprofilcontainer">
-        <button type="button" class="btn btn-danger button1" (click)="showformuser()">Editer mon compte</button>
-        <button type="button" class="btn btn-danger button1" (click)="showformuser()">Ajouter un Truck</button>
-        <button type="button" class="btn btn-danger button1" (click)="showformuser()">Editer mes Trucks</button>
+        <button type="button" class="btn btn-danger button1" (click)="editStatus('userForm')">Editer mon compte</button>
+        <button type="button" class="btn btn-danger button1" (click)="editStatus('truckForm')">Ajouter un Truck</button>
+        <button type="button" class="btn btn-danger button1" (click)="editStatus('editTruckForm')">Editer mes Trucks</button>
         <button type="button" class="btn btn-danger button1" (click)="suppruser()">Supprimer mon comtpe</button>
-    </div>    
+    </div>
   </div>
 </div>
 
-<mat-card class="cardformcontainer" [ngClass]="{show: formuserstatus, hide: !formuserstatus}">
+<mat-card class="cardformcontainer" [ngClass]="{show: states.userForm, hide: !states.userForm}">
   <form class="form-fields" method="post" [formGroup]="formProfilUser" (ngSubmit)="updateuser()">
     <div class="formcontainer">
 
@@ -58,6 +66,36 @@
           <mat-label>Téléphone</mat-label>
           <input matInput id="tel" type="tel" placeholder="0606060606" maxlength="25" formControlName="tel" required />
         </mat-form-field>
+      </div>
+
+      <div style="margin: 2%;">
+        <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
+      </div>
+
+    </div>
+  </form>
+</mat-card>
+
+<!--  Formulaire ajouter un truck-->
+<mat-card class="cardformcontainer" [ngClass]="{show: states.truckForm, hide: !states.truckForm}">
+  <form class="form-fields" method="post" [formGroup]="formAddTruck" (ngSubmit)="addTruck()">
+    <div class="formcontainer">
+
+      <div style="margin: 2%;">
+        <mat-form-field>
+          <mat-label>Nom du Truck</mat-label>
+          <input matInput type="text" placeholder="Nom" formControlName="nametruck" pattern="^[a-zA-Z]+" required />
+        </mat-form-field>
+      </div>
+
+      <div style="margin: 2%;">
+          <mat-label>Accepter les pré-commande</mat-label>
+          <input type="checkbox" formControlName="precom" required />
+      </div>
+
+      <div style="margin: 2%;">
+          <mat-label>Accepter les pré-paiement</mat-label>
+          <input type="checkbox" formControlName="prepaie" required />
       </div>
 
       <div style="margin: 2%;">

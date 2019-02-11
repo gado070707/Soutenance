@@ -4,8 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../../models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 
-const LOCAL_STORAGE_USER_KEY = 'currentItem';
-
 @Component({
   selector: 'app-head',
   templateUrl: './head.component.html',
@@ -18,7 +16,6 @@ export class HeadComponent implements OnInit {
   currentUser: User;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private authservice: AuthService
   ) { 

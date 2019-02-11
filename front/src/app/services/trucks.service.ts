@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Truck } from '../models/truck';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Links } from '../includes/links';
 
 const API_BASE_URL = 'https://localhost:3000/trucks';
 
@@ -11,7 +12,11 @@ const API_BASE_URL = 'https://localhost:3000/trucks';
 })
 export class TrucksService {
 
-  constructor( private http: HttpClient) { }
+  constructor( 
+    private http: HttpClient,
+    private link: Links,
+    ) { }
+  API_BASE_URL = this.link.linkCreator();
 
   // tslint:disable-next-line:no-shadowed-variable
   add (Truck: Truck) {
@@ -21,6 +26,12 @@ export class TrucksService {
   find(id: Number): Observable<Truck> {
     const url = API_BASE_URL + '/' + id;
     return this.http.get<Truck>(url)
+      .pipe( map(res => res) );
+  }
+
+  findById(id: Number): Observable<Truck[]> {
+    const url = API_BASE_URL + '/api/trucks/' + id;
+    return this.http.get<Truck[]>(url)
       .pipe( map(res => res) );
   }
 
