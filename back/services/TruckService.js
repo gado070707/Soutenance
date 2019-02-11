@@ -22,6 +22,12 @@ exports.findAll = data => {
     return Truck.findAll();
 }
 
+exports.findAllByTruckowner = (attribut) => {
+    return Truck.findAll({
+        where: attribut 
+    });
+}
+
 exports.delete = (id) => {
     return Truck.destroy({
         where: { id: id }

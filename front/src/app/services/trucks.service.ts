@@ -5,7 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Links } from '../includes/links';
 
-const API_BASE_URL = 'https://localhost:3000/trucks';
+const API_BASE_URL = 'https://localhost:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -30,13 +30,19 @@ export class TrucksService {
   }
 
   findById(id: Number): Observable<Truck[]> {
-    const url = API_BASE_URL + '/api/trucks/' + id;
+    const url = API_BASE_URL + '/api/trucksByOwner/' + id;
     return this.http.get<Truck[]>(url)
       .pipe( map(res => res) );
   }
 
   all(): Observable<Truck[]> {
     return this.http.get<Truck[]>(API_BASE_URL)
+      .pipe( map(res => res) );
+  }
+
+  allByOwner(id: Number): Observable<Truck[]> {
+    const url = API_BASE_URL + '/api/trucksByOwner/' + id;
+    return this.http.get<Truck[]>(url)
       .pipe( map(res => res) );
   }
 

@@ -29,6 +29,8 @@ export class TruckownerprofileComponent implements OnInit {
   returnUrl: string;
   name: string;
   mail: string;
+  prec: string = "Non";
+  prep: string = "Non";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,9 +59,26 @@ export class TruckownerprofileComponent implements OnInit {
         });
     });
 
-    this.trucksService.findById(this.currentUser.id).subscribe(
+    this.trucksService.allByOwner(this.currentUser.id).subscribe(
       data => {
         this.trucks = data;
+
+        let i = 0;
+
+        for(let truck in this.trucks) {
+          if(this.trucks[truck].precommande) {
+            this.prec = "Oui";
+          }
+          
+          if(this.trucks[truck].paiement){
+            this.prep = "Oui";
+          }
+
+          this.trucks[i]['prec'] = this.prec;
+          this.trucks[i]['prep'] = this.prep;
+
+          i++;
+        }
     });
     
 

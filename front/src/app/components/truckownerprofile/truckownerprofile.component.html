@@ -9,12 +9,11 @@
         <div class="cardelements">{{ user.name }}</div>
         <div class="cardelements">{{ user.mail }}</div>  
       </mat-card>
-      <div *ngFor="let truck of trucks">
-        <mat-card class="cardcontainer">
-          <div class="cardelements">{{ truck.name }}</div>
-          <div class="cardelements">{{ truck.mail }}</div>  
-        </mat-card>
-      </div>
+      <mat-card class="cardcontainer" *ngFor="let truck of trucks">
+        <div class="cardelements truckname">{{ truck.name }}</div>
+        <div class="cardelements">Accepte la pré-commande: {{ truck.prec }}</div>
+        <div class="cardelements">Accepte la paiement en ligne: {{ truck.prep }}</div>
+      </mat-card>
     </div>
     <div class="buttonprofilcontainer">
         <button type="button" class="btn btn-danger button1" (click)="editStatus('userForm')">Editer mon compte</button>
@@ -77,7 +76,7 @@
 </mat-card>
 
 <!--  Formulaire ajouter un truck-->
-<mat-card class="cardformcontainer" [ngClass]="{show: states.truckForm, hide: !states.truckForm}">
+<!-- <mat-card class="cardformcontainer" [ngClass]="{show: states.truckForm, hide: !states.truckForm}">
   <form class="form-fields" method="post" [formGroup]="formAddTruck" (ngSubmit)="addTruck()">
     <div class="formcontainer">
 
@@ -104,4 +103,4 @@
 
     </div>
   </form>
-</mat-card>
+</mat-card> -->

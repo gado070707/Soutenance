@@ -15,12 +15,22 @@
   }
 
   .cardcontainer {
-    width: 100%;
+    width: 50%;
     margin: 2%;
   }
   
   .cardelements {
     margin: 5% 0;
+    width: 100%;
+  }
+
+  .truckname {
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  .truckelements {
+    font-weight: bold;
   }
   
   .buttonprofilcontainer {
