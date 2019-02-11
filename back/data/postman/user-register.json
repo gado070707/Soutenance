@@ -1,5 +1,6 @@
 {
     "name": "foo",
-    "email": "foo@gmail.com",
-    "password": "bar"
+    "mail": "foo@gmail.com",
+    "password": "bar",
+    "tel": "0606060607"
 }

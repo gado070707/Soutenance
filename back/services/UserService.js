@@ -34,9 +34,10 @@ exports.authenticate = data => {
     return findByMail({ mail: data.mail }).then(        
         user => {
             if(!user) {
-                return null
+                return null;
             }
 
+           
             return bcryptPassword.verify(data.password, user.password).then(
                 isOk => {
                     if(!isOk) {

@@ -21,19 +21,6 @@
 	        "idle": 10000
         },
         "url": "mysql://root:@localhost/findmytruck"
-    },
-    "security": {
-        "pem": {
-            "days": 5,
-            "selfSigned": true
-        },
-        "cors": {
-            "credentials": true,
-            "origin": "http://localhost:4200"
-        },
-        "jwt": {
-            "expiresIn": 7200
-        }
-            
     }
+
 }
