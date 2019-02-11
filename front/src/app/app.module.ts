@@ -44,6 +44,7 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { TruckownerprofileComponent } from './components/truckownerprofile/truckownerprofile.component';
 import { PayerComponent } from './components/payer/payer.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { PayerComponent } from './components/payer/payer.component';
     ProfilComponent,
     TruckownerprofileComponent,
     PayerComponent,
+    BasketComponent,
   ],
   imports: [
     AppRoutingModule,

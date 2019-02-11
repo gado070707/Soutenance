@@ -11,14 +11,14 @@
     },
     "db": {
         "database": "findmytruck",
-        "username": "root",
-        "password": "",
+        "username": "dreamteam",
+        "password": "azeAZE123123",
         "host":     "localhost",
-        "port":     "",
+        "port":     "3306",
         "dialect":  "mysql",
         "pool": {
 	        "acquire": 30000,
-	        "idle": 10000
+	        "idle": 30000
         },
         "url": "mysql://root:@localhost/findmytruck"
     },
