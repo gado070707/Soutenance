@@ -103,10 +103,7 @@ export class ProfileUtilisateurComponent implements OnInit {
 
     this.usersService.update(this.formProfilUser.value, parseInt(id)).subscribe(
       (user: User) => {
-        this.usersService.findById(parseInt(this.id)).subscribe(
-          (user: User) => {
-            window.location.reload();
-          });
+        this.user = this.formProfilUser.value;
       },
       error => {}
     );

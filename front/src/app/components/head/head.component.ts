@@ -15,25 +15,22 @@ const LOCAL_STORAGE_USER_KEY = 'currentItem';
 export class HeadComponent implements OnInit {
   appTitle = 'FIND MY TRUCK';
 
-  id: Number;
-
-  private currentUserSubject: BehaviorSubject<User>;
+  currentUser: User;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authservice: AuthService
   ) { 
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)));
+      this.authservice.currentUser.subscribe(user => this.currentUser = user)
    }
 
   ngOnInit() {
-    this.id = this.currentUserSubject.value.id;
+
   }
     
   logout() {
     this.authservice.logout();
-    window.location.reload();
     this.router.navigate(['/']);
   }
 }

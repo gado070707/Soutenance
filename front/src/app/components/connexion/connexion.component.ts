@@ -51,7 +51,6 @@ export class ConnexionComponent implements OnInit {
     this.authService.login(this.form.mail.value, this.form.password.value)
       .pipe(first()).subscribe(
         data => {
-          window.location.reload();
           this.router.navigate([this.returnUrl]);          
         },
         err => {

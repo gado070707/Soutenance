@@ -36,26 +36,17 @@ export class AuthService {
             password: password
         };
         // console.log('mail : ' + mail + '! Password : ' + password);
-        console.log();
-        const a = this.http.post<User>(this.API_BASE_URL + '/authentification', data)
-
-            .pipe(map(user => {
-                // login successful if there's a jwt token in the response.
-                if (user) {
-                    // store user details and jwt token in local storage to
-                    // keep user logged in between pages refresh.
-                    localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
-                    this.currentUserSubject.next(user);
-                }
-                return user;
-            }));
-            // console.log(a);
-            if (a) {
-                // console.log('mail : ' + mail + '! Password : ' + password);
-            } else {
-                // console.log('mail : ' + mail + '! Password : ' + password);
+        return this.http.post<User>(this.API_BASE_URL + '/authentification', data)
+        .pipe(map(user => {
+            // login successful if there's a jwt token in the response.
+            if (user) {
+                // store user details and jwt token in local storage to
+                // keep user logged in between pages refresh.
+                localStorage.setItem(LOCAL_STORAGE_USER_KEY, JSON.stringify(user));
+                this.currentUserSubject.next(user);
             }
-            return a;
+            return user;
+        }));
     }
 
     logout() {
