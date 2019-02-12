@@ -2,7 +2,7 @@
 export interface Marker {
     id?: Number;
     name: string;
-    marker: {},
+    marker: {};
     lat: string;
     lng: string;
     trucks: {};
