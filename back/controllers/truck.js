@@ -41,11 +41,7 @@ exports.findAll = (req, res) => {
 
 exports.findAllByTruckowner = (req, res) => {
     TruckService.findAllByTruckowner({truckowner: req.params.id}).then(
-<<<<<<< HEAD
         data => {
-=======
-                (data) => {
->>>>>>> a55294830ab69d0b0dd2699f79f6f903e11551ae
             res.status(201).json(data);
         },
         err => {
