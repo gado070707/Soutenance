@@ -7,11 +7,14 @@
   <div class="page">
     <div class="schedule"> A consommer sur notre terrasse ou à emporter. Des produits frais pour des plats faits maison, viande Française hachée par nos soins, frites maison & pain artisanal.</div>
     <div class="card">
-      <ul class="menu">
-        <li class="choixMenu"><p>Le burger Classique</p><p>Confit d'oignons, bacon, Cheddar, Sauce Barbecue Maison</p>
-          <p>10€</p>
-          <p><input id="b1" type="button" value="Ajouter" /></p>
+      <ul class="menu" *ngFor="let produit of trucks[0].produits">
+        <li class="choixMenu"><div>{{produit.nom}}</div><p>{{produit.desc}}</p>
+          <div>{{produit.prix}}</div>
+          <button class="btn btn-danger button1" (click)="addCart(trucks[0].id)">Ajouter</button>
         </li>
+      </ul>
+
+      <!--<ul class="menu">
 
         <li class="choixMenu"><p>Le burger Roquefort</p><p>Confit d'oignons, Crème de Roquefort Maison</p>
           <p>10€</p>
@@ -39,7 +42,7 @@
         </li>
 
         <li class="panier"><input type="button" value="Panier"></li>
-      </ul>
+      </ul>-->
     </div>
   </div>
 </div>

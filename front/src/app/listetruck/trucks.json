@@ -1,38 +1,91 @@
 [
     {
-            "id": 1,
-            "name": "Le comptoir volant",
-            "image": "truck1.jpg",
-            "routes": "trucks/foodtruck/premier"
+        "id": 1,
+        "name": "Le comptoir volant",
+        "image": "truck1.jpg",
+        "routes": "trucks/foodtruck/premier",
+        "produits": [
+                {
+                        "id": 1,
+                        "nom": "Le burger Classique",                        
+                        "desc": "Confit d'oignons, bacon, Cheddar, Sauce Barbecue Maison",
+                        "prix": "10€"
+                },
+                {
+                        "id": 2,
+                        "nom": "Le burger Roquefort",                        
+                        "desc": "Confit d'oignons, Crème de Roquefort Maison",
+                        "prix": "10€"
+                },
+                {
+                        "id": 3,
+                        "nom": "Le burger Méxicain",                        
+                        "desc": "Oignons, Poivrons et Piment Maison",
+                        "prix": "10€"
+                },
+                {
+                        "id": 4,
+                        "nom": "Le double burger",                        
+                        "desc": "Au choix: Classic, Roquefort ou Méxicain",
+                        "prix": "10€"
+                },
+                {
+                        "id": 5,
+                        "nom": "Pulled Pork Sandwich",                        
+                        "desc": "Epaule de Porc Braisée 12H dans de la Bière et des Epices",
+                        "prix": "10€"
+                },
+                {
+                        "id": 6,
+                        "nom": "Burger Ribs Barbecue",                        
+                        "desc": "Nos Ribs désossées services dans notre pain burger avec des légumes",
+                        "prix": "10€"
+                }
+        ]
     },
     {
             "id": 2,
             "name": "L'asiatique croustillant",
             "image": "truck2.jpg",
-            "routes": ""
+            "routes": "",
+            "produit": {
+                    
+            }
     },
     {
             "id": 3,
             "name": "Les Burgers delicieux",
             "image": "truck3.jpg",
-            "routes": ""
+            "routes": "",
+            "produit": {
+                    
+            }
     },
     {
             "id": 4,
             "name": "Le mignon",
             "image": "truck4.jpg",
-            "routes": ""
+            "routes": "",
+            "produit": {
+                    
+            }
     },
     {
             "id": 5,
             "name": "Resto Do",
             "image": "truck5.jpg",
-            "routes": ""
+            "routes": "",
+            "produit": {
+                    
+            }
     },
     {
             "id": 6,
             "name": "Salad'Bar",
             "image": "truck6.jpg",
-            "routes": ""
+            "routes": "",
+            "produit": {
+                    
+            }
     }
 ]
