@@ -24,14 +24,8 @@ export class TrucksService {
   }
 
   find(id: Number): Observable<Truck> {
-    const url = API_BASE_URL + '/' + id;
+    const url = API_BASE_URL + '/api/trucks/' + id;
     return this.http.get<Truck>(url)
-      .pipe( map(res => res) );
-  }
-
-  findById(id: Number): Observable<Truck[]> {
-    const url = API_BASE_URL + '/api/trucksByOwner/' + id;
-    return this.http.get<Truck[]>(url)
       .pipe( map(res => res) );
   }
 

@@ -8,6 +8,9 @@ exports.create = (data) => {
         truckowner: data.truckowner,
         precommande: data.precommande,
         paiement: data.paiement,
+        image: data.image,
+        logo: data.logo,
+        histoire: data.histoire,
         active: true
     });
 }

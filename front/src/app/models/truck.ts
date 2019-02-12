@@ -4,5 +4,8 @@ export interface Truck {
     truckowner: number;
     precommande: boolean;
     paiement: boolean;
+    image: string;
+    logo: string;
+    histoire : string;
     active: boolean;
 }
