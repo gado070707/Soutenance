@@ -27,8 +27,6 @@ export class TruckownerprofileComponent implements OnInit {
   formProfilUser: FormGroup;
   formAddTruck: FormGroup;
   returnUrl: string;
-  name: string;
-  mail: string;
   prec: string = "Non";
   prep: string = "Non";
 
@@ -47,7 +45,7 @@ export class TruckownerprofileComponent implements OnInit {
   ngOnInit() {
     //  Remplissage des formulaires
     this.usersService.findById(this.currentUser.id).subscribe(
-      data => {
+      data => { 
         this.user = data;
 
         this.formProfilUser = this.formBuilder.group({
@@ -57,6 +55,12 @@ export class TruckownerprofileComponent implements OnInit {
           password: '',
           tel: this.user.telephone,
         });
+    });
+
+    this.formAddTruck = this.formBuilder.group({
+      nametruck: "",
+      precom: "",
+      prepaie: "",
     });
 
     this.trucksService.allByOwner(this.currentUser.id).subscribe(
@@ -98,6 +102,10 @@ export class TruckownerprofileComponent implements OnInit {
         this.states[state] = true;
       }
     }
+  }
+
+  getTruck(id){
+
   }
 
   updateuser() {

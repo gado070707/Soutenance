@@ -1,4 +1,4 @@
-const LignesCommandes = require('../models/LignesCommandesModel');
+const LignesCommandes = require('../models/LigneCommandeModel');
 
 //  Appels de la BDD
 exports.create =(data) => {

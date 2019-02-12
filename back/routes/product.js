@@ -9,6 +9,3 @@ api.get('/products/:id', controllers.find);
 api.get('/products', controllers.findAll);
 
 api.delete('/products/:id', controllers.delete);
-
-
-app.post('/register', controllers.register);

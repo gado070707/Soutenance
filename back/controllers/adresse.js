@@ -1,6 +1,5 @@
 const AdresseService = require('../services/AdresseService');
-
-
+//test modif git adri
 exports.create = (req, res) => {
     AdresseService.create(req.body).then(
         (data) => {
