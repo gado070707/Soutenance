@@ -8,3 +8,14 @@
  */
 
 require("./user");
+require("./adresse");
+require("./category");
+require("./ligneCarte");
+require("./ligneCommande");
+require("./presence");
+require("./product");
+require("./role");
+require("./statut");
+require("./truck");
+require("./truckOwner");
+require("./type");
