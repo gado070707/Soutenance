@@ -3,6 +3,7 @@ import { UsersService } from '../../services/users.service';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder} from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-profil',
@@ -11,8 +12,7 @@ import { FormGroup, FormBuilder} from '@angular/forms';
 })
 export class ProfilComponent implements OnInit {
 
-  form: FormGroup;
-  user: User = {} as User;
+  currentUser: User;
 
   role: Number;
 
@@ -20,16 +20,13 @@ export class ProfilComponent implements OnInit {
     private usersService: UsersService,
     private formBuilder: FormBuilder,
     private activeRoutes: ActivatedRoute,
-  ) { }
+    private authservice: AuthService
+  ) {
+    this.authservice.currentUser.subscribe(user => this.currentUser = user)
+   }
 
   ngOnInit() {
-    const id = this.activeRoutes.snapshot.paramMap.get('id');
-
-    this.usersService.findById(parseInt(id)).subscribe(
-      data => { console.log(id)
-        this.user = data;
-        this.role = this.user.role;
-    }); 
+    this.role = this.currentUser.role; 
   }
 
 }

@@ -1,7 +1,6 @@
 const LignesCommandes = require('../models/LigneCommandeModel');
 
 //  Appels de la BDD
-
 exports.create =(data) => {
     return LignesCommandes.create({
         user: data.user,
@@ -11,8 +10,6 @@ exports.create =(data) => {
         active: true
     });
 }
-
-
 
 exports.find = (attribut) => {
     return LignesCommandes.findOne({

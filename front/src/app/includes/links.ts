@@ -13,7 +13,7 @@ export class Links {
         var ip = window.location.origin;
 
         if (ip.indexOf('4200') != -1) {
-            ip = ip.replace('http://localhost:4200', 'https://localhost:3000');
+            ip = ip.replace('https://localhost:4200', 'https://localhost:3000');
         } else {
             ip = ip.replace('https://www.findmytruck.fr', 'https://findmytruck.fr:3000');
         }

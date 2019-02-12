@@ -5,8 +5,7 @@ const controllers = require('../controllers/truck');
 api.post('/trucks', controllers.create);
 api.put('/trucks', controllers.update);
 
-api.get('/trucks/:id', controllers.find);
-api.get('/trucks/truckowner/:id', controllers.findByTruckownerId);
+api.get('/trucksByOwner/:id', controllers.findAllByTruckowner);
 api.get('/trucks', controllers.findAll);
 
 

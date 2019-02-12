@@ -27,20 +27,9 @@ exports.findAll = (req, res) => {
     );
 };
 
-exports.find = (req, res) => {
-    TruckService.find( req.params.id).then(
-        (data) => {
-            res.status(201).json(data);
-        },
-        (err) => {
-            res.status(500).json(err);
-        }
-    );
-};
-
-exports.findByTruckownerId = (req, res) => {
-    TruckService.find(req.params.id).then(
-        (data) => {
+exports.findAllByTruckowner = (req, res) => {
+    TruckService.findAllByTruckowner({truckowner: req.params.id}).then(
+                (data) => {
             res.status(201).json(data);
         },
         (err) => {
