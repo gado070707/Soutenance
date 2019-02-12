@@ -7,21 +7,38 @@ exports.account = (req, res) => {
 
 exports.create = (req, res) => {
     TruckService.create(req.body).then(
+<<<<<<< HEAD
         (data) => {
             res.status(201).json(data);
+=======
+        data => {
+            res.redirect("/");
+>>>>>>> 7ec90e01d17fce3ca22b86954ada3d2d3bf468ca
         },
-        (err) => {
+        err => {
             res.status(500).json(err);
         }
     );
 };
 
+exports.find = (req, res) => {
+    TruckService.find({id: req.params.id})
+        .then(
+            data => {
+                res.json(data);
+            },
+            err => {
+                res.status(500).json(err);
+            }
+        );
+};
+
 exports.findAll = (req, res) => {
     TruckService.findAll(req.body).then(
-        (data) => {
+        data => {
             res.status(201).json(data);
         },
-        (err) => {
+        err => {
             res.status(500).json(err);
         }
     );
@@ -29,10 +46,10 @@ exports.findAll = (req, res) => {
 
 exports.findAllByTruckowner = (req, res) => {
     TruckService.findAllByTruckowner({truckowner: req.params.id}).then(
-                (data) => {
+        data => {
             res.status(201).json(data);
         },
-        (err) => {
+        err => {
             res.status(500).json(err);
         }
     );

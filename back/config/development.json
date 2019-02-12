@@ -11,8 +11,8 @@
     },
     "db": {
         "database": "findmytruck",
-        "username": "root",
-        "password": "",
+        "username": "dreamteam",
+        "password": "azeAZE123123",
         "host":     "localhost",
         "port":     "3306",
         "dialect":  "mysql",

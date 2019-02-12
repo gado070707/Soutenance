@@ -19,10 +19,24 @@ module.exports = sequelize.define('trucks', {
         field: "paiement",
         allowNull: false,
     },
+    image: {
+        type: Sequelize.STRING,
+        field: "image",
+        allowNull: true,
+    },
+    logo: {
+        type: Sequelize.STRING,
+        field: "logo",
+        allowNull: true,
+    },
+    histoire: {
+        type: Sequelize.STRING,
+        field: "histoire",
+        allowNull: true,
+    },
     active: {
         type: Sequelize.BOOLEAN,
         field: "active",
         allowNull: true,
-    },
-
+    }
 });

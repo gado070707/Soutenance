@@ -7,6 +7,5 @@ api.put('/trucks', controllers.update);
 
 api.get('/trucksByOwner/:id', controllers.findAllByTruckowner);
 api.get('/trucks', controllers.findAll);
-
-
 api.delete('/trucks/:id', controllers.delete);
+api.get('/trucks/:id', controllers.find);

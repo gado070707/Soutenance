@@ -3,7 +3,7 @@
     <div *ngFor="let truck of trucks">
       <mat-card class="cardhomecontainer" *ngIf="truck.id >= imgBase  &&  truck.id <= imgBase+2">
         <div class="cardhomeimg">
-            <a href="#" routerLink="{{truck.routes}}" ><img width="100%" src="../../../assets/trucks/{{ truck.image }}"/></a>
+            <a href="#" [routerLink]="['/trucks/details', truck.id]" ><img width="100%" src="../../../assets/trucks/{{ truck.image }}"/></a>
         </div>
         <div class="cardhomelements">{{ truck.name }}</div> 
       </mat-card>
