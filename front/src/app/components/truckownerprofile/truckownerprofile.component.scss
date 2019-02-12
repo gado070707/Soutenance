@@ -65,7 +65,16 @@
   }
   
   .formcontainer {
+    width: 100%;
     display: flex;
+  }
+
+  .formelements {
+    width: 20%;
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
   }
   
   

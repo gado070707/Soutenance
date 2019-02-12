@@ -22,7 +22,7 @@
           <div class="cardelements">Accepte la pré-commande: {{ truck.prec }}</div>
           <div class="cardelements">Accepte la paiement en ligne: {{ truck.prep }}</div>
         </div>
-        <div class="imageedit" (click)="editStatus('editTruckForm')">
+        <div class="imageedit" (click)="editStatus('editTruckForm'); getTruck(truck.id)">
           <img width="100%" src="../../../assets/edit.png"/>
         </div>
       </div>
@@ -34,7 +34,7 @@
   <form class="form-fields" method="post" [formGroup]="formProfilUser" (ngSubmit)="updateuser()">
     <div class="formcontainer">
 
-      <div style="margin: 1%;">
+      <div style="margin-right: 1%;">
         <mat-form-field>
           <mat-label>Nom</mat-label>
           <input matInput type="text" placeholder="Durand" maxlength="25" formControlName="name" pattern="^[a-zA-Z]+"
@@ -50,7 +50,7 @@
         </mat-form-field>
       </div> -->
 
-      <div style="margin: 1%;">
+      <div style="margin-right: 1%;">
         <mat-form-field>
           <mat-label>Mot de passe</mat-label>
           <input matInput type="password" placeholder="********" min="8" minlength="8" maxlength="25"
@@ -58,7 +58,7 @@
         </mat-form-field>
       </div>
 
-      <div style="margin: 1%;">
+      <div style="margin-right: 1%;">
         <mat-form-field>
           <mat-label>Adresse Mail</mat-label>
           <input matInput id="mail" type="email" placeholder="pierre.durand@orange.fr" maxlength="50"
@@ -66,11 +66,41 @@
         </mat-form-field>
       </div>
 
-      <div style="margin: 1%;">
+      <div style="margin-right: 1%;">
         <mat-form-field>
           <mat-label>Téléphone</mat-label>
           <input matInput id="tel" type="tel" placeholder="0606060606" maxlength="25" formControlName="tel" required />
         </mat-form-field>
+      </div>
+
+      <div>
+        <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
+      </div>
+
+    </div>
+  </form>
+</mat-card>
+
+<!--  Formulaire ajouter un truck-->
+<mat-card class="cardformcontainer" [ngClass]="{show: states.truckForm, hide: !states.truckForm}">
+  <form class="form-fields" method="post" [formGroup]="formAddTruck" (ngSubmit)="addTruck()">
+    <div class="formcontainer">
+
+      <div class="formelements">
+        <mat-form-field>
+          <mat-label>Nom du Truck</mat-label>
+          <input matInput type="text" placeholder="Nom" formControlName="nametruck" pattern="^[a-zA-Z]+" required />
+        </mat-form-field>
+      </div>
+
+      <div class="formelements">
+          <mat-label>Accepter les pré-commande</mat-label>
+          <input type="checkbox" formControlName="precom" required />
+      </div>
+
+      <div class="formelements">
+          <label for="prepaie">Accepter les pré-paiement</label>
+          <input id="prepaie" type="checkbox" formControlName="prepaie" required />
       </div>
 
       <div style="margin: 1%;">
@@ -80,33 +110,3 @@
     </div>
   </form>
 </mat-card>
-
-<!--  Formulaire ajouter un truck-->
-<!-- <mat-card class="cardformcontainer" [ngClass]="{show: states.truckForm, hide: !states.truckForm}">
-  <form class="form-fields" method="post" [formGroup]="formAddTruck" (ngSubmit)="addTruck()">
-    <div class="formcontainer">
-
-      <div style="margin: 2%;">
-        <mat-form-field>
-          <mat-label>Nom du Truck</mat-label>
-          <input matInput type="text" placeholder="Nom" formControlName="nametruck" pattern="^[a-zA-Z]+" required />
-        </mat-form-field>
-      </div>
-
-      <div style="margin: 2%;">
-          <mat-label>Accepter les pré-commande</mat-label>
-          <input type="checkbox" formControlName="precom" required />
-      </div>
-
-      <div style="margin: 2%;">
-          <mat-label>Accepter les pré-paiement</mat-label>
-          <input type="checkbox" formControlName="prepaie" required />
-      </div>
-
-      <div style="margin: 2%;">
-        <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
-      </div>
-
-    </div>
-  </form>
-</mat-card> -->
