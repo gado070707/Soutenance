@@ -6,9 +6,6 @@ import { UsersService } from '../../services/users.service';
 import { User } from 'src/app/models/user';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { BehaviorSubject, Observable } from 'rxjs';
-
-const LOCAL_STORAGE_USER_KEY = 'currentItem';
 
 @Component({
   selector: 'app-profile-utilisateur',
@@ -17,10 +14,7 @@ const LOCAL_STORAGE_USER_KEY = 'currentItem';
 })
 export class ProfileUtilisateurComponent implements OnInit {
 
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
-
-  @Input() id;
+  currentUser: User;
 
   centered = false;
   disabled = false;
@@ -31,18 +25,10 @@ export class ProfileUtilisateurComponent implements OnInit {
   formProfilUser: FormGroup;
 
   user: User = {} as User;
-
-  name: string;
-  mail: string;
   returnUrl: string;
 
   active: boolean = false;
-
   formuserstatus = false;
-
-  private boutonPseudo = !false;
-  private boutonNom = !false;
-  private boutonEmail = !false;
 
   constructor(
     public dialog: MatDialog,
@@ -52,8 +38,7 @@ export class ProfileUtilisateurComponent implements OnInit {
     private router: Router,
     private authservice: AuthService
     ) {
-      this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)));
-      this.currentUser = this.currentUserSubject.asObservable();
+      this.authservice.currentUser.subscribe(user => this.currentUser = user)
     }
 
   @Output()
@@ -63,14 +48,10 @@ export class ProfileUtilisateurComponent implements OnInit {
     matSlideToggle: MatSlideToggle;
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
 
-    this.usersService.findById(parseInt(id)).subscribe(
+    this.usersService.findById(this.currentUser.id).subscribe(
       data => {
         this.user = data;
-
-        this.name = this.user.name;
-        this.mail = this.user.mail;
 
         this.formProfilUser = this.formBuilder.group({
           pseudoUser: '',

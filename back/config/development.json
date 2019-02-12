@@ -11,8 +11,8 @@
     },
     "db": {
         "database": "findmytruck",
-        "username": "dreamteam",
-        "password": "azeAZE123123",
+        "username": "root",
+        "password": "",
         "host":     "localhost",
         "port":     "3306",
         "dialect":  "mysql",
@@ -21,19 +21,5 @@
 	        "idle": 30000
         },
         "url": "mysql://root:@localhost/findmytruck"
-    },
-    "security": {
-        "pem": {
-            "days": 5,
-            "selfSigned": true
-        },
-        "cors": {
-            "credentials": true,
-            "origin": "http://localhost:4200"
-        },
-        "jwt": {
-            "expiresIn": 7200
-        }
-            
     }
 }

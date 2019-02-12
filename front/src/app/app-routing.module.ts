@@ -25,7 +25,7 @@ const routes: Route[] = [
   { path: 'user',
     canActivate: [AuthGuard],
     children: [
-      { path: 'profil/:id', component: ProfilComponent},
+      { path: 'profil', component: ProfilComponent},
         // { path: 'list', component: ListComponent, },
         // { path: 'add', component: AddComponent },
         // { path: ':id', component: DetailsComponent },

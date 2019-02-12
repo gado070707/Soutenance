@@ -27,8 +27,8 @@ exports.findAll = (req, res) => {
     );
 };
 
-exports.find = (req, res) => {
-    TruckService.find({id: req.params.id}).then(
+exports.findAllByTruckowner = (req, res) => {
+    TruckService.findAllByTruckowner({truckowner: req.params.id}).then(
         (data) => {
             res.status(201).json(data);
         },

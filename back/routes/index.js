@@ -8,3 +8,5 @@
  */
 
 require("./user");
+require("./truck");
+require("./truckOwner");
