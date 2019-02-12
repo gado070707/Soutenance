@@ -61,6 +61,9 @@ export class TruckownerprofileComponent implements OnInit {
       nametruck: "",
       precom: "",
       prepaie: "",
+      logotruck: "",
+      imgtruck: "",
+      txttruck: "",
     });
 
     this.trucksService.allByOwner(this.currentUser.id).subscribe(
@@ -103,9 +106,14 @@ export class TruckownerprofileComponent implements OnInit {
       }
     }
   }
-
-  getTruck(id){
-
+  addTruck(){
+    this.formAddTruck.value['truckowner'] = this.currentUser.id;
+    // this.trucksService.add(this.formAddTruck.value).subscribe(
+    //     data => {
+    //       //this.router.navigate([this.returnUrl]);
+    //     },
+    //     err => {}
+    // );
   }
 
   updateuser() {

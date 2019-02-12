@@ -103,10 +103,24 @@
           <input id="prepaie" type="checkbox" formControlName="prepaie" required />
       </div>
 
-      <div style="margin: 1%;">
-        <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
+      <div class="formelements">
+        <mat-form-field>
+          <mat-label>Logo du Truck</mat-label>
+          <input matInput type="text" placeholder="Logo" formControlName="logotruck"/>
+        </mat-form-field>
       </div>
 
+      <div class="formelements">
+        <mat-form-field>
+          <mat-label>Image du Truck</mat-label>
+          <input matInput type="text" placeholder="Image" formControlName="imgtruck"/>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <textarea rows="2" cols="50" placeholder="Histoire" formControlName="txttruck"></textarea>
+      </div>
     </div>
+    <button class="btn btn-danger button1" style="margin: 1%;" MatFormFieldControl type="submit">Ajouter</button>
   </form>
 </mat-card>

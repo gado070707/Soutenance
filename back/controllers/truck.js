@@ -8,7 +8,7 @@ exports.account = (req, res) => {
 exports.create = (req, res) => {
     TruckService.create(req.body).then(
         (data) => {
-            res.redirect("/");
+            res.status(201).json(data);
         },
         (err) => {
             res.status(500).json(err);

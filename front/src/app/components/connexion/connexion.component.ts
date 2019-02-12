@@ -41,9 +41,7 @@ export class ConnexionComponent implements OnInit {
   }
 
   isGoodPassword() {
-    // console.log(this.connexion());
     const a = this.connexion();
-    // console.log(a['isStopped']);
     return a;
   }
 
