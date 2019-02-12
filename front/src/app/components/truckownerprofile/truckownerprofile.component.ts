@@ -24,8 +24,11 @@ export class TruckownerprofileComponent implements OnInit {
   };
   user: User = {} as User;
   trucks: Truck[] = [];
+  truck: Truck = {} as Truck;
   formProfilUser: FormGroup;
   formAddTruck: FormGroup;
+  formEditTruck: FormGroup;
+  truckEditId: number = 0;
   returnUrl: string;
   prec: string = "Non";
   prep: string = "Non";
@@ -58,6 +61,15 @@ export class TruckownerprofileComponent implements OnInit {
     });
 
     this.formAddTruck = this.formBuilder.group({
+      nametruck: "",
+      precom: "",
+      prepaie: "",
+      logotruck: "",
+      imgtruck: "",
+      txttruck: "",
+    });
+
+    this.formEditTruck = this.formBuilder.group({
       nametruck: "",
       precom: "",
       prepaie: "",
@@ -108,12 +120,83 @@ export class TruckownerprofileComponent implements OnInit {
   }
   addTruck(){
     this.formAddTruck.value['truckowner'] = this.currentUser.id;
-    // this.trucksService.add(this.formAddTruck.value).subscribe(
-    //     data => {
-    //       //this.router.navigate([this.returnUrl]);
-    //     },
-    //     err => {}
-    // );
+
+    if(this.formAddTruck.value.precom == ""){
+      this.formAddTruck.value.precom = false;
+    }
+
+    if(this.formAddTruck.value.prepaie == ""){
+      this.formAddTruck.value.prepaie = false;
+    }
+
+    this.trucksService.add(this.formAddTruck.value).subscribe(
+        data => { 
+          this.states.truckForm = false;
+          this.trucksService.allByOwner(this.currentUser.id).subscribe(
+            data => {
+              this.trucks = data;
+          });
+        },
+        err => {}
+    );
+  }
+
+  getTruck(id){
+    this.trucksService.find(id).subscribe(
+      data => {
+        this.truck = data
+        this.truckEditId = id;
+        this.formEditTruck = this.formBuilder.group({
+          nametruck: this.truck.name,
+          precom: this.truck.precommande,
+          prepaie: this.truck.paiement,
+          logotruck: this.truck.logo,
+          imgtruck: this.truck.image,
+          txttruck: this.truck.histoire,
+        });
+      },
+      err => {}
+    );
+  }
+
+  editTruck(id) {
+    this.formEditTruck.value['truckowner'] = this.currentUser.id;
+
+    if(this.formEditTruck.value.precom == ""){
+      this.formEditTruck.value.precom = false;
+    }
+
+    if(this.formEditTruck.value.prepaie == ""){
+      this.formEditTruck.value.prepaie = false;
+    }
+
+    this.trucksService.update(this.formEditTruck.value, id).subscribe(
+        data => {
+          this.states.editTruckForm = false;
+          this.trucksService.allByOwner(this.currentUser.id).subscribe(
+            data => {
+              this.trucks = data;
+
+              let i = 0;
+
+              for(let truck in this.trucks) {
+                if(this.trucks[truck].precommande) {
+                  this.prec = "Oui";
+                }
+                
+                if(this.trucks[truck].paiement){
+                  this.prep = "Oui";
+                }
+
+                this.trucks[i]['prec'] = this.prec;
+                this.trucks[i]['prep'] = this.prep;
+
+                i++;
+              }
+          });
+        },
+        err => {}
+    );
   }
 
   updateuser() {

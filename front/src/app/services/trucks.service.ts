@@ -45,7 +45,7 @@ export class TrucksService {
 
   // tslint:disable-next-line:no-shadowed-variable
   update(Truck: Truck, id: Number) {
-    const url = this.API_BASE_URL + '/' + id;
+    const url = this.API_BASE_URL + '/api/trucks/' + id;
     return this.http.put<Truck>(url, Truck);
   }
 }

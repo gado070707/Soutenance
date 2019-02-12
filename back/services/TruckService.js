@@ -4,13 +4,13 @@ const Truck = require('../models/TruckModel');
 
 exports.create = (data) => {
     return Truck.create({
-        name: data.name,
+        name: data.nametruck,
         truckowner: data.truckowner,
-        precommande: data.precommande,
-        paiement: data.paiement,
-        image: data.image,
-        logo: data.logo,
-        histoire: data.histoire,
+        precommande: data.precom,
+        paiement: data.prepaie,
+        image: data.imgtruck,
+        logo: data.logotruck,
+        histoire: data.txttruck,
         active: true
     });
 }
@@ -37,8 +37,18 @@ exports.delete = (id) => {
     });
 }
 
-exports.update = (data) => {
-    return Truck.update(data, { 
-        where: { id: data.id } 
+exports.update = (data, id) => {
+    return Truck.update({
+        name: data.nametruck,
+        truckowner: data.truckowner,
+        precommande: data.precom,
+        paiement: data.prepaie,
+        image: data.imgtruck,
+        logo: data.logotruck,
+        histoire: data.txttruck,
+        active: true
+        }, 
+        { 
+            where: { id: id } 
     });
 }

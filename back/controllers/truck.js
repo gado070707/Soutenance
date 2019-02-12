@@ -51,7 +51,7 @@ exports.findAllByTruckowner = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    TruckService.update(req.body).then(
+    TruckService.update(req.body, req.params.id).then(
         (data) => {
             res.status(201).json(data);
         },

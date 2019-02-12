@@ -3,7 +3,7 @@
 const controllers = require('../controllers/truck');
 
 api.post('/trucks', controllers.create);
-api.put('/trucks', controllers.update);
+api.put('/trucks/:id', controllers.update);
 
 api.get('/trucksByOwner/:id', controllers.findAllByTruckowner);
 api.get('/trucks', controllers.findAll);

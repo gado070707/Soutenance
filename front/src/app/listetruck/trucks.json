@@ -9,30 +9,30 @@
             "id": 2,
             "name": "L'asiatique croustillant",
             "image": "truck2.jpg",
-            "routes": "trucks/foodtruck/deuxieme"
+            "routes": ""
     },
     {
             "id": 3,
             "name": "Les Burgers delicieux",
             "image": "truck3.jpg",
-            "routes": "trucks/foodtruck/troisieme"
+            "routes": ""
     },
     {
             "id": 4,
             "name": "Le mignon",
             "image": "truck4.jpg",
-            "routes": "trucks/foodtruck/quatrieme"
+            "routes": ""
     },
     {
             "id": 5,
             "name": "Resto Do",
             "image": "truck5.jpg",
-            "routes": "trucks/foodtruck/cinquieme"
+            "routes": ""
     },
     {
             "id": 6,
             "name": "Salad'Bar",
             "image": "truck6.jpg",
-            "routes": "trucks/foodtruck/sixieme"
+            "routes": ""
     }
 ]

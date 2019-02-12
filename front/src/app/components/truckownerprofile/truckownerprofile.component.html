@@ -15,8 +15,8 @@
           <button type="button" class="btn btn-danger button1" (click)="suppruser()">Supprimer mon comtpe</button>
       </div>
     </div>
-    <mat-card class="truckcontainer" *ngFor="let truck of trucks">
-      <div class="eachtruck">
+    <div class="truckcontainer">
+      <mat-card class="eachtruck" *ngFor="let truck of trucks">
         <div>
           <div class="cardelements truckname">{{ truck.name }}</div>
           <div class="cardelements">Accepte la pré-commande: {{ truck.prec }}</div>
@@ -25,8 +25,8 @@
         <div class="imageedit" (click)="editStatus('editTruckForm'); getTruck(truck.id)">
           <img width="100%" src="../../../assets/edit.png"/>
         </div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </div>
   </div>
 </div>
 
@@ -41,14 +41,6 @@
             required />
         </mat-form-field>
       </div>
-
-      <!-- <div>
-        <mat-form-field>
-          <mat-label>Prénom</mat-label>
-          <input matInput type="text" placeholder="Pierre" maxlength="25" formControlName="firstname" pattern="^[a-zA-Z]+"
-            required />
-        </mat-form-field>
-      </div> -->
 
       <div style="margin-right: 1%;">
         <mat-form-field>
@@ -72,12 +64,8 @@
           <input matInput id="tel" type="tel" placeholder="0606060606" maxlength="25" formControlName="tel" required />
         </mat-form-field>
       </div>
-
-      <div>
-        <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
-      </div>
-
     </div>
+    <button class="btn btn-danger button1" MatFormFieldControl type="submit">Modifier</button>
   </form>
 </mat-card>
 
@@ -124,3 +112,47 @@
     <button class="btn btn-danger button1" style="margin: 1%;" MatFormFieldControl type="submit">Ajouter</button>
   </form>
 </mat-card>
+
+<!--  Formulaire ajouter un truck-->
+<mat-card class="cardformcontainer" [ngClass]="{show: states.editTruckForm, hide: !states.editTruckForm}">
+    <form class="form-fields" method="post" [formGroup]="formEditTruck" (ngSubmit)="editTruck(truckEditId)">
+      <div class="formcontainer">
+  
+        <div class="formelements">
+          <mat-form-field>
+            <mat-label>Nom du Truck</mat-label>
+            <input matInput type="text" placeholder="Nom" formControlName="nametruck" pattern="^[a-zA-Z]+" required />
+          </mat-form-field>
+        </div>
+  
+        <div class="formelements">
+            <mat-label>Accepter les pré-commande</mat-label>
+            <input type="checkbox" formControlName="precom" required />
+        </div>
+  
+        <div class="formelements">
+            <label for="prepaie">Accepter les pré-paiement</label>
+            <input id="prepaie" type="checkbox" formControlName="prepaie" required />
+        </div>
+  
+        <div class="formelements">
+          <mat-form-field>
+            <mat-label>Logo du Truck</mat-label>
+            <input matInput type="text" placeholder="Logo" formControlName="logotruck"/>
+          </mat-form-field>
+        </div>
+  
+        <div class="formelements">
+          <mat-form-field>
+            <mat-label>Image du Truck</mat-label>
+            <input matInput type="text" placeholder="Image" formControlName="imgtruck"/>
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <textarea rows="2" cols="50" placeholder="Histoire" formControlName="txttruck"></textarea>
+        </div>
+      </div>
+      <button class="btn btn-danger button1" style="margin: 1%;" MatFormFieldControl type="submit">Modifier</button>
+    </form>
+  </mat-card>
