@@ -7,13 +7,8 @@ exports.account = (req, res) => {
 
 exports.create = (req, res) => {
     TruckService.create(req.body).then(
-<<<<<<< HEAD
         (data) => {
             res.status(201).json(data);
-=======
-        data => {
-            res.redirect("/");
->>>>>>> 7ec90e01d17fce3ca22b86954ada3d2d3bf468ca
         },
         err => {
             res.status(500).json(err);

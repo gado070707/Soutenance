@@ -22,24 +22,11 @@ export class TrucksService {
   }
 
   find(id: Number): Observable<Truck> {
-<<<<<<< HEAD
     const url = this.API_BASE_URL + '/api/trucks/' + id;
-=======
-    const url = API_BASE_URL + '/api/trucks/' + id;
->>>>>>> 7ec90e01d17fce3ca22b86954ada3d2d3bf468ca
     return this.http.get<Truck>(url)
       .pipe( map(res => res) );
   }
 
-<<<<<<< HEAD
-  findById(id: Number): Observable<Truck[]> {
-    const url = this.API_BASE_URL + '/api/trucksByOwner/' + id;
-    return this.http.get<Truck[]>(url)
-      .pipe( map(res => res) );
-  }
-
-=======
->>>>>>> 7ec90e01d17fce3ca22b86954ada3d2d3bf468ca
   all(): Observable<Truck[]> {
     return this.http.get<Truck[]>(this.API_BASE_URL)
       .pipe( map(res => res) );
