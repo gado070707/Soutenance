@@ -23,7 +23,6 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AgmCoreModule } from '@agm/core';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { AppRoutingModule } from './app-routing.module';
 import { PortalModule } from '@angular/cdk/portal';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -91,7 +90,6 @@ import { CommandeComponent } from './components/commande/commande.component';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     AgmCoreModule.forRoot({'apiKey': 'AIzaSyAJPAVVutBcSJld0TDDIeRSkEhNLyKQfvI'}) ,
-    AgmSnazzyInfoWindowModule,
     PortalModule,
     MatTooltipModule,
     MatRippleModule,
