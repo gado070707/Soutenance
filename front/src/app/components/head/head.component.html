@@ -18,14 +18,14 @@
     <div *ngIf="currentQte != 0" class="cartelements">
       <div *ngFor="let prod of currentCart" class="product">
         <div class="prodtitre">{{prod.nom}}</div>
-        <div class="prod">{{prod.prix}}€</div>
+        <div class="prod">{{prod.prix }}€</div>
         <div class="prod prodqte">{{prod.qte}}</div>
         <div class="signcontainer">
             <img class="regulicon" src="../../../assets/plus.png" (click)="qtemodif('plus', prod.id)"/>
             <img class="regulicon" src="../../../assets/moins.png" (click)="qtemodif('moins', prod.id)"/>
         </div>
       </div>
-      <div class="prixtot">Total: {{ currentPriceTot }}€</div>
+      <div class="prixtot">Total: {{ currentPriceTot | currency:'EUR':'':'2.2' }}€</div>
       <div class="buttoncartcontainer">
         <a routerLink="/commander">
           <button type="button" class="btn btn-danger button1 buttoncart" (click)="changePanierStatus()">Commander</button>

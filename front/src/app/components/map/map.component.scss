@@ -2,4 +2,25 @@ agm-map {
     height: 400px;
     margin: 1%;   
 }
+
+.truckbubble{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.truckimg {
+    width: 30%;
+}
+
+.truckname {
+    width: 60%;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.truckname a{
+    text-decoration: none;
+}
  

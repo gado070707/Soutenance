@@ -1,11 +1,12 @@
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" mapTypeId="roadmap">
   <agm-marker id="markesr" *ngFor="let m of markers" 
-    [latitude]="m.marker.lat"
-    [longitude]="m.marker.lng"
-    animation="DROP">
+    [latitude]="m.marker.lat" [longitude]="m.marker.lng" animation="DROP">
     <agm-info-window>
-      <div class="card">
-        <strong>{{ m.truck.name }}</strong>
+      <div class="truckbubble">      
+          <div class="truckimg"><a href="#" [routerLink]="['/trucks/details', m.truck.id]" >
+            <img width="100%;" src="../../../../../assets/trucks/{{ m.truck.image  }}"/>
+          </a></div>
+          <div class="truckname"><a href="#" [routerLink]="['/trucks/details', m.truck.id]">{{ m.truck.name }}</a></div>
       </div>
     </agm-info-window>
   </agm-marker>

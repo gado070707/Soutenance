@@ -18,6 +18,7 @@ export class MapComponent implements OnInit {
   zoom: number = 16;
   markers: any[];
   km: number = 8;
+  bubbleStatus: number = 0;
 
   constructor(private markersService: MarkersService) { }
 
@@ -42,9 +43,13 @@ export class MapComponent implements OnInit {
             "lat":  50.633364,
             "lng":  3.020868
           },
-          "truck": data[4]
+          "truck": data[1]
         }
       ];
     });
+  }
+
+  changeStatus(id) {  console.log(this.bubbleStatus)
+    this.bubbleStatus = id; console.log(this.bubbleStatus)
   }
 }
