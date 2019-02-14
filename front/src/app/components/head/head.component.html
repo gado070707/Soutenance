@@ -5,7 +5,38 @@
         <div *ngIf="!authservice.isLoggedIn()" class="headlink"><a routerLink="/connexion">Se connecter</a></div>
         <div *ngIf="!authservice.isLoggedIn()" class="headlink"><a routerLink="/form" >S'enregistrer</a></div>
         <div *ngIf="authservice.isLoggedIn()" class="headlink"><a (click)="logout()">Deconnexion</a></div>
+        <div class="burgericoncontainer" (click)="changePanierStatus()">
+          <img class="burgericon" src="../../../assets/burger.png"/>
+        </div>
         <div *ngIf="authservice.isLoggedIn()" class="headlink"><a routerLink="/user/profil/">Profil</a></div>
     </div>
   </div>
+
+  <div class="qtecart" [ngClass]="{show: !panierStatus, hide: panierStatus}" *ngIf="currentQte!=0">{{ currentQte }}</div>
+
+  <mat-card class="cartcontainer" [ngClass]="{show: panierStatus, hide: !panierStatus}">
+    <div *ngIf="currentQte != 0" class="cartelements">
+      <div *ngFor="let prod of currentCart" class="product">
+        <div class="prodtitre">{{prod.nom}}</div>
+        <div class="prod">{{prod.prix}}€</div>
+        <div class="prod prodqte">{{prod.qte}}</div>
+        <div class="signcontainer">
+            <img class="regulicon" src="../../../assets/plus.png" (click)="qtemodif('plus', prod.id)"/>
+            <img class="regulicon" src="../../../assets/moins.png" (click)="qtemodif('moins', prod.id)"/>
+        </div>
+      </div>
+      <div class="prixtot">Total: {{ currentPriceTot }}€</div>
+      <div class="buttoncartcontainer">
+        <a routerLink="/commander">
+          <button type="button" class="btn btn-danger button1 buttoncart" (click)="changePanierStatus()">Commander</button>
+        </a>
+        <button type="button" class="btn btn-danger button1 buttoncart" (click)="removeCart(); changePanierStatus()">Supprimer</button>
+      </div>
+    </div>
+
+    <div *ngIf="currentQte == 0" class="productempty">
+      <div>Votre panier est vide</div>
+    </div>
+
+  </mat-card> 
 </header>

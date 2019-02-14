@@ -1,0 +1,88 @@
+.cartelements{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.prodtitre {
+    width: 50%;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.prod {
+    width: 10%;
+    font-size: 1.1em;
+}
+
+.prodqte {
+    color: red;
+    font-weight: bold;
+}
+
+.signcontainer{
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.regulicon {
+    width: 5%;
+    margin-right: 10%;
+}
+
+.prixtot{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.productempty {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.buttoncartcontainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttoncart {
+    margin: 1%;
+}
+
+.commandecard {
+    width: 50%;
+    position: absolute;
+    z-index: 2;
+    top: 35%;
+    left: 25%;
+}
+
+.commandeinfocontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.commandeinfotext {
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.buttoninfo {
+    margin: 2%;
+}

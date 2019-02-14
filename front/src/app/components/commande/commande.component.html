@@ -1,0 +1,31 @@
+<div *ngIf="currentQte != 0" class="cartelements">
+  <div *ngFor="let prod of currentCart" class="product">
+    <div class="prodtitre">{{prod.nom}}</div>
+    <div class="prod">{{prod.prix}}€</div>
+    <div class="prod prodqte">{{prod.qte}}</div>
+    <div class="signcontainer">
+        <img class="regulicon" src="../../../assets/plus.png" (click)="qtemodif('plus', prod.id)"/>
+        <img class="regulicon" src="../../../assets/moins.png" (click)="qtemodif('moins', prod.id)"/>
+    </div>
+  </div>
+  <div class="prixtot">Total: {{ currentPriceTot }}€</div>
+  <div class="buttoncartcontainer">
+    <button type="button" class="btn btn-danger button1 buttoncart" (click)="changeStatus(); editText('1')">Transmettre la commande</button>
+    <button type="button" class="btn btn-danger button1 buttoncart" (click)="changeStatus(); editText('2')">Régler la commande</button>
+  </div>
+</div>
+
+<mat-card class="commandecard" [ngClass]="{show: infoStatus, hide: !infoStatus}">
+  <div class="commandeinfocontainer">
+    <div class="commandeinfotext">
+      {{ commandeText }}
+      <br>
+      {{ commandeText2 }}
+      <br>
+      {{ commandeText3 }}
+    </div>
+    <a routerLink="/" (click)="removeCart()">
+      <button type="button" class="btn btn-danger button1 buttoninfo" (click)="changeStatus()">Retour à l'accueil</button>
+    </a>
+  </div>
+</mat-card>

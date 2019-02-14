@@ -45,6 +45,7 @@ import { TruckownerprofileComponent } from './components/truckownerprofile/truck
 import { PayerComponent } from './components/payer/payer.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { PremierFoodTruckComponent } from './components/trucks/listeDeTrucks/premier-food-truck/premier-food-truck.component';
+import { CommandeComponent } from './components/commande/commande.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { PremierFoodTruckComponent } from './components/trucks/listeDeTrucks/pre
     TruckownerprofileComponent,
     PayerComponent,
     BasketComponent,
-    PremierFoodTruckComponent
+    PremierFoodTruckComponent,
+    CommandeComponent
   ],
   imports: [
     AppRoutingModule,

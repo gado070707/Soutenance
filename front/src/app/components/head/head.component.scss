@@ -39,10 +39,109 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     width: 50%;
     font-size: 1.5em;
 }
 
 .headlink {
+    margin: 1%;
+}
+
+.burgericoncontainer {
+    width: 6%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.burgericon {
+    width: 70%;
+    margin-left: 16%;
+}
+
+.qtecart {
+    position: absolute;
+    background: red;
+    border-radius: 50%;
+    font-size: 1.3em;
+    font-weight: bold;
+    width: 1.5%;
+    text-align: center;
+    top: 35px;
+    right: 4.8%;
+
+}
+
+.cartcontainer{
+    position: absolute;    
+    width: 25%;
+    top: 55px;
+    right: 4.8%;
+    z-index: 2;
+}
+
+.cartelements{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.prodtitre {
+    width: 50%;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.prod {
+    width: 10%;
+    font-size: 1.1em;
+}
+
+.prodqte {
+    color: red;
+    font-weight: bold;
+}
+
+.signcontainer{
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.regulicon {
+    width: 20%;
+    margin-right: 10%;
+}
+
+.prixtot{
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.productempty {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.buttoncartcontainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buttoncart {
     margin: 1%;
 }

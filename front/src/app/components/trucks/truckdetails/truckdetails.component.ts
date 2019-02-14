@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TrucksService } from 'src/app/services/trucks.service';
 import { Truck } from 'src/app/models/truck';
 import datas from '../../../listetruck/trucks.json';
+import { CommandesService } from '../../../services/commandes.service';
 
 @Component({
   selector: 'app-truckdetails',
@@ -12,11 +13,19 @@ import datas from '../../../listetruck/trucks.json';
 export class TruckdetailsComponent implements OnInit {
   truck = {} as Truck;
   trucks;
-  panier = [];
+
+  currentCart;
+  currentQte;
+
+  // currentCart: User;
   constructor(
     private route: ActivatedRoute,
-    private truckService: TrucksService
-  ) { }
+    private truckService: TrucksService,
+    private commandeservice: CommandesService
+  ) {
+    this.commandeservice.currentCart.subscribe(data => this.currentCart = data);
+    this.commandeservice.currentQte.subscribe(data2 => this.currentQte = data2);
+  }
 
   ngOnInit() {
     // const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
@@ -31,28 +40,8 @@ export class TruckdetailsComponent implements OnInit {
     this.trucks = datas;
   }
 
-  addCart(produit) {
-    let found = 0;
-
-    if(this.panier.length == 0) {
-      produit['qte'] = 1;
-      this.panier.push(produit);
-    }
-    else {
-      for(let pan in this.panier) {
-        if(this.panier[pan].id == produit.id) {
-          this.panier[pan]['qte'] = this.panier[pan]['qte'] + 1;
-          found = 1;
-          break;
-        }
-      }
-
-      if(found == 0) {
-        produit['qte'] = 1;
-        this.panier.push(produit);
-      }
-    }
-
-    console.log(this.panier)
+  
+  addCart(produit){
+    this.commandeservice.addCart(produit);
   }
 }

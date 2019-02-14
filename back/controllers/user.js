@@ -19,6 +19,11 @@ exports.authentification = (req, res) => {
                 res.status(401).json({message:"Identifiant incorrect"});
                 return;
             }
+            
+            if(user.active == 0) {
+                res.status(401).json({message:"Compte inexistant"});
+                return;
+            }
 
             jwt.generateToken(user, (err, token) => {
                 res.cookie('token', token, {
