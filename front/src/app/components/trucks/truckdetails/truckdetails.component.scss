@@ -1,3 +1,20 @@
+.headinfo {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 30%;
+}
+
+.truckname {
+    width: 70%;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
 .choixMenu {
     width: 70%;
     display: flex;
