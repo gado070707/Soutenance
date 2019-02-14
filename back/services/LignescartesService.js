@@ -1,4 +1,4 @@
-const Carte = require('../models/LigneCarteModel');
+const Carte = require('../models/ligneCarteModel');
 
 //  Appels de la BDD
 
