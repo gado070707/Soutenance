@@ -5,7 +5,7 @@
         <div class="cardhomeimg">
             <a href="#" [routerLink]="['/trucks/details', truck.id]" ><img width="100%" src="../../../assets/trucks/{{ truck.image }}"/></a>
         </div>
-        <div class="cardhomelements">{{ truck.name }}</div> 
+        <div class="cardhomelements"><a href="#" [routerLink]="['/trucks/details', truck.id]">{{ truck.name }}</a></div> 
       </mat-card>
     </div>
   </div>
