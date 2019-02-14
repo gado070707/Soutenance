@@ -3,6 +3,7 @@
         "id": 1,
         "name": "Le comptoir volant",
         "image": "truck1.jpg",
+        "logo": "",
         "routes": "trucks/foodtruck/premier",
         "produits": [
                 {
@@ -47,15 +48,52 @@
             "id": 2,
             "name": "L'asiatique croustillant",
             "image": "truck2.jpg",
+            "logo": "",
             "routes": "",
-            "produit": {
-                    
-            }
+            "produits": [
+                {
+                        "id": 1,
+                        "nom": "Nems au porc",                        
+                        "desc": "Carrottes, porc, riz",
+                        "prix": 5.90
+                },
+                {
+                        "id": 2,
+                        "nom": "Nems à la crevette",                        
+                        "desc": "Carrottes, crevette, riz",
+                        "prix": 5.90
+                },
+                {
+                        "id": 3,
+                        "nom": "Riz cantonnais",                        
+                        "desc": "Riz, omelette, petits pois, jambon",
+                        "prix": 3.90
+                },
+                {
+                        "id": 4,
+                        "nom": "Boeuf sauté",                        
+                        "desc": "Boeuf, oignons, saucé saté",
+                        "prix": 4.50
+                },
+                {
+                        "id": 5,
+                        "nom": "Poulet à l'ananas",                        
+                        "desc": "Emincés de poulet, ananas, sauce à l'ananas, oignons",
+                        "prix": 4.90
+                },
+                {
+                        "id": 6,
+                        "nom": "Nouilles sauté nature",                        
+                        "desc": "Nouilles maison, sauce saté, oignons",
+                        "prix": 3.90
+                }
+        ]
     },
     {
             "id": 3,
             "name": "Les Burgers delicieux",
             "image": "truck3.jpg",
+            "logo": "",
             "routes": "",
             "produit": {
                     
@@ -65,6 +103,7 @@
             "id": 4,
             "name": "Le mignon",
             "image": "truck4.jpg",
+            "logo": "",
             "routes": "",
             "produit": {
                     
@@ -74,6 +113,7 @@
             "id": 5,
             "name": "Resto Do",
             "image": "truck5.jpg",
+            "logo": "",
             "routes": "",
             "produit": {
                     
@@ -83,6 +123,7 @@
             "id": 6,
             "name": "Salad'Bar",
             "image": "truck6.jpg",
+            "logo": "",
             "routes": "",
             "produit": {
                     

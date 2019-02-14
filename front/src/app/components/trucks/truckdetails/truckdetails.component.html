@@ -8,12 +8,12 @@
     <div class="card">
 
       <ul class="menu">
-        <li class="choixMenu" *ngFor="let produit of trucks[0].produits, let i = index">
+        <li class="choixMenu" *ngFor="let produit of trucks[id].produits, let i = index">
           <div class="truckcarteelem">
-            <div>{{produit.nom}}</div>
-            <div>{{produit.desc}}</div>
+            <div>{{ produit.nom }}</div>
+            <div>{{ produit.desc }}</div>
           </div>
-          <div class="truckcarteelem">{{produit.prix}}</div>
+          <div class="truckcarteelem">{{ produit.prix }}€</div>
           <button class="btn btn-danger button1" (click)="addCart(produit)">Ajouter</button>
         </li>
       </ul>

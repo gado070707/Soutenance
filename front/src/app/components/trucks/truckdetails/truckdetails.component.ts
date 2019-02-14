@@ -13,7 +13,7 @@ import { CommandesService } from '../../../services/commandes.service';
 export class TruckdetailsComponent implements OnInit {
   truck = {} as Truck;
   trucks;
-
+  id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
   currentCart;
   currentQte;
 
@@ -28,7 +28,7 @@ export class TruckdetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.id = this.id - 1;
     // this.truckService.find(id)
     //   .subscribe(
     //     (truck: Truck) => {

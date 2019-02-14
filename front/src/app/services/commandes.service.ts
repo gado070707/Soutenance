@@ -13,6 +13,7 @@ export class CommandesService {
   private currentQteSubject: BehaviorSubject<number>;
   private currentPriceTotSubject: BehaviorSubject<number>;
   private currentCartSubject: BehaviorSubject<{}>;
+  
   public currentQte: Observable<number>;
   public currentPriceTot: Observable<number>;
   public currentCart: Observable<{}>;
