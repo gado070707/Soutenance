@@ -6,8 +6,10 @@ import { UsersService } from '../../services/users.service';
 import { User } from 'src/app/models/user';
 import { TrucksService } from '../../services/trucks.service';
 import { Truck } from 'src/app/models/truck';
+import { Truckowner } from 'src/app/models/truckowner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { TrucksOwnerService } from 'src/app/services/truckowner.service';
 
 @Component({
   selector: 'app-truckownerprofile',
@@ -19,12 +21,17 @@ export class TruckownerprofileComponent implements OnInit {
   currentUser: User;
   states = {
     userForm: false,
-    truckForm: false,
-    editTruckForm: false
+    addTruckForm: false,
+    cardTruckForm: false,
+    editTruckForm: false,
+    addTruckProdForm: false,
+    editTruckProdForm: false    
   };
+
   user: User = {} as User;
   trucks: Truck[] = [];
   truck: Truck = {} as Truck;
+  truckOwner: Truckowner = {} as Truckowner;
   formProfilUser: FormGroup;
   formAddTruck: FormGroup;
   formEditTruck: FormGroup;
@@ -40,7 +47,8 @@ export class TruckownerprofileComponent implements OnInit {
     private trucksService: TrucksService,
     private route: ActivatedRoute,
     private router: Router,
-    private authservice: AuthService
+    private authservice: AuthService,
+    private truckownerService: TrucksOwnerService
   ) {
     this.authservice.currentUser.subscribe(user => this.currentUser = user)
    }
@@ -118,6 +126,7 @@ export class TruckownerprofileComponent implements OnInit {
       }
     }
   }
+
   addTruck(){
     this.formAddTruck.value['truckowner'] = this.currentUser.id;
 
@@ -131,10 +140,27 @@ export class TruckownerprofileComponent implements OnInit {
 
     this.trucksService.add(this.formAddTruck.value).subscribe(
         data => { 
-          this.states.truckForm = false;
+          this.states.addTruckForm = false;
           this.trucksService.allByOwner(this.currentUser.id).subscribe(
             data => {
               this.trucks = data;
+
+              let i = 0;
+
+              for(let truck in this.trucks) {
+                if(this.trucks[truck].precommande) {
+                  this.prec = "Oui";
+                }
+                
+                if(this.trucks[truck].paiement){
+                  this.prep = "Oui";
+                }
+
+                this.trucks[i]['prec'] = this.prec;
+                this.trucks[i]['prep'] = this.prep;
+
+                i++;
+              }
           });
         },
         err => {}
@@ -213,7 +239,7 @@ export class TruckownerprofileComponent implements OnInit {
     this.usersService.update(this.formProfilUser.value, this.currentUser.id).subscribe(
       (user: User) => {
         this.user = this.formProfilUser.value;
-
+        this.states.userForm = false;
         this.usersService.findById(this.currentUser.id).subscribe(
           (user: User) => {
             this.authservice.updateUser(user);

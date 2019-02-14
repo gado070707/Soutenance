@@ -11,8 +11,8 @@
       </mat-card>
       <div class="buttonprofilcontainer">
           <button type="button" class="btn btn-danger button1" (click)="editStatus('userForm')">Editer mon compte</button>
-          <button type="button" class="btn btn-danger button1" (click)="editStatus('truckForm')">Ajouter un Truck</button>
-          <button type="button" class="btn btn-danger button1" (click)="suppruser()">Supprimer mon comtpe</button>
+          <button type="button" class="btn btn-danger button1" (click)="editStatus('addTruckForm')">Ajouter un Truck</button>
+          <button type="button" class="btn btn-danger button1" (click)="suppruser()">Cloturer mon comtpe</button>
       </div>
     </div>
     <div class="truckcontainer">
@@ -29,6 +29,14 @@
     </div>
   </div>
 </div>
+
+<!-- <mat-card class="cardedittruck" [ngClass]="{show: states.cardTruckForm, hide: !states.cardTruckForm}">
+  <div class="cardedittruckcontainer">
+    <button type="button" class="btn btn-danger button1" (click)="editStatus('editTruckForm')">Editer le Truck</button>
+    <!-- <button type="button" class="btn btn-danger button1" (click)="editStatus('addTruckProdForm')">Ajouter produit au Truck</button>
+    <button type="button" class="btn btn-danger button1" (click)="editStatus('editTruckProdForm')">Edit un produit du Truck</button>
+  </div>
+</mat-card> -->
 
 <mat-card class="cardformcontainer" [ngClass]="{show: states.userForm, hide: !states.userForm}">
   <form class="form-fields" method="post" [formGroup]="formProfilUser" (ngSubmit)="updateuser()">
@@ -70,7 +78,7 @@
 </mat-card>
 
 <!--  Formulaire ajouter un truck-->
-<mat-card class="cardformcontainer" [ngClass]="{show: states.truckForm, hide: !states.truckForm}">
+<mat-card class="cardformcontainer" [ngClass]="{show: states.addTruckForm, hide: !states.addTruckForm}">
   <form class="form-fields" method="post" [formGroup]="formAddTruck" (ngSubmit)="addTruck()">
     <div class="formcontainer">
 
@@ -113,7 +121,7 @@
   </form>
 </mat-card>
 
-<!--  Formulaire ajouter un truck-->
+<!--  Formulaire editer un truck-->
 <mat-card class="cardformcontainer" [ngClass]="{show: states.editTruckForm, hide: !states.editTruckForm}">
     <form class="form-fields" method="post" [formGroup]="formEditTruck" (ngSubmit)="editTruck(truckEditId)">
       <div class="formcontainer">

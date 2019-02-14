@@ -9,7 +9,7 @@ function create(data) {
         password: data.password,
         mail: data.mail,
         telephone: data.tel,
-        role: 2,
+        role: data.role,
         entreprise: data.entreprise,
         active: true
     });

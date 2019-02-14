@@ -2,12 +2,12 @@
 
 const controllers = require('../controllers/truckOwner');
 
-api.post('/truckOwners', controllers.create);
-api.put('/truckOwners', controllers.update);
+api.post('/truckowner', controllers.create);
+api.put('/truckowner', controllers.update);
 
-api.get('/truckOwners/:id', controllers.find);
-api.get('/truckOwners', controllers.findAll);
+api.get('/truckowner/:id', controllers.find);
+api.get('/truckowner', controllers.findAll);
 
-api.delete('/truckOwners/:id', controllers.delete);
+api.delete('/truckowner/:id', controllers.delete);
 
 

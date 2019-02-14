@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { UserPro } from 'src/app/models/userpro';
+import { Truckowner } from 'src/app/models/truckowner';
 import { UsersProService } from 'src/app/services/userspro.service';
 import { UsersService } from 'src/app/services/users.service';
+import { TrucksOwnerService } from 'src/app/services/truckowner.service';
 
 @Component({
   selector: 'app-form',
@@ -16,6 +18,7 @@ export class FormComponent implements OnInit {
   private formFoodTruck: FormGroup;
   user: User = {} as User;
   userPro: UserPro = {} as UserPro;
+  truckOwner: Truckowner = {} as Truckowner;
   returnUrl: string;
 
   public checkboxSocieteSiret = false;
@@ -25,7 +28,8 @@ export class FormComponent implements OnInit {
     private activeRoutes: ActivatedRoute,
     private router: Router,
     private usersService: UsersService,
-    private usersProService: UsersProService
+    private usersProService: UsersProService,
+    private truckownerService: TrucksOwnerService
     ) { }
 
   ngOnInit() {
@@ -42,7 +46,6 @@ export class FormComponent implements OnInit {
     const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
     if (id !== '') {
-      // tslint:disable-next-line:radix
       this.usersService.findById(parseInt(id)).subscribe(
         data => {
           this.user = data;
@@ -54,6 +57,7 @@ export class FormComponent implements OnInit {
             mail: this.user.mail,
             tel: this.user.telephone,
             active: this.user.active,
+            role: this.user.role,
           });
         });
     }
@@ -92,10 +96,13 @@ export class FormComponent implements OnInit {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //// Route de l'utilisateur
-functionUser() {
+functionUser(numRole) {
   const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
   if (id === '') {
+
+    this.formUser.value['role'] = numRole;
+
     this.usersService.add(this.formUser.value).subscribe(
       (user: User) => {
         this.router.navigate([this.returnUrl]);
@@ -103,7 +110,6 @@ functionUser() {
       error => {}
     );
   } else {
-    // tslint:disable-next-line:radix
     this.usersService.update(this.formUser.value, parseInt(id)).subscribe(
       (user: User) => {
         this.router.navigate([this.returnUrl]);
@@ -115,60 +121,51 @@ functionUser() {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Route de du foodtruck
-foodTruck() {
-  const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
+  foodTruck(numRole) {
+    const id = this.activeRoutes.snapshot.paramMap.get('id') || '';
 
-  if (id === '') {
-    this.usersProService.add(this.formFoodTruck.value).subscribe(
-      (user: UserPro) => {
-        this.router.navigate([this.returnUrl]);
-      },
-      error => {}
-    );
-  } else {
-    // tslint:disable-next-line:radix
-    this.usersProService.update(this.formFoodTruck.value, parseInt(id)).subscribe(
-      (userPro: UserPro) => {
-        this.router.navigate([this.returnUrl]);
-      },
-      error => {}
-    );
+    if (id === '') {
+      this.formFoodTruck.value['role'] = numRole;
+
+      this.usersProService.add(this.formFoodTruck.value).subscribe(
+        (user: UserPro) => {
+          this.formFoodTruck.value['id'] = user.id;
+          this.truckownerService.add(this.formFoodTruck.value).subscribe(
+            (truckOwner: Truckowner) => {  
+              this.router.navigate([this.returnUrl]);
+            });
+        },
+        error => {}
+      );
+    } else {
+      // tslint:disable-next-line:radix
+      this.usersProService.update(this.formFoodTruck.value, parseInt(id)).subscribe(
+        (userPro: UserPro) => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {}
+      );
+    }
   }
-}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //// Fonction toogle
-societe() {
-  if (this.getCheckbox() === false) {
-    this.setCheckbox(true);
-  } else {
-    this.setCheckbox(false);
+  changeRole(num) {
+    console.log(num)
   }
-}
 
-getCheckbox(): boolean {
-  return this.checkboxSocieteSiret;
-}
+  societe() {
+    if (this.getCheckbox() === false) {
+      this.setCheckbox(true);
+    } else {
+      this.setCheckbox(false);
+    }
+  }
 
-setCheckbox(checkboxSocieteSiret: boolean) {
-  this.checkboxSocieteSiret = checkboxSocieteSiret;
-}
+  getCheckbox(): boolean {
+    return this.checkboxSocieteSiret;
+  }
 
-  // getStyle() {
-  //     if (!this.getCheckbox()) {
-
-  //     document.getElementById('labelSiret').style.display = 'block';
-  //     document.getElementById('labelSociete').style.display = 'block';
-  //     document.getElementById('inputSiret').style.display = 'block';
-  //     document.getElementById('inputSociete').style.display = 'block';
-  //     document.getElementById('inputmffsiret').style.display = 'block';
-  //     document.getElementById('inputmffsociete').style.display = 'block';
-  //   } else {
-  //     document.getElementById('labelSiret').style.display = 'none';
-  //     document.getElementById('labelSociete').style.display = 'none';
-  //     document.getElementById('inputSiret').style.display = 'none';
-  //     document.getElementById('inputSociete').style.display = 'none';
-  //     document.getElementById('inputmffsiret').style.display = 'none';
-  //     document.getElementById('inputmffsociete').style.display = 'none';
-  //   }
-  // }
+  setCheckbox(checkboxSocieteSiret: boolean) {
+    this.checkboxSocieteSiret = checkboxSocieteSiret;
+  }
 }

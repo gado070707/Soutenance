@@ -49,6 +49,10 @@ export class CommandeComponent implements OnInit {
     this.commandeservice.qtemodif(add, id);
   }
 
+  saveCommande() {
+    this.commandeservice.saveCommande();
+  }
+
   removeCart(){
     this.commandeservice.removeCart();
   }

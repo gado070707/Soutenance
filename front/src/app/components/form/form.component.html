@@ -1,9 +1,10 @@
 <div class="container">
   <div id="formulaires">
     <mat-tab-group>
+
       <!-- Onglet de l'utilisateur -->
-      <mat-tab label="Utilisateur" (click)="societe()">
-        <form class="form-fields" method="post" [formGroup]="formUser" (ngSubmit)="functionUser()">
+      <mat-tab label="Utilisateur">
+        <form class="form-fields" method="post" [formGroup]="formUser" (ngSubmit)="functionUser('2')">
           <div>
             <mat-form-field>
               <mat-label>Nom</mat-label>
@@ -52,8 +53,8 @@
       </mat-tab>
       
       <!-- Onglet du foodtruck -->
-      <mat-tab label="Foodtruck">
-        <form class="form-fields" method="post" [formGroup]="formFoodTruck" (ngSubmit)="foodTruck()">
+      <mat-tab label="Foodtruck" (click)="changeRole('2')">
+        <form class="form-fields" method="post" [formGroup]="formFoodTruck" (ngSubmit)="foodTruck(3)">
 
           <div>
             <mat-form-field>

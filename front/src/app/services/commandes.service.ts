@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 const LOCAL_STORAGE_CART = 'currentCart';
+const LOCAL_STORAGE_COMMANDE = 'currentCommande';
 
 @Injectable({
   providedIn: 'root'
@@ -35,8 +36,7 @@ export class CommandesService {
       this.currentQteSubject.next(this.currentQteSubject.value + this.currentCartSubject.value[prod].qte);
       this.currentPriceTotSubject.next(this.currentPriceTotSubject.value + 
         (this.currentCartSubject.value[prod].qte * this.currentCartSubject.value[prod].prix));
-    }
-    
+    }    
   }
 
   addCart(produit) {
@@ -98,5 +98,9 @@ export class CommandesService {
     this.currentPriceTotSubject.next(0);
 
     this.panier = [];
+  }
+
+  saveCommande(){
+    localStorage.setItem(LOCAL_STORAGE_COMMANDE, JSON.stringify(this.panier));
   }
 }

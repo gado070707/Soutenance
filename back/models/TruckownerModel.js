@@ -2,17 +2,16 @@ module.exports = sequelize.define('truckowner', {
     user: {
         type: Sequelize.INTEGER,
         field: "user",
-        allowNull: false,
+        allowNull: true,
     },
     siret: {
         type: Sequelize.STRING,
         field: "siret",
-        allowNull: false,
+        allowNull: true,
     },
     active: {
         type: Sequelize.BOOLEAN,
         field: "active",
         allowNull: true,
     },
-
 });

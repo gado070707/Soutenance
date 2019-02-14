@@ -2,10 +2,10 @@ const TruckOwner = require('../models/TruckownerModel');
 
 //  Appels de la BDD
 
-exports.create = (data) => {
+exports.create = (data) => {    console.log(data)
     return TruckOwner.create({
-        user: data.user,
-        siret: data.siret,
+        user: data.id,
+        siret: data.textSiret,
         active: true
     });
 }

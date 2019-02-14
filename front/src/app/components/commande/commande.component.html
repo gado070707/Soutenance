@@ -10,8 +10,8 @@
   </div>
   <div class="prixtot">Total: {{ currentPriceTot }}€</div>
   <div class="buttoncartcontainer">
-    <button type="button" class="btn btn-danger button1 buttoncart" (click)="changeStatus(); editText('1')">Transmettre la commande</button>
-    <button type="button" class="btn btn-danger button1 buttoncart" (click)="changeStatus(); editText('2')">Régler la commande</button>
+    <button type="button" class="btn btn-danger button1 buttoncart" (click)="changeStatus(); removeCart(); editText('1')">Transmettre la commande</button>
+    <button type="button" class="btn btn-danger button1 buttoncart" (click)="changeStatus(); removeCart(); editText('2')">Régler la commande</button>
   </div>
 </div>
 
@@ -24,7 +24,7 @@
       <br>
       {{ commandeText3 }}
     </div>
-    <a routerLink="/" (click)="removeCart()">
+    <a routerLink="/">
       <button type="button" class="btn btn-danger button1 buttoninfo" (click)="changeStatus()">Retour à l'accueil</button>
     </a>
   </div>

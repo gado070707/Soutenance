@@ -4,9 +4,9 @@ const TruckOwnerService = require('../services/TruckOwnerService');
 exports.create = (req, res) => {
     TruckOwnerService.create(req.body).then(
         (data) => {
-            res.redirect("/");
+            res.status(201).json(data);
         },
-        (err) => {
+        (err) => {  console.log(err)
             res.status(500).json(err);
         }
     );

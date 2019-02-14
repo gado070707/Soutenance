@@ -25,8 +25,10 @@
 
 .cardformcontainer {
   width: 75%;
-  margin: 0 auto;
-  margin-top: 100px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 12%;
 }
 
 .formcontainer {
@@ -54,9 +56,9 @@
  
     text-align: center;
   
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
   
     user-select: none;
     -webkit-user-select: none;
@@ -121,13 +123,11 @@
 
     .example-ripple-container {  
     cursor: pointer;
-    text-align: center;
-  
-    width: 300px;
-    height: 300px;
-    line-height: 300px;
+    text-align: center;  
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
     left: 100px;
-    top: 50px;
   
     user-select: none;
     -webkit-user-select: none;
